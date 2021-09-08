@@ -65,11 +65,11 @@ Scholar]
 === Graduação (ECA)
 
 * link:./ia[Inteligência Artificial Aplicada a Automação e Controle]
-* link:./das5334[Introdução à Informática para Automação]
+* https://moodle.ufsc.br/[Introdução à Informática para Automação]
 
 === Pós-graduação (PPGEAS)
 
-* link:./das6609[Fundamentos de Matemática Discreta para Controle e Automação]
+* link:./fmd[Fundamentos de Matemática Discreta para Controle e Automação]
 * link:./ia[Inteligência Artificial & Aprendizado de Máquina]
 * link:./mas[Sistemas Multiagentes]
 
