@@ -1,0 +1,101 @@
+= Jomi F. Hübner
+:toc: right
+
+Department of Automation and Systems Engineering +
+Federal University of Santa Catarina +
+PO Box 476, Florianópolis, SC +
+88040-900 Brasil +
+Tel.: +55 48 3721 7665
+
+== Research Interests
+
+* Organisation, Institution, and Norm based programming for Multi-Agent
+Systems
+* Programming languages for autonomous agents
+
+== Projects
+
+=== http://jacamo.sf.net[*JaCaMo*]
+Multi-Agent Programming Framework
+
+[verse]
+http://jacamo.sf.net[JaCaMo] is a framework for Multi-Agent Programming that combines three separate technologies (Jason, Cartago, and Moise), each of them being well-known on its own and developed for a number of years so they are fairly robust and fully-fledged.
+
+=== http://jason.sf.net[*Jason*]
+Programming BDI agents with AgentSpeak
+
+[verse]
+Developed in a collaboration with http://www.inf.pucrs.br/r.bordini/Rafael_Bordini/Welcome.html[Rafael Bordini] (PUCRS, Brazil) and Jomi Hübner (University of Santa Catarina, Brazil). The project develops an interpreter and platform for an agent-oriented programming language called http://jason.sf.net[Jason].
+
+=== http://moise.sf.net[*Moise*] and https://github.com/jomifred/npl[*NPL*]
+
+Organisational model and Normative Programming Language
+
+[verse]
+Developed in a collaboration of ENS Mines of Saint Etienne (France), University of São Paulo (Brazil), and University of Santa Catarina (Brazil). The objective is to develop an organisational model that allows the programming of several dimensions of the organisation of a multi-agent system, e.g., structure, functioning, norms, and context.
+
+//=== ForTrust
+//Reputation and trust model for MAS -- _finished_
+
+//[verse]
+//Developed by Institut de Recherche en Informatique de Toulouse (France), ENS Mines of Saint Etienne (France), and Institute of Cognitive Sciences and Technologies (Italy). The objective is to formalise and implement the reputation model proposed by Castelfranchi et al. in the context of security systems.
+
+== Publications
+
+* http://jomi.das.ufsc.br/publicationsWebPage[List of all
+publications]
+* Publications at
+http://www.informatik.uni-trier.de/~ley/db/indices/a-tree/h/H=uuml=bner:Jomi_Fred.html[DBLP]
+and http://scholar.google.com/citations?user=4KPuGDYAAAAJ[Google
+Scholar]
+* http://lattes.cnpq.br/0526242321357828[CV Lattes]
+
+=== Books
+
+* https://mitpress.mit.edu/books/multi-agent-oriented-programming[Multi-Agent Oriented Programming]
+* http://jason.sf.net/jBook[Programming multi-agent systems in AgentSpeak using Jason]
+* https://www.springer.com/978-3-030-66533-3[Engineering Multi-Agent Systems (EMAS 2020)]
+* http://www.springer.com/fr/book/9783642386992[Programming Multi-Agent Systems (ProMAS 2012)]
+* http://link.springer.com/book/10.1007%2F978-3-642-22723-3[Languages, Methodologies, and Development Tools for Multi-Agent Systems (LADS
+2010)]
+* http://www.springer.com/computer/artificial/book/978-3-642-00442-1[Coordination, Organizations, Institutions and Norms in Agent Systems IV (COIN 2008)]
+
+== Teaching
+
+=== Graduação (ECA)
+
+* http://jomi.das.ufsc.br/ia[Inteligência Artificial Aplicada a Automação e Controle]
+* http://jomi.das.ufsc.br/das5334[Introdução à Informática para Automação]
+
+=== Pós-graduação (PPGEAS)
+
+* http://jomi.das.ufsc.br/das6609[Fundamentos de Matemática Discreta para Controle e Automação]
+* http://jomi.das.ufsc.br/ia[Inteligência Artificial & Aprendizado de Máquina]
+* http://jomi.das.ufsc.br/mas[Sistemas Multiagentes]
+
+== Conferences
+
+=== (co)Chair
+
+* 8th International Workshop on Engineering Multi-Agent Systems (EMAS 2020 @ AAMAS 2020)
+* AAMAS 2020: Demos
+* Thematic Track on Multi-Agent Systems: Theory and Applications (8th MASTA @ EPIA 2015)
+* Tenth International Workshop on Programming Multi-Agent Systems
+(ProMAS@AAMAS 2012)
+* Workshop-Escola de Sistemas de Agentes, seus Ambientes e apliCações
+(WESAAC 2012)
+* Workshops co-chair at IEEE/WIC/ACM International Joint Conference on
+Web Intelligence and Intelligent Agent Technology (WI-IAT'11)
+* Workshop-Escola de Sistemas de Agentes, seus Ambientes e apliCações
+(WESAAC 2011)
+* Multi Agent Contest 2011
+* Third international Workshop on LAnguages, methodologies and
+Development tools for multi-agent systemS (LADS010@MALLOW 2010)
+* First International Workshop on Infrastructures and Tools for
+Multiagent Systems (ITMAS@AAMAS 2010)
+* Multi Agent Contest 2010
+* Fifth Workshop on Coordination, Organizations, Institutions, and Norms
+in Multi-agent System (COIN@AAMAS 2008)
+* First Brazilian Workshop on Social Simulation (BWSS@SBIA 2008)
+* Iberoamerican Workshop on Multi-Agent Systems (IBERAGENTS@IBERAMIA
+2006)
