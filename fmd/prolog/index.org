@@ -1,7 +1,6 @@
 #+TITLE:    Lógica
 #+AUTHOR:   Jomi F. Hübner
 #+EMAIL:    jomi.hubner@ufsc.br
-#+DATE:     2017
 
 #+DESCRIPTION: 
 #+KEYWORDS: 

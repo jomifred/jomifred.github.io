@@ -1,7 +1,6 @@
 #+TITLE:    Inteligência Artificial
 #+AUTHOR:   Jomi F. Hübner
 #+EMAIL:    jomi.hubner@ufsc.br
-#+DATE:     2017
 
 #+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
 #+OPTIONS: toc:nil
