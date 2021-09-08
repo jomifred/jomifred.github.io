@@ -1,0 +1,238 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List
+href="./SILVIA%20HEDLA%20CORREIA%20DE%20SALES_arquivos/filelist.xml">
+<title>Sistema de posicionamento para robôs Lego Mindstorm</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>xx</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>FURB</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:LastPrinted>1601-01-01T03:00:00Z</o:LastPrinted>
+  <o:Created>2004-10-07T11:59:00Z</o:Created>
+  <o:LastSaved>2004-10-07T11:59:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>217</o:Words>
+  <o:Characters>1237</o:Characters>
+  <o:Company>FURB</o:Company>
+  <o:Lines>10</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1519</o:CharactersWithSpaces>
+  <o:Version>9.6926</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DrawingGridHorizontalSpacing>0 pt</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>0 pt</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:DrawingGridHorizontalOrigin>0 pt</w:DrawingGridHorizontalOrigin>
+  <w:DrawingGridVerticalOrigin>0 pt</w:DrawingGridVerticalOrigin>
+  <w:Compatibility>
+   <w:NoLeading/>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Lucida Sans Unicode";
+	panose-1:2 11 6 2 3 5 4 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-2147476737 14699 0 0 63 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-language:AR-SA;}
+p.MsoList, li.MsoList, div.MsoList
+	{mso-style-parent:"Corpo de texto";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Tahoma;
+	mso-fareast-language:AR-SA;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-next:Subtítulo;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:13.5pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-language:AR-SA;
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-language:AR-SA;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-next:"Corpo de texto";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:13.5pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-language:AR-SA;
+	text-decoration:underline;
+	text-underline:single;}
+span.WW-Fontepargpadro
+	{mso-style-name:"WW-Fonte parág\. padrão";
+	mso-style-parent:"";}
+p.Caption, li.Caption, div.Caption
+	{mso-style-name:Caption;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan no-line-numbers;
+	mso-hyphenate:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Tahoma;
+	mso-fareast-language:AR-SA;
+	font-style:italic;}
+p.Index, li.Index, div.Index
+	{mso-style-name:Index;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan no-line-numbers;
+	mso-hyphenate:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Tahoma;
+	mso-fareast-language:AR-SA;}
+p.Heading, li.Heading, div.Heading
+	{mso-style-name:Heading;
+	mso-style-next:"Corpo de texto";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-hyphenate:none;
+	font-size:14.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Lucida Sans Unicode";
+	mso-bidi-font-family:Tahoma;
+	mso-fareast-language:AR-SA;}
+ /* Page Definitions */
+@page
+	{mso-footnote-position:beneath-text;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:56.7pt 56.7pt 56.7pt 56.7pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=PT-BR style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<p class=MsoTitle>Sistema de posicionamento para robôs Lego Mindstorm</p>
+
+<p class=MsoSubtitle>Sílvia Hêdla Correia de Sales</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;mso-bidi-font-size:12.0pt'>Jomi Fred Hubner
+(Orientador)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;mso-bidi-font-size:12.0pt'>(Departamento de Sistemas e
+Computação / Centro de Ciências Exatas e Naturais / Fundação universidade
+Regional de Blumenau)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;mso-bidi-font-size:12.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt'>(Introdução) </span><span style='font-size:10.0pt;
+mso-bidi-font-size:11.5pt'>A visão computacional é um componente importante
+para autonomia de robôs moveis, que podem realizar ações individuais e/ou
+coletivos. No caso de futebol de robôs essa etapa é fundamental para a
+interação entre eles. Porém essa funcionalidade é bem dispendiosa visto que os
+robôs têm que estar a todo o momento com o seu posicionamento atualizado.
+(Objetivo) Desenvolver um sistema de posicionamento para robôs Lego Mindstorm
+utilizando visão computacional para a identificação dos robôs através da
+classificação de cores. (Metodologia) Para isso cada robô tem uma marcação que
+visualmente o identifica unicamente através de uma cor, a imagem do campo e dos
+robôs é captada por uma câmera digital colocada sobre o campo e analisada por
+um computador. A partir da análise da imagem, o sistema identifica a posição de
+cada robô e as envia, via Rádio Freqüência (RF), aos robôs. (Resultados) Os
+resultados foram satisfatórios atendendo a necessidade de conseguir identificar
+e calcular a posição dos robôs. (Conclusão) O protótipo do sistema é eficiente
+na identificação dos robôs (das cores), se mostrou estável e robusto as
+condições de luminosidade do ambiente. (Palavras-chave) segmentação de imagens,
+visão computacional, cores. (</span><span style='font-size:10.0pt;font-family:
+"Courier New";mso-fareast-font-family:"Courier New"'>FURB-PIPE/Art170</span><span
+style='font-size:10.0pt;mso-bidi-font-size:11.5pt'>).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

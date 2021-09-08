@@ -1,0 +1,55 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Identification of prefix</TITLE> 
+</HEAD>
+
+<BODY  BGCOLOR="#ffffff"  TEXT="#000000"  LINK="#6600ff"  VLINK="#cc3399" >
+
+ <H1>Identification of prefix</H1> 
+ <P><UL>
+<LI><H2>rewrite rule 1 (for general trace)
+</H2>
+<UL>
+&#060x&#062^s ? (x ? P) , s ? P
+<BR></UL></UL><UL>
+<LI><H2>rewrite rule 2 (for empty trace)
+</H2>
+<UL>
+&#060&#062 ? STOP
+<BR></UL></UL><UL>
+<LI><H2>Example, let trace = &#060request product,receive&#062
+</H2>
+<UL>
+taking &#060request product&#062 ^ &#060receive&#062
+<BR><BR>		by r1 ? (request product ? P1), &#060receive&#062 ? P1
+<BR>taking &#060receive&#062 ^ &#060&#062
+<BR>		by r1 ? (receive ? P2), &#060&#062 ? P2
+<BR>taking &#060&#062
+<BR>		by r2 ? STOP
+<BR>Process = (request product ? receive ? STOP)</UL></UL></P>
+<P><UL>
+Notation:
+<BR><UL>
+x is an event
+<BR><BR>s is a trace
+<BR>^ is trace concatenation
+<BR>P is a process</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld011.htm">Slide anterior</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld013.htm">Slide seguinte</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Voltar para o primeiro slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld012.htm">Exibir versão do elemento gráfico</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

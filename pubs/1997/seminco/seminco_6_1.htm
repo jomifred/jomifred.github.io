@@ -1,0 +1,723 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Jomi Fred Hübner">
+   <TITLE>Implementa&ccedil;&atilde;o de um Sistema Especialista remoto na Web</TITLE>
+</HEAD>
+<BODY BACKGROUND="fundo.jpg">
+
+<UL>
+<CENTER><B><FONT FACE="Times New Roman"><FONT SIZE=+2>Sistemas Multi-Agentes
+no Desenvolvimento de um&nbsp;<BR>
+Prot&oacute;tipo de um Sistema de Log&iacute;stica</FONT></FONT></B></CENTER>
+
+<DIV ALIGN=right></DIV>
+
+<DIV ALIGN=right><FONT FACE="Times New Roman">Alexandre Leopoldo Gon&ccedil;alves<SUP>1</SUP></FONT></DIV>
+
+<DIV ALIGN=right><FONT FACE="Times New Roman">Jomi Fred H&uuml;bner<SUP>2</SUP></FONT></DIV>
+
+
+<P><B><FONT SIZE=+1>Resumo</FONT></B>
+
+<P><FONT FACE="Times New Roman">Este artigo faz uma breve introdu&ccedil;&atilde;o
+a Intelig&ecirc;ncia Artificial Distribu&iacute;da (IAD) demonstrando a
+aplica&ccedil;&atilde;o de seus princ&iacute;pios na resolu&ccedil;&atilde;o
+de problemas, ou seja, se a solu&ccedil;&atilde;o pode ser alcan&ccedil;ada
+pela coopera&ccedil;&atilde;o entre agentes, sugerindo um estudo de caso
+na &aacute;rea de log&iacute;stica. O prot&oacute;tipo visa implementar
+um sistema de distribui&ccedil;&atilde;o de produtos entre f&aacute;bricas
+e mercados onde a solu&ccedil;&atilde;o &eacute; alcan&ccedil;ada pela
+troca de mensagens entre os agentes participantes. Para modelar a comunica&ccedil;&atilde;o
+entre os agentes &eacute; proposta uma linguagem de descri&ccedil;&atilde;o
+de protocolo utilizando-se de diagramas de transi&ccedil;&atilde;o de estados
+(DTE). Para a implementa&ccedil;&atilde;o utilizou-se a linguagem Java
+devido as suas facilidades para projetar aplica&ccedil;&otilde;es em rede.</FONT>
+
+<P><FONT FACE="Times New Roman">Palavras-chaves: Intelig&ecirc;ncia Artificial
+Distribu&iacute;da, Sistemas Multiagentes, Resolu&ccedil;&atilde;o Distribu&iacute;da
+de Problemas, Protocolo de Comunica&ccedil;&atilde;o.</FONT>
+
+<P><B><FONT SIZE=+1>Abstract</FONT></B>
+
+<P><FONT FACE="Times New Roman">This article introduces Distributed Artificial
+Intelligence (DAI), showing principles in the problem-solving, where the
+solution of problem can be reached with the cooperation among agents, suggesting
+a case study in the logistic area. The prototype suggests to implement
+a product distribuition system among factories and markets, where the solution
+is reached throught of messages exchange. To model the communication among
+agents is showed a protocol description language using states transition
+diagrams (STD). The Java language is used to implementation the system
+due to its project network aplication facilities.</FONT>
+<H1>
+<B>1. Introdu&ccedil;&atilde;o</B></H1>
+<FONT FACE="Times New Roman">A maioria das pesquisas de IA sobre comportamentos
+inteligentes est&aacute; aumentando devido ao recente desenvolvimento de
+computadores paralelos poderosos, a prolifera&ccedil;&atilde;o de redes
+de computadores e o reconhecimento de que as a&ccedil;&otilde;es humanas
+e a resolu&ccedil;&atilde;o de problemas envolvem mais do que uma pessoa.
+A Intelig&ecirc;ncia Artificial Distribu&iacute;da (IAD) &eacute; um subcampo
+da IA preocupada com a coopera&ccedil;&atilde;o, coordena&ccedil;&atilde;o
+e intera&ccedil;&atilde;o na IA evoluindo da vis&atilde;o individual para
+a coletiva.</FONT>
+
+<P><FONT FACE="Times New Roman">Segundo [GAS88], [GAS90], pode-se distinguir
+duas principais &aacute;reas da IAD: Resolu&ccedil;&atilde;o Distribu&iacute;da
+de Problemas (RDP) e Sistemas Multiagentes (SMA). A RDP &eacute; o estudo
+de t&eacute;cnicas para dividir o trabalho de resolu&ccedil;&atilde;o de
+um problema particular em muitos m&oacute;dulos que cooperam pela intera&ccedil;&atilde;o
+e compartilhamento de conhecimento sobre este problema. Na RDP, os agentes
+s&atilde;o criados em fun&ccedil;&atilde;o e conforme a necessidade do
+problema proposto. Segundo [JEN94], a RDP pode ser caracterizada em tr&ecirc;s
+fases como mostrado na figura 1.1. Na primeira fase, o problema (P) &eacute;
+continuamente decomposto pelo projetista at&eacute; que subtarefas sejam
+geradas. Em seguida, os subproblemas individuais s&atilde;o resolvidos
+por agentes que se comunicam e cooperam quando necess&aacute;rio. Finalmente,
+os resultados dos subproblemas s&atilde;o integrados para produzir uma
+solu&ccedil;&atilde;o global (S).</FONT>
+
+<P><FONT FACE="Times New Roman">&nbsp;</FONT>
+<CENTER></CENTER>
+
+<CENTER><IMG SRC="Image2.gif" HEIGHT=219 WIDTH=294></CENTER>
+
+<UL>
+<CENTER><FONT SIZE=+0>Figura 1.1 - Resolu&ccedil;&atilde;o distribu&iacute;da
+de problemas.</FONT></CENTER>
+</UL>
+<FONT SIZE=+0></FONT>
+
+<P><FONT SIZE=+0>Os SMA preocupam-se com procedimentos inteligentes coordenados
+entre uma cole&ccedil;&atilde;o de agentes inteligentes aut&ocirc;nomos,
+como estes podem coordenar seus conhecimentos, metas, habilidades e planos
+conjuntamente para obter informa&ccedil;&otilde;es ou resolver problemas
+[BON88]. Nos SMA os agentes j&aacute; existem e interagem entre si para
+resolver problemas buscando uma solu&ccedil;&atilde;o global. A intera&ccedil;&atilde;o
+entre os agentes acontece ou pela troca de mensagens ou por quadros negros
+(&aacute;reas comuns de armazenamento de dados utilizadas pelos agentes).</FONT>
+<H1>
+<B>2. Descri&ccedil;&atilde;o de Protocolos de Comunica&ccedil;&atilde;o</B></H1>
+<FONT FACE="Times New Roman">O processo de comunica&ccedil;&atilde;o entre
+entidades s&atilde;o essenciais para a coopera&ccedil;&atilde;o na busca
+de solu&ccedil;&atilde;o para um problema. Este processo &eacute; guiado
+por protocolos visando identificar, simplificar e normalizar tarefas dentro
+de um contexto. Nesse sentido, um SMA possui protocolos de comunica&ccedil;&atilde;o
+que determinam o comportamento de intera&ccedil;&atilde;o entre os agentes.</FONT>
+
+<P><FONT FACE="Times New Roman">A comunica&ccedil;&atilde;o entre agentes
+est&aacute; baseada em mensagens. Em [WOO94], &eacute; feita uma abordagem
+levando em conta a troca ou passagem de mensagens entre agentes, sendo
+apresentado tr&ecirc;s formas:</FONT>
+<UL>
+<LI>
+<FONT FACE="Times New Roman">mensagens ponto-a-ponto: este tipo de mensagem
+&eacute; muito utilizado em sistemas concorrentes baseados-em-objetos.
+As mensagens s&atilde;o enviadas para um endere&ccedil;o espec&iacute;fico
+(o receptor) que &eacute; conhecido pelo transmissor. Isto representa vantagens
+uma vez que o transmissor sabe para quem a mensagem est&aacute; sendo enviada
+e os controles de seguran&ccedil;a s&atilde;o mais facilmente implementados;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">mensagens <I>broadcast</I>: n&atilde;o se
+baseia na passagem para um endere&ccedil;o espec&iacute;fico, mas para
+todos os agentes que participam do sistema. Contudo este tipo de passagem
+de mensagem n&atilde;o &eacute; seguro uma vez que todos os agentes podem
+verificar o conte&uacute;do de uma mensagem;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">mensagens <I>multicast</I>: diferente do <I>broadcast</I>
+este m&eacute;todo visa a passagem de mensagens para um grupo de agentes.
+Desta maneira quando se deseja informar uma mensagem para um agente, a
+mensagem &eacute; enviada para o grupo que esse faz parte.</FONT></LI>
+</UL>
+<FONT FACE="Times New Roman">A especifica&ccedil;&atilde;o do protocolo
+de comunica&ccedil;&atilde;o proposto &eacute; descrito por diagramas de
+transi&ccedil;&atilde;o de estados, onde a troca de informa&ccedil;&otilde;es
+entre os agentes promove mudan&ccedil;as de estados. Esta troca &eacute;
+efetuada atrav&eacute;s de mensagens que possuem o formato mostrado na
+tabela 2.1.</FONT>
+<CENTER></CENTER>
+
+<CENTER><FONT FACE="Times New Roman">Tabela 2.1 - Formato da Mensagem do
+Protocolo de Comunica&ccedil;&atilde;o.</FONT></CENTER>
+</UL>
+
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="619" >
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><B><FONT FACE="Times New Roman">Identificador</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><B><FONT FACE="Times New Roman">Descri&ccedil;&atilde;o</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><FONT FACE="Times New Roman">Origem</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><FONT FACE="Times New Roman">&eacute; o identificador
+do tipo do agente, caso a mensagem seja para todos os agentes de um tipo,
+estes utilizam-se do s&iacute;mbolo </FONT><FONT FACE="Symbol">"</FONT><FONT FACE="Times New Roman">&nbsp;</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><FONT FACE="Times New Roman">Tipo</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><FONT FACE="Times New Roman">identifica o estado
+da mensagem, sendo <I>inform</I> quando um agente informa uma mensagem
+para outro, <I>request</I> quando um agente requisita uma informa&ccedil;&atilde;o
+ou <I>reply</I> quando um agente responde a uma requisi&ccedil;&atilde;o
+efetuada por outro agente</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><FONT FACE="Times New Roman">Mensagem</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><FONT FACE="Times New Roman">conte&uacute;do
+que ser&aacute; trocado entre os agentes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><FONT FACE="Times New Roman">Destino</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><FONT FACE="Times New Roman">segue a descri&ccedil;&atilde;o
+do identificador origem</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><FONT FACE="Times New Roman">Pr&eacute;-condi&ccedil;&otilde;es</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><FONT FACE="Times New Roman">fatos que devem
+ser verdade no mundo do agente para este enviar ou receber uma mensagem</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="26%"><FONT FACE="Times New Roman">P&oacute;s-condi&ccedil;&otilde;es</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="74%"><FONT FACE="Times New Roman">fatos que passam
+a ser verdade no mundo do agente ap&oacute;s ter enviado ou recebido uma
+mensagem</FONT></TD>
+</TR>
+</TABLE></CENTER>
+
+<UL>
+<H1>
+<B>3. Uma vis&atilde;o de Log&iacute;stica</B></H1>
+<FONT FACE="Times New Roman">Nos dias atuais tem-se falado muito em log&iacute;stica.
+Isto deve-se a uma crescente preocupa&ccedil;&atilde;o com os custos nas
+empresas, a competi&ccedil;&atilde;o por mercados consumidores, necessidade
+de garantir prazos visando oferecer melhores servi&ccedil;os e, por &uacute;ltimo,
+a globaliza&ccedil;&atilde;o da economia mundial. Esta por sua vez representa
+um dos maiores desafios levando em considera&ccedil;&atilde;o o Mercosul,
+onde as ind&uacute;strias e empresas nacionais preocupam-se cada vez mais
+com a concorr&ecirc;ncia.</FONT>
+
+<P><FONT FACE="Times New Roman">A log&iacute;stica estuda como prover melhores
+n&iacute;veis de rentabilidade nos servi&ccedil;os de distribui&ccedil;&atilde;o
+aos clientes e consumidores, atrav&eacute;s de planejamento, organiza&ccedil;&atilde;o
+e controle efetivo para as atividades de movimenta&ccedil;&atilde;o e armazenagem
+visando facilitar o fluxo de produtos [BAL93]. Tendo como uma das principais
+preocupa&ccedil;&otilde;es a distribui&ccedil;&atilde;o, uma vez que produtos
+e clientes muitas vezes encontram-se separados geograficamente, a log&iacute;stica
+visa minimizar a separa&ccedil;&atilde;o que existe entre oferta e demanda,
+procurando atender o cliente da melhor maneira poss&iacute;vel.</FONT>
+
+<P><FONT FACE="Times New Roman">Segundo [BAL93] existem tr&ecirc;s objetivos
+log&iacute;sticos chaves:</FONT>
+<UL>
+<LI>
+<FONT FACE="Times New Roman">transportes: representa a atividade mais importante
+pois absorve a maior parte dos custos log&iacute;sticos. &Eacute; primordial
+pois nenhuma empresa consegue movimentar cargas sem ter que transport&aacute;-las
+por via t&eacute;rrea, ferrovi&aacute;ria, mar&iacute;tima ou a&eacute;rea;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">manuten&ccedil;&atilde;o de estoques: toda
+ind&uacute;stria possui um grau razo&aacute;vel de disponibilidade de produtos
+para regular a oferta e a demanda. Essa administra&ccedil;&atilde;o deve
+preocupar-se em manter os n&iacute;veis de estoque pequenos sem afetar
+o atendimento aos clientes;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">processamento de pedidos: representa o passo
+inicial para a efetividade do processo. A rapidez que este processo &eacute;
+realizado representa aumento ou diminui&ccedil;&atilde;o no tempo para
+entrega de mercadorias sendo de suma import&acirc;ncia para a satisfa&ccedil;&atilde;o
+do cliente e um fator decisivo na redu&ccedil;&atilde;o do tempo.</FONT></LI>
+</UL>
+<FONT FACE="Times New Roman">&Eacute; certo que os processos log&iacute;sticos
+determinam fatores importantes na administra&ccedil;&atilde;o de empresas
+pois lidam diretamente com o principal indicador de aceita&ccedil;&atilde;o
+de determinado produto, o consumidor final. Para tal &eacute; necess&aacute;rio
+processos capazes de atender com rapidez determinado mercado ou usu&aacute;rio
+final visando minimizar custos e tempos.</FONT>
+
+<P><FONT FACE="Times New Roman">A log&iacute;stica ocupa uma posi&ccedil;&atilde;o
+intermedi&aacute;ria entre a produ&ccedil;&atilde;o e <I>marketing</I>
+[BAL93] dividindo fun&ccedil;&otilde;es e promovendo uma integra&ccedil;&atilde;o
+no processo administrativo de empresas (figura 3.1) visando a integra&ccedil;&atilde;o
+e o bom funcionamento das &aacute;reas em quest&atilde;o.</FONT>
+<CENTER><IMG SRC="Image3.gif" HEIGHT=204 WIDTH=570></CENTER>
+
+<UL>
+<CENTER><FONT SIZE=+0>Figura 3.1 - Vis&atilde;o geral das atividades log&iacute;sticas.</FONT></CENTER>
+</UL>
+<FONT FACE="Times New Roman"></FONT>
+
+<P><FONT FACE="Times New Roman">Nos &uacute;ltimos anos, a distribui&ccedil;&atilde;o
+de produtos tornou-se um fator chave para as empresas tendo em vista que
+a distribui&ccedil;&atilde;o &eacute; determinante no processo de obten&ccedil;&atilde;o
+de resultados positivos ou negativos. O sistema de distribui&ccedil;&atilde;o
+de produtos de uma empresa &eacute; importante e muitas vezes complexo,
+pois este constitui parte integrante na an&aacute;lise de custos da atividade
+industrial e comercial.</FONT>
+
+<P><FONT FACE="Times New Roman">Contudo, &eacute; certo que muitas empresas
+de pequeno e m&eacute;dio porte n&atilde;o possuem an&aacute;lises visando
+identificar o quanto realmente representa o custo do transporte em seu
+produto final ou o quanto &eacute; importante a satisfa&ccedil;&atilde;o
+do cliente aliado a redu&ccedil;&atilde;o de custos, pois muitas vezes
+faltam recursos tecnol&oacute;gicos ou humanos capazes de mensurar com
+precis&atilde;o tais custos. Para minimizarem tais problemas &eacute; de
+grande import&acirc;ncia que empresas possuam ferramentas capazes de auxiliar
+em quest&otilde;es de aspecto financeiro.</FONT>
+<H1>
+<B>4. Estudo de Caso : Sistema de Distribui&ccedil;&atilde;o de Produtos</B></H1>
+<FONT FACE="Times New Roman">Para validar e testar solu&ccedil;&otilde;es
+para problemas reais utilizando-se de agentes, &eacute; apresentada uma
+implementa&ccedil;&atilde;o visando solucionar o problema de distribui&ccedil;&atilde;o
+de produtos entre v&aacute;rias f&aacute;bricas e v&aacute;rios mercados,
+levando em considera&ccedil;&atilde;o algumas restri&ccedil;&otilde;es
+deste ambiente.</FONT>
+<H2>
+<B>4.1 Descri&ccedil;&atilde;o do Problema</B></H2>
+O problema de distribui&ccedil;&atilde;o de produtos &eacute; um problema
+de grande relev&acirc;ncia para as empresas devido a fatores de competitividade
+e satisfa&ccedil;&atilde;o do cliente. Tal problema apresenta algumas considera&ccedil;&otilde;es:
+<UL>
+<LI>
+existem v&aacute;rias f&aacute;bricas e v&aacute;rios mercados que desejam
+distribuir ou receber determinado produto;</LI>
+
+<LI>
+cada f&aacute;brica possui ofertas de produtos com seus custos unit&aacute;rios;</LI>
+
+<LI>
+cada mercado possui demandas de produtos;</LI>
+
+<LI>
+existem dist&acirc;ncias a serem consideradas entre os v&aacute;rios pontos
+(f&aacute;bricas e mercados);</LI>
+
+<LI>
+para cada produto existe um custo unit&aacute;rio que multiplicado pela
+dist&acirc;ncia entre o ponto origem e destino resulta no custo total de
+transporte por produto.</LI>
+</UL>
+
+<H2>
+<B>4.2 Especifica&ccedil;&atilde;o do Protocolo de Comunica&ccedil;&atilde;o</B></H2>
+<FONT FACE="Times New Roman">Para o desenvolvimento do trabalho &eacute;
+apresentada uma especifica&ccedil;&atilde;o do protocolo de comunica&ccedil;&atilde;o
+usado pelos agentes do sistema. O sistema &eacute; composto por quatro
+modelos de agentes: o agente servidor que gerencia e monitora as transa&ccedil;&otilde;es
+do sistema, agentes do tipo f&aacute;brica que oferecem produtos, agentes
+do tipo mercado que recebem ofertas e agentes interfaces que possibilitam
+a entrada de dados pelo usu&aacute;rio. A tabela 4.1 mostra as nota&ccedil;&otilde;es
+utilizadas.</FONT>
+<CENTER></CENTER>
+
+<CENTER>Tabela 4.1 - Nota&ccedil;&atilde;o Utilizada nas Mensagens do Protocolo.</CENTER>
+</UL>
+
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="619" >
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><B><FONT FACE="Times New Roman">Nota&ccedil;&atilde;o</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><B><FONT FACE="Times New Roman">Abrevia&ccedil;&atilde;o</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Agente Servidor</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">S</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Agente F&aacute;brica</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">F</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Agente Mercado</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">M</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Interface da Base
+de Conhecimento</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">BC</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Interface de Dist&acirc;ncias</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">D</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Interface de Consulta</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">C</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Para toda F&aacute;brica
+e Mercado</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Symbol">"</FONT><FONT FACE="Times New Roman">
+F+M</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Times New Roman">Para toda F&aacute;brica</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Symbol">"</FONT><FONT FACE="Times New Roman">
+F</FONT></TD>
+</TR>
+</TABLE></CENTER>
+
+<UL><FONT FACE="Times New Roman">O protocolo &eacute; representado atrav&eacute;s
+de estados onde cada estado possui uma numera&ccedil;&atilde;o identificando
+uma a&ccedil;&atilde;o junto aos agentes e a transi&ccedil;&atilde;o de
+um estado para outro ocorre com o recebimento ou envio de mensagens. O
+formato da mensagem j&aacute; foi apresentado na tabela 2.1. A figura 4.1
+mostra o protocolo a n&iacute;vel do agente Servidor sendo composto por
+dez estados:</FONT></UL>
+
+<OL TYPE="a">
+<UL>
+<LI>
+<FONT FACE="Times New Roman">estado E0: representa o estado de espera onde
+o servidor fica monitorando todas as requisi&ccedil;&otilde;es dos agentes
+interfaces ou mensagens do agentes dos sistema que participam da solu&ccedil;&atilde;o;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E1: o agente S passa para este estado
+quando recebe uma mensagem da interface BC informando a base de conhecimento
+de cada agente. Recebida a mensagem, o agente S efetua a cria&ccedil;&atilde;o
+dos agentes e guarda sua localiza&ccedil;&atilde;o. Ap&oacute;s isso devolve
+uma mensagem de confirma&ccedil;&atilde;o do recebimento e retorna para
+o estado de espera;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E2: o agente S passa para este estado
+quando recebe da interface D uma mensagem informando as dist&acirc;ncias
+entre todos os agentes F e M do sistema. Ent&atilde;o a mensagem &eacute;
+acrescida do identificador "<B>Distancia</B>" e enviada para todos os agentes
+F;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E3: este &eacute; um estado intermedi&aacute;rio
+pois apenas comp&otilde;em a mensagem de requisi&ccedil;&atilde;o da base
+de conhecimento para todos os agentes F e agentes M contendo o identificador
+"<B>Requisita</B>";</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E4: &eacute; um estado onde o agente
+S espera pelas respostas de todos os agentes F e M que est&atilde;o enviando
+suas bases de conhecimento;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E5: o agente S passa para este estado
+quando come&ccedil;a a receber as mensagens dos agentes F e agentes M com
+suas bases de conhecimento. Ap&oacute;s isso comp&otilde;em uma mensagem
+&uacute;nica contendo a base de todos os agentes e informa esta base para
+todos os agentes F do sistema voltando para um estado de espera;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E6: representa o estado que inicializa
+a solu&ccedil;&atilde;o enviando para cada agente F uma mensagem contendo
+o identificador "<B>RequisitaO</B>";</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E7: o agente S passa para este estado
+ap&oacute;s ter informado aos agentes F para come&ccedil;arem a resolu&ccedil;&atilde;o
+do problema. Neste estado chegam as mensagens dos agentes F contendo a
+oferta a ser distribu&iacute;da para cada produto;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E8: neste estado o agente S identifica
+o destino de cada mensagem de oferta informando ao agente M correspondente
+para que este possa suprir sua demanda. Ap&oacute;s isso retorna ao estado
+anterior para receber novas informa&ccedil;&otilde;es dos agentes F at&eacute;
+que o processo esteja finalizado. Este estado tamb&eacute;m constitui-se
+em um estado de espera que aguarda as solu&ccedil;&otilde;es (demandas
+utilizadas) vindas dos agentes M ou requisi&ccedil;&otilde;es da interface
+C. O conjunto de todas as respostas enviadas pelos agentes M formar&aacute;
+o resultado da solu&ccedil;&atilde;o do problema;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E9: o agente S passa para este estado
+ap&oacute;s receber uma requisi&ccedil;&atilde;o da solu&ccedil;&atilde;o
+do problema. Ent&atilde;o identifica qual interface C requisitou a solu&ccedil;&atilde;o
+e devolve uma mensagem que ser&aacute; apresentada ao usu&aacute;rio.</FONT></LI>
+</UL>
+
+<CENTER><IMG SRC="Image4.gif" HEIGHT=325 WIDTH=195></CENTER>
+
+<OL TYPE="a">
+<CENTER><FONT SIZE=+0>Figura 4.1 - Protocolo de comunica&ccedil;&atilde;o
+do agente servidor.</FONT></CENTER>
+
+<CENTER><FONT SIZE=+0></FONT>&nbsp;</CENTER>
+</OL>
+<FONT FACE="Times New Roman">A figura 4.2 mostra o protocolo a n&iacute;vel
+do agente F&aacute;brica sendo composto por cinco estados:</FONT>
+<UL>
+<LI>
+<FONT FACE="Times New Roman">estado E0: representa o estado de espera onde
+o agente F monitora todas as informa&ccedil;&otilde;es iniciais vindas
+do agente S;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E1: o agente passa para este estado
+quando come&ccedil;a a receber informa&ccedil;&otilde;es do agente S sobre
+as dist&acirc;ncias entre os agentes F e agentes M. Ainda nesse estado,
+as informa&ccedil;&otilde;es s&atilde;o armazenadas a fim de possibilitarem
+a melhor distribui&ccedil;&atilde;o dos diversos produtos;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E2: o agente passa para este estado
+quando come&ccedil;a a receber mensagens vindas do agente S requisitando
+a base de conhecimento. Ent&atilde;o o agente comp&otilde;em uma mensagem
+contendo toda a sua base;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E3: o agente passa para este estado
+ap&oacute;s ter enviado a mensagem contendo sua base de conhecimento;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E4: este estado acontece quando o agente
+recebe a mensagem do agente S contendo a base de todos os outros agentes.
+Esta base mais as dist&acirc;ncias possibilitam que o agente escolha qual
+o melhor produto a distribuir e para quem. Nesse ponto o agente F come&ccedil;a
+o processo de resolu&ccedil;&atilde;o e tendo efetuado uma escolha passa
+a informar para o agente S as ofertas e para quem devem ser enviadas. Esse
+processo se repete at&eacute; que n&atilde;o haja mais quantidades de produtos
+a distribuir ou a solu&ccedil;&atilde;o ideal tenha sido encontrada. Ap&oacute;s
+isso o agente F passa para um estado de espera.</FONT></LI>
+</UL>
+
+<CENTER><IMG SRC="Image5.gif" HEIGHT=188 WIDTH=176></CENTER>
+
+<OL TYPE="a">
+<CENTER><FONT FACE="Times New Roman"><FONT SIZE=+0>Figura 4.2 - Protocolo
+de comunica&ccedil;&atilde;o do agente f&aacute;brica.</FONT></FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman"><FONT SIZE=+0></FONT></FONT>&nbsp;</CENTER>
+</OL>
+<FONT FACE="Times New Roman">A figura 4.3 mostra o protocolo a n&iacute;vel
+do agente Mercado sendo composto por quatro estados:</FONT>
+<UL>
+<LI>
+<FONT FACE="Times New Roman">estado E0: representa o estado de espera onde
+o agente M monitora todas as requisi&ccedil;&otilde;es vindas do agente
+S;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E1: o agente M passa para este estado
+quando recebe uma mensagem do servidor requisitando sua base de conhecimento.
+Ent&atilde;o uma mensagem &eacute; composta contendo toda a sua base que
+ser&aacute; enviada para o agente S para que este formule uma base geral;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E2: o agente M passa para este estado
+ap&oacute;s ter respondido ao agente S informando a sua base de conhecimento;</FONT></LI>
+
+<LI>
+<FONT FACE="Times New Roman">estado E3: o agente M passa para este estado
+ap&oacute;s receber as ofertas do agente S. Nesse momento o agente atualiza
+sua base e repete o procedimento at&eacute; que as demandas de todos os
+produtos estejam satisfeitas ou at&eacute; que n&atilde;o haja mais ofertas
+vindas do servidor. Ap&oacute;s isso o agente volta para um estado de espera.</FONT></LI>
+</UL>
+
+<CENTER></CENTER>
+
+<CENTER><IMG SRC="Image6.gif" HEIGHT=192 WIDTH=174><FONT FACE="Times New Roman"></FONT></CENTER>
+
+<OL TYPE="a">
+<CENTER><FONT FACE="Times New Roman"><FONT SIZE=+0>Figura 4.3 - Protocolo
+de comunica&ccedil;&atilde;o do mercado.</FONT></FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman"><FONT SIZE=+0></FONT></FONT>&nbsp;</CENTER>
+</OL>
+
+<H2>
+<B><FONT FACE="Times New Roman">4.3 Esbo&ccedil;o do Funcionamento do Sistema</FONT></B></H2>
+<FONT FACE="Times New Roman">O sistema &eacute; composto por agentes f&aacute;bricas
+e agentes mercados sendo criados e gerenciados por um agente servidor.
+Tais agentes interagem trocando mensagens objetivando a melhor distribui&ccedil;&atilde;o
+dos diversos produtos de cada f&aacute;brica nos diversos mercados levando
+em considera&ccedil;&atilde;o a oferta de cada f&aacute;brica, a demanda
+de cada mercado, o valor do frete de cada produto e a dist&acirc;ncia da
+f&aacute;brica em rela&ccedil;&atilde;o ao mercado (figura 4.4). Existem
+ainda agentes interfaces (base de conhecimento, dist&acirc;ncia e consulta)
+que tem como fun&ccedil;&atilde;o a consulta e a manipula&ccedil;&atilde;o
+da base de conhecimento.</FONT>
+<CENTER></CENTER>
+
+<CENTER><IMG SRC="Image7.gif" HEIGHT=335 WIDTH=270></CENTER>
+
+<OL TYPE="a">
+<CENTER><FONT FACE="Times New Roman"><FONT SIZE=+0>Figura 4.4 - Modelo
+para otimiza&ccedil;&atilde;o da distribui&ccedil;&atilde;o de produtos.</FONT></FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman"><FONT SIZE=+0></FONT></FONT>&nbsp;</CENTER>
+</OL>
+
+<H1>
+<FONT FACE="Times New Roman"><B>5. I</B>mplementa&ccedil;&atilde;o do Prot&oacute;tipo</FONT></H1>
+
+
+<P><FONT FACE="Times New Roman">O prot&oacute;tipo foi projetado em Java
+utilizando-se basicamente de <I>sockets</I> e <I>threads</I>. &Eacute;
+composto por tr&ecirc;s m&oacute;dulos sendo o primeiro o servidor, o segundo
+o cliente (base de conhecimento, dist&acirc;ncia e consulta) e o &uacute;ltimo
+o m&oacute;dulo agente.</FONT>
+<H2>
+<B>5.1 M&oacute;dulo servidor</B></H2>
+<FONT FACE="Times New Roman">O m&oacute;dulo servidor constitui-se de uma
+aplica&ccedil;&atilde;o Java que tem fun&ccedil;&atilde;o de facilitador
+da comunica&ccedil;&atilde;o entre os diversos agentes que participam do
+sistema realizando as seguintes tarefas: controle das requisi&ccedil;&otilde;es
+de conex&otilde;es dos clientes, inicializa&ccedil;&atilde;o dos agentes,
+gerenciamento e roteamento de mensagens e armazenamento dos endere&ccedil;os
+de cada agente.</FONT>
+<H2>
+<B>5.2 M&oacute;dulo cliente</B></H2>
+<FONT FACE="Times New Roman">O m&oacute;dulo cliente constitui-se de tr&ecirc;s
+<I>applets</I> sendo estes respons&aacute;veis pela entrada de dados e
+consultas para o usu&aacute;rio. O primeiro <I>applet</I> (figura 5.1)
+&eacute; respons&aacute;vel pela manuten&ccedil;&atilde;o da base de conhecimento
+dos agentes. Nesta tela s&atilde;o informados o tipo de agente que se deseja
+inserir no ambiente (agente f&aacute;brica ou mercado), o nome do agente
+e as express&otilde;es, onde cada express&atilde;o constitui uma linha
+&uacute;nica na base de conhecimento do agente.</FONT>
+
+<P><FONT FACE="Times New Roman">O segundo <I>applet</I> &eacute; respons&aacute;vel
+pela manuten&ccedil;&atilde;o da base de dist&acirc;ncias. Nesta tela s&atilde;o
+informadas todas as combina&ccedil;&otilde;es de dist&acirc;ncias entre
+agentes f&aacute;bricas e mercados. As informa&ccedil;&otilde;es referentes
+&agrave; base de dist&acirc;ncias s&atilde;o armazenadas nos agentes do
+tipo f&aacute;brica sendo necess&aacute;rias para o processo de escolha
+onde os agentes decidem para quem enviar determinado produto levando-se
+em conta o menor custo de distribui&ccedil;&atilde;o. O &uacute;ltimo <I>applet</I>
+possibilita a consulta do resultado da otimiza&ccedil;&atilde;o por parte
+do usu&aacute;rio.</FONT>
+<CENTER></CENTER>
+
+<CENTER><IMG SRC="Image8.gif" HEIGHT=385 WIDTH=602></CENTER>
+
+<OL TYPE="a">
+<CENTER><FONT SIZE=+0>Figura 5.1 - Tela para manuten&ccedil;&atilde;o da
+base de conhecimento dos agentes.</FONT></CENTER>
+
+<CENTER><FONT SIZE=+0></FONT>&nbsp;</CENTER>
+</OL>
+
+<H2>
+<B>5.3 M&oacute;dulo agente</B></H2>
+<FONT FACE="Times New Roman">Este m&oacute;dulo tem inst&acirc;ncias de
+agentes do tipo f&aacute;brica ou mercado e tem como fun&ccedil;&otilde;es
+o armazenamento da base de conhecimento dos agentes do sistema, o armazenamento
+das dist&acirc;ncias entre os pontos de origem e destino.</FONT>
+
+<P><FONT FACE="Times New Roman">Na resolu&ccedil;&atilde;o do problema,
+cada agente se comporta conforme o protocolo de comunica&ccedil;&atilde;o
+especificado. Os agentes tipo f&aacute;brica tomam iniciativa na resolu&ccedil;&atilde;o
+do problema oferecendo certa quantidade de produtos para as requisi&ccedil;&otilde;es
+feitas pelos mercados. A troca de mensagens se repete at&eacute; que todos
+os agentes do tipo mercados tenham suprimidos suas demandas ou que os agentes
+f&aacute;bricas n&atilde;o possuam mais ofertas de seus produtos. Ap&oacute;s
+o t&eacute;rmino, o agente servidor ter&aacute; a informa&ccedil;&atilde;o
+do resultado da otimiza&ccedil;&atilde;o sendo ent&atilde;o poss&iacute;vel
+a consulta.</FONT>
+<H1>
+<B><FONT FACE="Times New Roman">6. Conclus&otilde;es</FONT></B></H1>
+<FONT FACE="Times New Roman">Este trabalho apresenta uma introdu&ccedil;&atilde;o
+a IAD, tendo como enfoque principal a utiliza&ccedil;&atilde;o de Sistemas
+Multiagentes na solu&ccedil;&atilde;o de problemas reais. O problema de
+distribui&ccedil;&atilde;o de produtos foi implementado utilizando-se de
+um modelo log&iacute;stico onde cada f&aacute;brica e mercado constitui
+um agente que compartilha informa&ccedil;&otilde;es buscando uma solu&ccedil;&atilde;o
+global.</FONT>
+
+<P><FONT FACE="Times New Roman">Cada agente dentro do sistema possui sua
+pr&oacute;pria base de conhecimento sendo composta por produtos, quantidades
+de oferta e custos unit&aacute;rios para agentes do tipo f&aacute;brica
+e de produtos e quantidades de demanda para agentes do tipo mercado. Para
+chegarem a uma solu&ccedil;&atilde;o os agentes f&aacute;bricas guardam
+uma base de todos os agentes do sistema possibilitando assim identificar
+a solu&ccedil;&atilde;o para o problema de distribui&ccedil;&atilde;o.</FONT>
+
+<P><FONT FACE="Times New Roman">Para a implementa&ccedil;&atilde;o do trabalho
+utilizou-se a linguagem Java devido as suas caracter&iacute;sticas distribu&iacute;das
+possibilitando a implementa&ccedil;&atilde;o de agentes executando sob
+uma rede TCP/IP. O sistema foi implementado utilizando-se de comunica&ccedil;&atilde;o
+s&iacute;ncrona onde cada agente (F&aacute;brica ou Mercado) possui uma
+liga&ccedil;&atilde;o com o agente Servidor.</FONT>
+
+<P><FONT FACE="Times New Roman">Um fator importante para o sistema &eacute;
+o protocolo de comunica&ccedil;&atilde;o entre os agentes. Neste trabalho
+foi apresentado um modelo utilizando-se de diagramas de transi&ccedil;&atilde;o
+de estados (DTE) onde a comunica&ccedil;&atilde;o entre os agentes &eacute;
+realizada pela troca de mensagens sendo que os agentes mudam de estados
+sob determinadas condi&ccedil;&otilde;es.</FONT>
+
+<P><FONT FACE="Times New Roman">O estudo de caso apresentado constitui-se
+em um modelo que considera quatro restri&ccedil;&otilde;es: a oferta, a
+demanda, o custo unit&aacute;rio de cada produto e a dist&acirc;ncia entre
+as v&aacute;rias f&aacute;bricas e mercados. Contudo estas restri&ccedil;&otilde;es
+permitem que os agentes apenas efetuem procedimentos de escolha simples
+e n&atilde;o negocia&ccedil;&otilde;es para chegarem a uma solu&ccedil;&atilde;o.
+Restri&ccedil;&otilde;es de negocia&ccedil;&atilde;o poderiam ser fatores
+de credibilidade do cliente ou prazos de entrega.</FONT>
+
+<P><FONT FACE="Times New Roman">A partir da experimenta&ccedil;&atilde;o
+realizada verificou-se que, para o problema de log&iacute;stica colocado,
+um Sistema Multiagente gera uma boa solu&ccedil;&atilde;o em um tempo de
+resposta excelente. Al&eacute;m disso, a principal vantagem desta abordagem
+de especifica&ccedil;&atilde;o &eacute; a semelhan&ccedil;a do funcionamento
+do modelo implementado com a realidade.</FONT>
+<H1>
+<B>7. Refer&ecirc;ncias</B></H1>
+[BAL93] BALLOU, Ronald H. <B>Log&iacute;stica empresarial</B> : transportes,
+administra&ccedil;&atilde;o de materiais e distribui&ccedil;&atilde;o f&iacute;sica.
+S&atilde;o Paulo : Ed. Atlas, 1993.
+
+<P>[BON88] BOND, A.H.; GASSER, L. (Eds.) <B>Readings in distribuited artificial
+intelligence</B>. California : Morgan Kaufmann, 1988.
+
+<P>[GAS88] GASSER, Les. <B>Distribution and coordination of tasks among
+intelligent agents</B>. In: PROCEEDINGS OF THE IJCAI'88. Scandinavian Conference
+on AI. Amsterdam, Springfield, 1988.
+
+<P>[GAS90] GASSER, Les. <B>Social conceptions of knowledge and action</B>:
+DAI foundations and open systems semantics, In: ARTIFICIAL INTELLIGENCE,
+47. Elsevier Science Publishers, University of Southern California, Los
+Angeles, 1990. p. 107-138.
+
+<P>[JEN94] JENNINGS, Nick. <B>Cooperation in industrial multi-agent systems</B>.
+Singapore : World Scientific, 1994.
+
+<P>[WOO94] WOOLDRIDGE, Michael J.; JENNIGS, Nicholas R. <B>Agent theories,
+architectures, and languages</B>: a survey. In: PROCEEDINGS OF ECAI 94
+WORKSHOP ON AGENT THEORIES, ARCHITECTURES &amp; LANGUAGES. Amesterdam The
+Netherlands, 1994. p. 1-32.</OL>
+
+</BODY>
+</HTML>

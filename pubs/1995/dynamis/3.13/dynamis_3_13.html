@@ -1,0 +1,691 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Artigo submetido ao Seminco</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; AIX 1) [Netscape]">
+</HEAD>
+<BODY TEXT="#000040" BGCOLOR="#C0C0C0" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000" BACKGROUND="fundo.jpg">
+
+<UL>
+<H1 ALIGN=CENTER><FONT SIZE=+2>Identifica&ccedil;&atilde;o de Pap&eacute;is
+por Apresenta&ccedil;&atilde;o na Entrada de <BR>
+Agentes em Sociedades Abertas</FONT><FONT SIZE=-2> *</FONT><FONT SIZE=+2>
+</FONT></H1>
+
+<DIV ALIGN=right><P><FONT SIZE=+1>Jomi Fred H&uuml;bner<BR>
+</FONT>Universidade Regional de Blumenau<BR>
+e-mail: jomi@furb.blusoft.softex.br </P></DIV>
+
+<DIV ALIGN=right><P><FONT SIZE=+1>Ant&ocirc;nio Carlos da Rocha Costa<BR>
+</FONT>Universidade Federal do Rio Grande do Sul<BR>
+e-mail: rocha@inf.ufrgs.br </P></DIV>
+
+<DIV ALIGN=right><P><FONT SIZE=+1>Rafael Heitor Bordini<BR>
+</FONT>University College London<BR>
+e-mail:R.Bordini@cs.ucl.ac.uk </P></DIV>
+
+<CENTER><P><B><I><FONT SIZE=+1>Resumo</FONT></I></B> </P></CENTER>
+
+<CENTER><P><I>Este artigo apresenta um estudo sobre um problema comum na
+entrada de um novo agente em sociedades abertas (no caso, a sociedade Produtor-Consumidor),
+i.e., como este agente ser&aacute; integrado na sociedade a fim de colaborar
+com seu funcionamento. Para isto, o novo agente deve conhecer os outros,
+quais seus pap&eacute;is, como se comportam, etc. O trabalho apresenta
+uma abordagens de identifica&ccedil;&atilde;o de pap&eacute;is onde os
+agentes envolvidos utilizam-se de um protocolo de apresenta&ccedil;&atilde;o.</I>
+</P></CENTER>
+
+<CENTER><P><B><I><FONT SIZE=+1>Abstract</FONT></I></B> </P></CENTER>
+
+<CENTER><P><I>This paper concerns the study of new agent entrance in the
+open society (the producer-consumer society), i.e., how this agent will
+be integrated in the society for collaborating to its functioning. For
+this, the new agent must know the others, what are their roles, how they
+behave, etc. The work explain one approach to identify an agent role, that
+is, by a presentation protocol.</I> </P></CENTER>
+
+<CENTER><P><B><I><FONT SIZE=+1>Palavras-chave</FONT></I></B> </P></CENTER>
+
+<CENTER><P><I>Intelig&ecirc;ncia Artificial, Intelig&ecirc;ncia Artificial
+Distribu&iacute;da, Sistemas Multi&shy;Agentes, Migra&ccedil;&atilde;o
+de Agentes, Identifica&ccedil;&atilde;o de Pap&eacute;is, Aprendizado em
+Sistemas Multi&shy;Agentes, Problema Produtor-Consumidor</I> </P></CENTER>
+
+<H2>Introdu&ccedil;&atilde;o</H2>
+
+<P>Este artigo &eacute; desenvolvido no &acirc;mbito da Intelig&ecirc;ncia
+Artificial Distribu&iacute;da (IAD), mais especificamente, um ramo da IAD,
+Sistemas Multi-Agentes (SMA) [GAS&nbsp;88, DEM&nbsp;90]. Os SMA se op&otilde;e
+&agrave;s abordagens da IA cl&aacute;ssica, que tem como met&aacute;fora
+o comportamento humano individual, colocando como met&aacute;fora o comportamento
+social, com os sistemas computacionais sendo vistos como sociedades de
+agentes inteligentes e aut&ocirc;nomos. Os SMA trazem uma s&eacute;rie
+de novas perspectivas para a computa&ccedil;&atilde;o pois considera sistemas:
+</P>
+
+<UL>
+<LI><B>Heterog&ecirc;neos</B>: os componentes destes sistemas, os agentes,
+n&atilde;o precisam ter a mesma estrutura. Isto permite que sistemas diferentes
+(quanto &agrave; plataforma, tecnologia, etc.) possam cooperar na solu&ccedil;&atilde;o
+de problemas. </LI>
+
+<LI><B>Adaptativos</B>: estes sistemas t&ecirc;m capacidade de adapta&ccedil;&atilde;o
+&agrave; situa&ccedil;&atilde;o em que se encontram. </LI>
+
+<LI><B>Evolutivos</B>: a estrutura do sistema n&atilde;o &eacute; est&aacute;tica.
+Conforme a necessidade, o sistema pode incorporar novos agentes aumentando
+sua capacidade de resolu&ccedil;&atilde;o de problemas e de adapta&ccedil;&atilde;o.
+</LI>
+
+<LI><B>Continuamente em funcionamento</B>: estes sistemas n&atilde;o s&atilde;o
+feitos com um &uacute;nico objetivo final (como nos sistemas teleol&oacute;gicos),
+mas, ao contr&aacute;rio, seu objetivo &eacute; funcionar (sistema teleon&ocirc;mico)
+[COS93a, COS93b]. </LI>
+
+<LI><B>Abertos</B>: os agentes podem migrar entre sociedades, isto &eacute;,
+agentes podem sair e entrar em sociedades, o que permite a evolu&ccedil;&atilde;o
+e a adaptabilidade do sistema. </LI>
+</UL>
+
+<P>A fim de atingir estas metas, &eacute; necess&aacute;rio sanar alguns
+problemas [GAS&nbsp;88, SIC&nbsp;92], a saber: </P>
+
+<UL>
+<LI>como formular, descrever, decompor e alocar problemas provendo resultados
+entre um grupo de agentes inteligentes; </LI>
+
+<LI>como habilitar agentes para comunica&ccedil;&atilde;o e intera&ccedil;&atilde;o,
+e qual linguagem de comunica&ccedil;&atilde;o e protocolo empregar; </LI>
+
+<LI>como verificar que agentes agem coerentemente em suas decis&otilde;es
+e a&ccedil;&otilde;es; </LI>
+
+<LI>como habilitar agentes individuais a representar e raciocinar sobre
+as a&ccedil;&otilde;es, planos e conhecimentos dos outros agentes para
+comunicar-se com eles; </LI>
+
+<LI>como reconhecer e reconciliar pontos de vista diferentes e conflitos
+entre grupos de agentes tentando coordenar suas a&ccedil;&otilde;es; </LI>
+
+<LI>como projetar e construir sistemas pr&aacute;ticos de IAD. </LI>
+</UL>
+
+<H2>Migra&ccedil;&atilde;o de agentes </H2>
+
+<P>Uma caracter&iacute;stica importante para sistemas de IAD &eacute; tornar
+a sociedade aberta &agrave; entrada din&acirc;mica de agentes. Com esta
+caracter&iacute;stica, que em [COS 94] &eacute; chamada de <I>migra&ccedil;&atilde;o
+de agentes </I>(pois inclui tanto a entrada como a sa&iacute;da), estes
+sistemas tornam-se mais flex&iacute;veis, passando a solucionar problemas
+anteriormente n&atilde;o solucion&aacute;veis. </P>
+
+<P>Uma migra&ccedil;&atilde;o se d&aacute; ou porque um agente necessita
+de alguma fun&ccedil;&atilde;o social que n&atilde;o existe na sua sociedade
+atual e existe na sociedade que pretende entrar ou porque a sociedade precisa
+de um agente com determinada capacidade, e este somente est&aacute; dispon&iacute;vel
+em outra sociedade. </P>
+
+<P>No processo de migra&ccedil;&atilde;o nas sociedades abertas, s&atilde;o
+identificadas as seguintes etapas pelas quais passam os agentes (da entrada
+&agrave; sa&iacute;da) e suas respectivas necessidades: </P>
+
+<UL>
+<LI><B>Coloca&ccedil;&atilde;o</B> do agente na nova sociedade: para isso
+deve existir, ou ser criado, espa&ccedil;o para o agente nesta nova sociedade.
+</LI>
+
+<LI><B>Adapta&ccedil;&atilde;o</B> do agente &agrave;s condi&ccedil;&otilde;es
+de comunica&ccedil;&atilde;o e coopera&ccedil;&atilde;o na nova sociedade:
+al&eacute;m do agente, em alguns casos, a pr&oacute;pria sociedade deve
+adaptar-se reformulando seus funcionamentos. </LI>
+
+<LI><B>Atua&ccedil;&atilde;o</B> na sociedade. </LI>
+
+<LI><B>Sa&iacute;da</B> da sociedade: nesta etapa os outros agentes devem
+saber que o agente saiu e este deve ter cumprido seus compromissos com
+os demais. </LI>
+</UL>
+
+<H3>Problemas colocados pela migra&ccedil;&atilde;o de agentes </H3>
+
+<P>A capacidade de aceitar novos agentes e perder agentes tamb&eacute;m
+coloca novos problemas &agrave;s sociedades. Tais problemas podem ser classificados
+em dois n&iacute;veis, o n&iacute;vel social e o n&iacute;vel do agente.
+No n&iacute;vel social, o maior problema &eacute; manter a integridade
+funcional da sociedade depois da migra&ccedil;&atilde;o. </P>
+
+<P><I>O problema principal que a sociedade deve resolver quando um agente
+entra ou sai dela &eacute; manter sua <B>integridade funcional</B>. Quer
+dizer, a sociedade deve assegurar-se que depois da migra&ccedil;&atilde;o
+do agente ela continue funcionando t&atilde;o bem (ou melhor que) estava
+funcionando antes da migra&ccedil;&atilde;o. A sociedade da qual sai um
+agente deve ter capacidade para encontrar entre os agentes que permaneceram
+algum que possa tornar-se respons&aacute;vel pelas fun&ccedil;&otilde;es
+que o agente que saiu era respons&aacute;vel.</I> ([COS94, p.&nbsp;537],
+tradu&ccedil;&atilde;o do autor) </P>
+
+<P>Para o agente que est&aacute; migrando, s&atilde;o identificados dois
+tipos de problemas adaptativos: de <I>linguagem e intera&ccedil;&atilde;o</I>,
+que concerne ao uso de express&otilde;es usadas e a maneira como as intera&ccedil;&otilde;es
+s&atilde;o organizadas na nova sociedade; e, problemas de <I>conhecimento
+e atua&ccedil;&atilde;o</I>, que se referem a como um agente ir&aacute;
+se comportar a fim de realizar justamente aquilo que a sociedade espera
+dele. </P>
+
+<P>Este trabalho se atem aos problemas de conhecimento e atua&ccedil;&atilde;o.
+Para que os agentes da sociedade possam cooperar e coordenar suas a&ccedil;&otilde;es,
+&eacute; necess&aacute;rio que tenham conhecimento das capacidades, habilidades,
+desejos e planos dos outros agentes. Grande parte do conhecimento a respeito
+dos outros pode ser extra&iacute;do dos pap&eacute;is que estes podem assumir
+na sociedade. Assim sendo, o problema colocado &eacute; como os agentes
+da sociedade que recebeu o agente imigrante e o pr&oacute;prio agente imigrante
+conhecer&atilde;o/aprender&atilde;o os pap&eacute;is uns dos outros. Resolvendo
+este problema, os problemas de conhecimento e atua&ccedil;&atilde;o na
+migra&ccedil;&atilde;o de agentes s&atilde;o tamb&eacute;m resolvidos.
+</P>
+
+<P>Berthet, Demazeau e Boissier [BER 92] colocam que a identifica&ccedil;&atilde;o
+do papel de um outro agente pode ser feita de duas formas: (i) <B>diretamente</B>,
+atrav&eacute;s de uma requisi&ccedil;&atilde;o expl&iacute;cita aos agentes;
+ou (ii) <B>indiretamente</B>, inferindo o papel a partir dos atos de comunica&ccedil;&atilde;o
+dos agentes. Neste trabalho ser&aacute; descrito um mecanismo direto de
+identifica&ccedil;&atilde;o de pap&eacute;is, onde &eacute; proposto um
+protocolo de apresenta&ccedil;&atilde;o (se&ccedil;&atilde;o 2). Em [H&Uuml;B&nbsp;95]
+s&atilde;o apresentadas duas abordagens para uma identifica&ccedil;&atilde;o
+indireta de pap&eacute;is; uma que observa o agente e tenta construir uma
+especifica&ccedil;&atilde;o desta observa&ccedil;&atilde;o a fim de compara-la
+com especifica&ccedil;&otilde;es pr&eacute;vias (estere&oacute;tipos) de
+pap&eacute;is e outra que observa o agente procurando inferir-lhe o plano,
+ao qual h&aacute; um papel associado. </P>
+
+<P>A fim de validar os mecanismos propostos foram feitos testes numa sociedade
+hipot&eacute;tica, a sociedade de produtores e consumidores (se&ccedil;&atilde;o
+3). </P>
+
+<H2>Identifica&ccedil;&atilde;o de Pap&eacute;is por Mecanismo de Apresenta&ccedil;&atilde;o
+</H2>
+
+<P>No mecanismo por apresenta&ccedil;&atilde;o, o agente interessado em
+saber o papel de um outro lhe faz uma pergunta. A apresenta&ccedil;&atilde;o
+exige dos agentes envolvidos </P>
+
+<UL>
+<LI>conhecimento do mesmo protocolo de apresenta&ccedil;&atilde;o; </LI>
+
+<LI>que tenham descri&ccedil;&otilde;es comuns para pap&eacute;is; e </LI>
+
+<LI>que tenham conhecimento dos seus pr&oacute;prios pap&eacute;is. </LI>
+</UL>
+
+<P>Em sociedades n&atilde;o abertas, estas exig&ecirc;ncias s&atilde;o
+facilmente satisfeitas, por esta raz&atilde;o, o mecanismo de apresenta&ccedil;&atilde;o
+&eacute; o mais utilizado neste tipo de sociedades. Em sociedades abertas,
+a segunda exig&ecirc;ncia pode ser dif&iacute;cil de ser satisfeita, principalmente
+quando considerada a migra&ccedil;&atilde;o de agentes entre sociedades
+com hist&oacute;rias diferentes e, portanto, com boa chance de terem identifica&ccedil;&otilde;es
+diferentes para pap&eacute;is semelhantes. Por exemplo, em uma sociedade
+o papel de consumidor pode ser identificado por &quot;Consumidor&quot;
+e em outra por &quot;Receptor&quot;, no caso, ambas identificam pap&eacute;is
+por palavras, o que, em si, &eacute; tamb&eacute;m uma restri&ccedil;&atilde;o.
+Para contornar esta exig&ecirc;ncia, primeiro, os agentes devem ter consci&ecirc;ncia
+de que podem ter descri&ccedil;&otilde;es diferentes; segundo, devem adotar
+uma representa&ccedil;&atilde;o comum para os pap&eacute;is, ou um deles
+deve aprender a forma de descri&ccedil;&atilde;o do outro. Estas solu&ccedil;&otilde;es
+n&atilde;o ser&atilde;o abordadas no presente trabalho por exigirem protocolos
+de negocia&ccedil;&atilde;o referentes aos aspectos de linguagem e intera&ccedil;&atilde;o
+(cf. [BOR&nbsp;94]). </P>
+
+<P>A terceira exig&ecirc;ncia pressup&otilde;e que o agente tenha um papel
+pre-determinado, independente da fun&ccedil;&atilde;o que est&aacute; tendo
+num dado momento, ou que ele tenha capacidade de avaliar constantemente
+qual o papel que est&aacute; assumindo. </P>
+
+<H3>Linguagem de descri&ccedil;&atilde;o de protocolos </H3>
+
+<P>A fim de que os agentes possam saber quais regras regem a &quot;conversa&quot;
+de apresenta&ccedil;&atilde;o, a defini&ccedil;&atilde;o de um protocolo
+de apresenta&ccedil;&atilde;o torna-se necess&aacute;ria. Genericamente,
+um protocolo &eacute; identificado por um nome, um estado inicial e uma
+seq&uuml;&ecirc;ncia de transi&ccedil;&otilde;es de estados. Diante disso,
+prop&otilde;e-se uma linguagem de descri&ccedil;&atilde;o de protocolos
+(LDP) com a seguinte sintaxe: </P>
+
+<UL>
+<PRE>&lt;protocolo&gt;  ::= <B>protocol</B> &lt;id&gt;<B>;</B>       {id do protocolo}
+                 &lt;dcl_agentes&gt;
+                 &lt;estado_pro&gt;         {estado  inicial}
+                 &lt;transi&ccedil;&otilde;es&gt;<B>. 
+</B>&lt;id&gt;         ::= {defini&ccedil;&atilde;o tradicional de identificador}
+&lt;dcl_agentes&gt;::= &lt;dcl_agente&gt; &lt;dcl_agentes&gt; |
+                 &lt;dcl_agente&gt;               |
+                 
+&lt;dcl_agente&gt; ::= &lt;agente&gt; <B>:</B> &lt;tipo_ag&gt; <B>;
+</B>&lt;tipo_ag&gt;    ::= &lt;id&gt;
+&lt;transi&ccedil;&otilde;es&gt; ::= &lt;transi&ccedil;&atilde;o&gt; &lt;transi&ccedil;&otilde;es&gt; |
+                 &lt;transi&ccedil;&atilde;o&gt;
+&lt;transi&ccedil;&atilde;o&gt;  ::= &lt;mensagem&gt;  &lt;estado_pro&gt;
+&lt;estado_pro&gt; ::= <B>(</B><U>&lt;estado_agente&gt;</U><B>,</B>&lt;estado_agente&gt;<B>)</B> |
+                 <B>(</B>&lt;estado_agente&gt;<B>,</B><U>&lt;estado_agente&gt;</U><B>)</B> |
+                 <B>(</B>&lt;estado_agente&gt;<B>,</B>&lt;estado_agente&gt;<B>)</B> 
+&lt;mensagem&gt;   ::= &lt;tipo_mem&gt;<B>(</B>&lt;conte&uacute;do&gt;<B>)
+</B>&lt;tipo_mem&gt;   ::= <B>request</B> | <B>inform</B> | <B>reply</B>  
+&lt;conte&uacute;do&gt;   ::= {definido conforme um termo de Prolog}
+&lt;estado_agente&gt; ::= &lt;agente&gt; &lt;estados&gt; |
+                    &lt;agente&gt;
+&lt;agente&gt;        ::= {definido conforme uma vari&aacute;vel de Prolog}
+&lt;estados&gt;       ::= <B>.</B> &lt;id&gt; &lt;estados&gt; |
+                    <B>.</B> &lt;id&gt;
+
+</PRE>
+</UL>
+
+<P>A <I>declara&ccedil;&atilde;o dos agentes</I>, <TT>&lt;dcl_agentes&gt;</TT>,
+determina quais os pap&eacute;is que cada agente ir&aacute; assumir no
+decorrer do protocolo. Se o papel do agente n&atilde;o fosse essencial,
+o tipo pode ser &quot;Agente&quot;. </P>
+
+<P>Um <I>estado do protocolo</I>, <TT>&lt;estado_pro&gt;</TT>, &eacute;
+um par, onde cada parte representa o estado de um dos agentes envolvidos
+na comunica&ccedil;&atilde;o. O estado do protocolo pode ter uma das seguintes
+inst&acirc;ncias: quando o primeiro agente do par toma a iniciativa na
+pr&oacute;xima transi&ccedil;&atilde;o (caso em que o primeiro argumento
+est&aacute; sublinhado); quando o segundo agente toma a iniciativa (segundo
+argumento &eacute; sublinhado); ou quando n&atilde;o h&aacute; pr&oacute;xima
+transi&ccedil;&atilde;o (nenhum dos argumentos &eacute; sublinhado), isto
+s&oacute; acontece no estado final do protocolo. </P>
+
+<P>Um <I>estado de agente</I>, <TT>&lt;estado_agente&gt;</TT>, &eacute;
+descrito por uma vari&aacute;vel, representando o agente, e por uma seq&uuml;&ecirc;ncia
+de estados (separados por ponto), indicando os estados pelos quais o agente
+passou antes da pr&oacute;xima transi&ccedil;&atilde;o. </P>
+
+<P>Transi&ccedil;&otilde;es ocorrem devido a mensagens que alteram o estado
+atual do protocolo. Cada mensagem tem um tipo e um conte&uacute;do. Como
+em [GAS91b], os tipos de mensagem podem ser <I>request</I> (requer que
+o receptor da mensagem envie uma resposta &agrave; solicita&ccedil;&atilde;o),
+<I>reply</I> (a mensagem de resposta a uma solicita&ccedil;&atilde;o) e
+<I>Inform</I> (mensagem que informa algo a outro agente sem necessitar
+de resposta). </P>
+
+<P>Por exemplo, a transi&ccedil;&atilde;o </P>
+
+<P>(<U>X.i</U>,Y.q) request(Algo) (X.j,Y.r) </P>
+
+<P>indica que o agente X, no estado <I>i</I>, enviou a mensagem &quot;request(Algo)&quot;
+ao agente Y, que estava no estado <I>q</I>, passando assim a estarem nos
+estados <I>j</I> e <I>r</I>, respectivamente. </P>
+
+<H3>O protocolo de apresenta&ccedil;&atilde;o </H3>
+
+<P>Definida a linguagem de descri&ccedil;&atilde;o de protocolos, podemos
+definir o protocolo que controla a apresenta&ccedil;&atilde;o, como segue:
+</P>
+
+<UL>
+<PRE><B>protocol</B><FONT FACE="Courier New"> presentation;
+     X:Agent;
+     Y:Agent;
+        (<U>X.init</U>,Y.wait) request(role) 
+        (X.wait,<U>Y.send</U>) reply (role(R)) 
+        (X,Y).</FONT>
+
+</PRE>
+</UL>
+
+<P>Se um agente deseja saber o papel de outro, assume o comportamento X.
+Se lhe &eacute; solicitado o papel, assume o comportamento Y. </P>
+
+<H2>Um Estudo de Caso: a Sociedade Produtor-Consumidor </H2>
+
+<H3>Descri&ccedil;&atilde;o da sociedade </H3>
+
+<P>A sociedade de Produtores e Consumidores &eacute; composta principalmente
+por agentes que assumem justamente estes dois pap&eacute;is. Resumidamente,
+Produtores produzem pe&ccedil;as e Consumidores as consomem (cf. [COS93b]
+para uma descri&ccedil;&atilde;o funcional desta sociedade). Para que esta
+sociedade funcione de maneira eficiente, introduz-se o papel de Intermedi&aacute;rio
+que recebe as pe&ccedil;as dos Produtores, guarda-as, e quando uma delas
+for requisitada, envia-a para um Consumidor. N&atilde;o obstante esta simplicidade
+aparente, a sociedade PIC (Produtor-Intermedi&aacute;rio-Consumidor) apresenta
+algumas situa&ccedil;&otilde;es mais complicadas, como por exemplo: &quot;o
+que acontece quando um Produtor envia uma pe&ccedil;a ao Intermedi&aacute;rio
+e n&atilde;o existe espa&ccedil;o para ela?&quot;, ou &quot;quando um Consumidor
+solicita uma pe&ccedil;a ao Intermedi&aacute;rio e este n&atilde;o pode
+envi&aacute;-la (por falta no estoque)?&quot; [TAN&nbsp;92]. Al&eacute;m
+destes problemas, &eacute; not&oacute;ria a necessidade dos agentes se
+conhecerem nesta sociedade, como fica exemplificado no caso de Produtores
+que precisam conhecer os agentes que assumem papel de Intermedi&aacute;rios
+para poder enviar-lhes suas pe&ccedil;as. </P>
+
+<P>A fim de descrever detalhadamente a sociedade PIC, os protocolos de
+comunica&ccedil;&atilde;o utilizados s&atilde;o apresentados para descrever
+o comportamento padr&atilde;o dos agentes. Deve-se observar que o modo
+de funcionamento &quot;normal&quot; aqui especificado para os agentes a
+fim de experimentar os mecanismos propostos n&atilde;o &eacute; &uacute;nico.
+</P>
+
+<H3>Protocolos de Comunica&ccedil;&atilde;o </H3>
+
+<H3><FONT SIZE=+1>Protocolo Consumidor-Intermedi&aacute;rio</FONT> </H3>
+
+<P>Os protocolos de comunica&ccedil;&atilde;o ser&atilde;o descritos conforme
+a linguagem de descri&ccedil;&atilde;o de protocolos apresentada na se&ccedil;&atilde;o
+2.1. A intera&ccedil;&atilde;o entre Consumidores e Intermedi&aacute;rios
+&eacute; descrita no seguinte protocolo: </P>
+
+<UL>
+<PRE><B>protocol</B><FONT FACE="Courier New"> consumidor-intermedi&aacute;rio;
+        C: Consumidor;
+        I: Intermedi&aacute;rio;
+        (<U>C.init</U>,I.wait) request(pe&ccedil;a) -&gt; 
+        (C.wait,<U>I.send</U>) reply(pe&ccedil;a(X)) -&gt;
+        (C.init,I.wait).</FONT>
+
+</PRE>
+</UL>
+
+<P>Um Consumidor, inicialmente no estado <TT>init</TT>, pede (atrav&eacute;s
+da mensagem<TT> request(pe&ccedil;a)</TT>) a algum Intermedi&aacute;rio
+previamente conhecido por algum mecanismo de identifica&ccedil;&atilde;o
+de papel para enviar-lhe uma pe&ccedil;a, e fica ent&atilde;o esperando
+o envio da pe&ccedil;a. Quando a pe&ccedil;a chega (por meio da mensagem
+<TT>reply(pe&ccedil;a(X))</TT>), ela &eacute; consumida e o agente volta
+ao estado inicial. </P>
+
+<P>O agente Intermedi&aacute;rio quando recebe um pedido de pe&ccedil;a
+assume um dos seguintes comportamentos: se existir pe&ccedil;a no estoque,
+retira a pe&ccedil;a e envia-a ao Consumidor; se n&atilde;o existirem pe&ccedil;as
+em estoque, coloca o Consumidor numa lista de espera e assim que receber
+uma pe&ccedil;a ser&aacute; enviada ao primeiro agente desta lista. </P>
+
+<H3><FONT SIZE=+1>Protocolo Produtor-Intermedi&aacute;rio</FONT> </H3>
+
+<P>O protocolo de intera&ccedil;&atilde;o Produtor-Intermedi&aacute;rio
+pode se realizar de duas maneiras, conforme descrito nos protocolos abaixo.
+</P>
+
+<UL>
+<PRE><B>protocol</B><FONT FACE="Courier New"> produtor-intermedi&aacute;rio(1);
+        P: Produtor;
+        I: Intermedi&aacute;rio;
+        (<U>P.init</U>,I.wait) request(espa&ccedil;o) -&gt;
+                ((P.wait,<U>I.send</U>) reply(espa&ccedil;o nok) -&gt;
+                 (P.init,I.wait))
+                or
+                ((P.wait,<U>I.send</U>) reply(espa&ccedil;o ok) -&gt;
+                 (<U>P.send</U>,I.wait) inform(pe&ccedil;a(X)) -&gt; 
+                 (P.init,I.wait)).
+
+<B>protocol</B> produtor-intermedi&aacute;rio(2);
+        P: Produtor;
+        I: Intermedi&aacute;rio;
+        (<U>P.init.send</U>,I.wait) inform(pe&ccedil;a(X)) -&gt;
+        (P.init,I.wait).</FONT>
+
+</PRE>
+</UL>
+
+<P>O comportamento do Produtor para o primeiro protocolo inicia com a produ&ccedil;&atilde;o
+de uma pe&ccedil;a seguido de pedido a algum Intermedi&aacute;rio por espa&ccedil;o
+para a coloca&ccedil;&atilde;o da mesma, utilizando para isso a mensagem
+&quot;request(espa&ccedil;o)&quot;. O Intermedi&aacute;rio pode responder
+de duas formas: &quot;reply(espa&ccedil;o&nbsp;ok)&quot; ou &quot;reply(espa&ccedil;o&nbsp;nok)&quot;,
+significando que o espa&ccedil;o foi reservado ou que n&atilde;o h&aacute;
+espa&ccedil;o, respectivamente. Caso haja espa&ccedil;o, o Produtor envia
+a pe&ccedil;a por meio da mensagem &quot;inform(pe&ccedil;a(X))&quot;,
+onde X &eacute; o n&uacute;mero da pe&ccedil;a produzida. Quando o Intermedi&aacute;rio
+recebe esta mensagem, coloca a pe&ccedil;a no estoque. No caso de n&atilde;o
+haver espa&ccedil;o para a pe&ccedil;a, o Produtor pede espa&ccedil;o a
+outro Intermedi&aacute;rio. Os Produtores que optam pelo segundo protocolo
+simplesmente enviam as pe&ccedil;as aos Intermedi&aacute;rios, sem antes
+pedir espa&ccedil;o. </P>
+
+<P>O Intermedi&aacute;rio, na intera&ccedil;&atilde;o com o Produtor, tem
+o seguinte comportamento: ao receber um pedido de espa&ccedil;o e tendo
+verificado a possibilidade deste no estoque (ou seja, estoque atual + reservas
+capacidade m&aacute;xima) efetua a reserva para o Produtor e responde confirmando.
+Caso n&atilde;o haja espa&ccedil;o, o Produtor &eacute; avisado. Quando
+o Intermedi&aacute;rio recebe a mensagem &quot;inform(pe&ccedil;a(X))&quot;
+de um Produtor, esta pe&ccedil;a &eacute; colocada no estoque, o n&uacute;mero
+de reservas &eacute; diminu&iacute;do, e, se existe algum Consumidor na
+lista de espera, manda-lhe a pe&ccedil;a. </P>
+
+<H3><FONT SIZE=+1>Protocolo geral da sociedade PIC</FONT> </H3>
+
+<P>Da uni&atilde;o dos dois protocolos apresentados acima, pode-se derivar
+o protocolo geral da sociedade PIC que liga os Produtores aos Consumidores
+(cf. figura 1, onde o protocolo geral est&aacute; representado por setas
+pontilhadas que n&atilde;o consideram o Intermedi&aacute;rio). </P>
+
+<UL>
+<PRE><B>protocol</B><FONT FACE="Courier New"> produtor-consumidor;
+        C: Consumidor;
+        P: Produtor;
+        (<U>C.init</U>,P.wait) request(pe&ccedil;a) -&gt;
+        (C.wait,<U>P.send</U>) inform(pe&ccedil;a(X)) -&gt;
+        (C.init,P.wait).</FONT>
+
+</PRE>
+</UL>
+
+<CENTER><P><IMG SRC="img00001.gif" HEIGHT=510 WIDTH=548></P></CENTER>
+
+<CENTER><P><B>Figura 1: Protocolo geral da sociedade PIC</B> </P></CENTER>
+
+<P>Como pode ser observado na figura 1<!--##-->, o papel de Produtor &eacute;
+relativo a um &uacute;nico papel, o de Intermedi&aacute;rio. O mesmo acontece
+com o papel de Consumidor, que tamb&eacute;m &eacute; relativo ao papel
+de Intermedi&aacute;rio. J&aacute; o papel de Intermedi&aacute;rio &eacute;
+relativo a dois pap&eacute;is, o de Produtor e o de Consumidor, simultaneamente.
+</P>
+
+<H2>Implementa&ccedil;&atilde;o do mecanismo de identifica&ccedil;&atilde;o
+de pap&eacute;is por apresenta&ccedil;&atilde;o </H2>
+
+<P>A implementa&ccedil;&atilde;o da sociedade PIC, para fins de valida&ccedil;&atilde;o
+e teste do mecanismo proposto, foi feita na bancada de simula&ccedil;&atilde;o
+de sociedades de agentes desenvolvida por Luiz Muniz [MON&nbsp;93] para
+ambiente MacProlog do Macintosh.A bancada permite a defini&ccedil;&atilde;o
+de agentes (quanto aos aspectos de controle, unidades, m&oacute;dulos,
+m&eacute;todos e estados internos) e coloca estes agentes em funcionamento
+(simulando uma execu&ccedil;&atilde;o simult&acirc;nea de todos eles).
+</P>
+
+<P>Na simula&ccedil;&atilde;o realizada para a sociedade PIC, o mecanismo
+de apresenta&ccedil;&atilde;o &eacute; utilizado principalmente pelos agentes
+&quot;natos&quot;, aqueles que est&atilde;o ativos deste o in&iacute;cio
+da simula&ccedil;&atilde;o. Assim, antes de um Produtor iniciar seu funcionamento
+normal, ele utiliza o protocolo de apresenta&ccedil;&atilde;o para identificar
+o papel de Intermedi&aacute;rio em algum agente. Uma vez identificado pelo
+menos um agente Intermedi&aacute;rio, o Produtor pode iniciar a produ&ccedil;&atilde;o
+da primeira pe&ccedil;a. O mesmo vale para os Consumidores. Como os Intermedi&aacute;rios
+n&atilde;o tomam iniciativa nas comunica&ccedil;&otilde;es, n&atilde;o
+passam pelo processo de descobrir os pap&eacute;is dos agentes com quem
+se comunicam. A princ&iacute;pio, apenas se comportam conforme as regras
+dos protocolos de comunica&ccedil;&atilde;o (se recebeu determinada mensagem
+responde com a mensagem ditada no protocolo sem verificar o papel do outro
+agente). </P>
+
+<H3><FONT SIZE=+1>Exemplo de uma simula&ccedil;&atilde;o da sociedade </FONT></H3>
+
+<P>Na seguinte simula&ccedil;&atilde;o, feita no prot&oacute;tipo implementado,
+participam dois agentes Produtor (Rocha e Rosa), uma agente Intermedi&aacute;ria
+(Renata), um agente Consumidor (Jomi). As linhas da simula&ccedil;&atilde;o
+apresentam a seguinte forma: </P>
+
+<P>&lt;Nome do agente&gt; &lt;Tipo de agente&gt; &lt;Mensagem&gt; </P>
+
+<P>onde &lt;Tipo de agente&gt; segue a correspond&ecirc;ncia: </P>
+
+<P>+++ Produtor </P>
+
+<P>:::: Consumidor </P>
+
+<P>.... Intermedi&aacute;rio<BR>
+</P>
+
+<UL>
+<DT><FONT SIZE=-1>Rosa ++++ Mandou pedido de Identifica&ccedil;&atilde;o
+</FONT></DT>
+
+<DT>Rocha ++++ Mandou pedido de Identifica&ccedil;&atilde;o </DT>
+
+<DT>Jomi :::: Mandou pedido de Identifica&ccedil;&atilde;o </DT>
+
+<DT>Rosa ++++ Recebida mensagem request(role) de Rosa </DT>
+
+<DT>Rocha ++++ Recebida mensagem request(role) de Rosa </DT>
+
+<DT>Renata ..... Recebida mensagem request(role) de Rosa </DT>
+
+<DT>Renata ..... Resposta de apresenta&ccedil;&atilde;o para Rosa </DT>
+
+<DT>Rosa ++++ Recebida mensagem request(role) de Rocha </DT>
+
+<DT>Rocha ++++ Recebida mensagem request(role) de Rocha </DT>
+
+<DT>Rosa ++++ Recebida mensagem request(role) de Jomi </DT>
+
+<DT>Rocha ++++ Recebida mensagem request(role) de Jomi </DT>
+
+<DT>Renata ..... Recebida mensagem request(role) de Rocha </DT>
+
+<DT>Renata ..... Resposta de apresenta&ccedil;&atilde;o para Rocha </DT>
+
+<DT>Rosa ++++ Recebida mensagem reply(role(Produtor)) de Rosa </DT>
+
+<DT>Rosa ++++ Identificado papel de Rosa : Produtor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Rocha ++++ Recebida mensagem reply(role(Produtor)) de Rosa </DT>
+
+<DT>Rocha ++++ Identificado papel de Rosa : Produtor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Jomi :::: Identificado papel de Rosa : Produtor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Rosa ++++ Recebida mensagem reply(role(Produtor)) de Rocha </DT>
+
+<DT>Rosa ++++ Identificado papel de Rocha : Produtor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Rocha ++++ Recebida mensagem reply(role(Produtor)) de Rocha </DT>
+
+<DT>Rocha ++++ Identificado papel de Rocha : Produtor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Jomi :::: Identificado papel de Rocha : Produtor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Renata ..... Recebida mensagem request(role) de Jomi </DT>
+
+<DT>Renata ..... Resposta de apresenta&ccedil;&atilde;o para Jomi </DT>
+
+<DT>Rosa ++++ Recebida mensagem reply(role(Consumidor)) de Jomi </DT>
+
+<DT>Rosa ++++ Identificado papel de Jomi : Consumidor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Rocha ++++ Recebida mensagem reply(role(Consumidor)) de Jomi </DT>
+
+<DT>Rocha ++++ Identificado papel de Jomi : Consumidor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Jomi :::: Identificado papel de Jomi : Consumidor (por apresenta&ccedil;&atilde;o)
+</DT>
+
+<DT>Rosa ++++ Recebida mensagem reply(role(Intermedi&aacute;rio)) de Renata
+</DT>
+
+<DT>Rosa ++++ Identificado papel de Renata : Intermedi&aacute;rio (por
+apresenta&ccedil;&atilde;o) </DT>
+
+<DT>Rosa ++++ Iniciou produ&ccedil;&atilde;o da pe&ccedil;a 1 </DT>
+
+<DT>Rocha ++++ Identificado papel de Renata : Intermedi&aacute;rio (por
+apresenta&ccedil;&atilde;o) </DT>
+
+<DT>Rocha ++++ Iniciou produ&ccedil;&atilde;o da pe&ccedil;a 1 </DT>
+
+<DT>Jomi :::: Identificado papel de Renata : Intermedi&aacute;rio (por
+apresenta&ccedil;&atilde;o) </DT>
+</UL>
+
+<H2>Conclus&otilde;es </H2>
+
+<P>O mecanismo de identifica&ccedil;&atilde;o de pap&eacute;is por apresenta&ccedil;&atilde;o
+&eacute; muito eficiente, ou seja, para um agente descobrir o papel de
+outro basta enviar-lhe uma mensagem e esperar a resposta. Todavia, as exig&ecirc;ncias
+feitas por este mecanismo podem ser muito fortes, principalmente quando
+se tratar de uma sociedade aberta. Desta forma, &eacute; o mecanismo mais
+indicado para ambientes onde os agentes tem mesma estrutura, ou seja, certamente
+conhecem o protocolo de apresenta&ccedil;&atilde;o e tem mesmos identificadores
+de papel. </P>
+
+<P>Para sociedades abertas conv&eacute;m estudar melhor os mecanismo de
+identifica&ccedil;&atilde;o indiretos (por observa&ccedil;&atilde;o) onde
+as exig&ecirc;ncias estruturais s&atilde;o menores. </P>
+
+<H2>Refer&ecirc;ncias Bibliogr&aacute;ficas </H2>
+
+<P>[BER 92] BERTHET, Sabine, DEMAZEAU, Yves, BOISSIER, Oliver. <B>Knowing
+Each Other Better.</B> In: <I>11st International Workshop on Distributed
+Artificial Intelligence</I>. Glen Arbor, 1992. p. 1-20. </P>
+
+<P>[BOR&nbsp;94] BORDINI, Rafael Heitor. <B>Suporte Ling&uuml;&iacute;stico
+para Migra&ccedil;&atilde;o de Agentes</B>. Porto Alegre, II/UFRGS, 1994.
+128p. (Disserta&ccedil;&atilde;o de Mestrado). </P>
+
+<P>[COS93a] COSTA, Ant&ocirc;nio Carlos da Rocha. <B>Intelig&ecirc;ncia
+de M&aacute;quina: Esbo&ccedil;o de uma Abordagem Construtivista</B>. Porto
+Alegre, UFRGS, 1993. 168p. (Tese de Doutorado). </P>
+
+<P>[COS93b] COSTA, Ant&ocirc;nio Carlos da Rocha, CASTILHO, Jos&eacute;
+Mauro Volkmer de, CL&Aacute;UDIO, Dalc&iacute;dio Moraes. <B>Functional
+Processes and Functional Roles in Societies of Computing Agents.</B> In:
+X Simp&oacute;sio Brasileiro de Intelig&ecirc;ncia Artificial. <I>Anais</I>...
+Porto Alegre: UFRGS, 1993. p. 267ss. </P>
+
+<P>[COS 94] COSTA, Ant&ocirc;nio Carlos da Rocha; H&Uuml;BNER, Jomi Fred;
+BORDINI, Rafael Heitor. <B>On Entering an Open Society.</B> In: XI Simp&oacute;sio
+Brasileiro de Intelig&ecirc;ncia Artificial. <I>Anais</I>... Fortaleza:
+SBC, p.&nbsp;535&shy;546, 1994. </P>
+
+<P>[DEM 90] DEMAZEAU, Yves, M&Uuml;LLER, Jean Pierre. <B>Decentralized
+Artificial Intelligence.</B> In: <I>Decentralized Artificial Intelligence&nbsp;-&nbsp;1</I>.
+Organiza&ccedil;&atilde;o: DEMAZEAU, Yves, M&Uuml;LLER Jean-Pierre. North-Holland,
+Elsevier Science Publishers, 1990. p. 3ss. </P>
+
+<P>[GAS 88] GASSER, Les. <B>Distribution and Coordination of Tasks Among
+Intelligent Agents.</B> In: <I>Proceedings of the JCAI'88</I>. Scandinavian
+Conference on AI. Amsterdam, Springfield, 1988. </P>
+
+<P>[H&Uuml;B&nbsp;94] H&Uuml;BNER, Jomi Fred. <B>Estudo da Entrada de Agentes
+na Sociedade Produtor-Consumidor</B>. Porto Alegre: CPGCC/UFRGS, 1994.
+(Trabalho Individual I, n. 392). </P>
+
+<P>[HUB 95] H&Uuml;BNER, Jomi Fred. <B>Migra&ccedil;&atilde;o de Agentes
+em Sistemas Multi-Agentes Abertos</B>. Porto Alegre, UFRGS, 1995. 124p.
+(Disserta&ccedil;&atilde;o de Mestado). </P>
+
+<P>[MON 93] MONIZ, Luis Manuel Ferreira Fernandes. <B>SSAA: Sistema para
+Simula&ccedil;&atilde;o de Agentes e Ambientes.</B> Universidade T&eacute;cnica
+de Lisboa, junho, 1993. Disserta&ccedil;&atilde;o de Mestrado. </P>
+
+<P>[SIC&nbsp;92] SICHMAN, Jaime Sim&atilde;o, DEMAZEAU, Yves, BOISSIER,
+Oliver. <B>When can knowledge-based sytems be called agents?</B> In: IX
+Simp&oacute;sio Brasileiro de Intelig&ecirc;ncia Artificial. <I>Anais</I>...
+Rio de Janeiro: SBC, 1992. </P>
+
+<P>[TAN&nbsp;92] TANENBAUM, Andrew S. <B>Modern Operating Systems</B>.
+Amsterdam: Prentice Hall, 1992. </P>
+
+<P>[WER&nbsp;87] WERNER, Eric. <B>Cooperating Agents: a Unifield Theory
+of Comunication and Social Structure</B>. In: The International Stance.
+Edited by Daniel C. Dennet. Cambridge, The MIT Press, 1987. </P>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,135 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>Step iii) matching the constructed processes with role description</TITLE> 
+</HEAD>
+
+<BODY  BGCOLOR="#ffffff"  TEXT="#000000"  LINK="#6600ff"  VLINK="#cc3399" >
+
+ <H1>Step iii) matching the constructed processes with role description</H1> 
+ <P><UL>
+<LI><H2>Constructed process 
+</H2>
+<UL>
+<LI>one related to Rocha
+</UL></UL><UL>
+<H2>main = cycle.
+</H2>
+</UL><UL>
+<H2>cycle = cycle1 ; cycle.
+</H2>
+</UL><UL>
+<H2>cycle1 = 
+</H2>
+</UL><UL>
+<H2>	receive message(request(space)) ? 
+</H2>
+</UL><UL>
+<H2>	send message(reply(space_ok)) ? 
+</H2>
+</UL><UL>
+<H2>	receive message(inform(product(_))) ? 
+</H2>
+</UL><UL>
+<H2>	SKIP.
+</H2>
+<UL>
+<LI>another related to Jomi
+</UL></UL><UL>
+<H2>main = cycle.
+</H2>
+</UL><UL>
+<H2>cycle = cycle1 ; cycle.
+</H2>
+</UL><UL>
+<H2>cycle1 = 
+</H2>
+</UL><UL>
+<H2>	receive message(request(product)) ? 
+</H2>
+</UL><UL>
+<H2>	send message(reply(product(_))) ? 
+</H2>
+</UL><UL>
+<H2>	SKIP.</H2>
+</UL></P>
+<P><UL>
+<H2>role( ‘Intermediary’, [
+</H2>
+<BR></UL><UL>
+<H2>ip( ‘Consumer’, [
+</H2>
+</UL><UL>
+<H2>   p(main,  p(cycle)),
+</H2>
+</UL><UL>
+<H2>   p(cycle, p(cycle1) ; p(cycle)),
+</H2>
+</UL><UL>
+<H2>   p(cycle1, receive_message(request(product)) -&#062
+</H2>
+</UL><UL>
+<H2>             send_message(reply(product(X))) -&#062
+</H2>
+</UL><UL>
+<H2>             skip)   ]), 
+</H2>
+</UL><UL>
+<H2>
+</H2>
+</UL><UL>
+<H2>ip( ‘Producer’, [
+</H2>
+</UL><UL>
+<H2>   p(main,  p(cycle)),
+</H2>
+</UL><UL>
+<H2>   p(cycle, p(cycle1) ; p(cycle)),
+</H2>
+</UL><UL>
+<H2>   p(cycle1, receive_message(request(space)) -&#062 
+</H2>
+</UL><UL>
+<H2>             (send_message(reply(space_ok)) -&#062 
+</H2>
+</UL><UL>
+<H2>              receive_message(inform(product(X))) -&#062 
+</H2>
+</UL><UL>
+<H2>              skip)
+</H2>
+</UL><UL>
+<H2>             |
+</H2>
+</UL><UL>
+<H2>             (send_message(reply(space_nok)) -&#062 
+</H2>
+</UL><UL>
+<H2>              skip
+</H2>
+</UL><UL>
+<H2>             ))   ]) ]).
+</H2>
+</UL><UL>
+<LI><H2>Is Renata an Intermediary?
+</H2>
+<UL>
+<LI>If and only if Jomi is a Consumer an Rocha is a Producer</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld020.htm">Slide anterior</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld022.htm">Slide seguinte</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Voltar para o primeiro slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld021.htm">Exibir versão do elemento gráfico</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

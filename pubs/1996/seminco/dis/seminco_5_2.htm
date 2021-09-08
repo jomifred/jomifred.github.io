@@ -1,0 +1,641 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+   <title>Artigo submetido ao Seminco</title>
+</head>
+<body text="#000040" bgcolor="#C0C0C0" link="#0000EE" vlink="#551A8B" alink="#FF0000" background="fundo.jpg">
+
+<ul>
+<center>
+<h1>
+Identifica&ccedil;&atilde;o de Pap&eacute;is por Observa&ccedil;&atilde;o
+de Comportamento em Sociedades de Agentes</h1></center>
+
+<center>[Obs: este arquivo pode n&atilde;o estar convertido corretamente
+(viva o Word do Bill!), veja tamb&eacute;m a vers&atilde;o <a href="pp_observacao.ps.gz">PostScript</a>
+]</center>
+
+<div align=right>Jomi Fred H&uuml;bner</div>
+
+<div align=right><font size=-1>e-mail: jomi@furb.rct-sc.br</font></div>
+
+<div align=right>Ant&ocirc;nio Carlos da Rocha Costa</div>
+
+<div align=right><font size=-1>e-mail: rocha@inf.ufrgs.br</font></div>
+
+<center><b><i><font size=+1>Resumo</font></i></b>
+<br><i>Este trabalho apresenta um estudo sobre um problema comum em Sistemas
+Multi-Agentes, como os agente ir&atilde;o se conhecer para cooperarem na
+solu&ccedil;&atilde;o de problemas globais. Para resolve-lo, &eacute; proposto
+uma abordagem de identifica&ccedil;&atilde;o dos pap&eacute;is dos agentes
+a partir da observa&ccedil;&atilde;o de seus comportamento confrontados
+com descri&ccedil;&otilde;es pr&eacute;-definidas de pap&eacute;is.</i>
+<br><b><i><font size=+1>Abstract</font></i></b>
+<br><i>This paper concerns the study a frequent problem in Multi-Agent
+Systems, how will the agents know themselves for them cooperation in global
+problem solution. It's proposed an approach for agents' role identification
+based on behavior observation that will be compared with a pre-defined
+set of roles.</i>
+<br><b><i><font size=+1>Palavras-chave</font></i></b>
+<br><i>Intelig&ecirc;ncia Artificial Distribu&iacute;da, Sistemas Multi&shy;Agentes,
+descri&ccedil;&atilde;o de pap&eacute;is, processos, identifica&ccedil;&atilde;o
+de pap&eacute;is, aprendizado em Sistemas Multi&shy;Agentes.</i></center>
+
+<h2>
+1. Introdu&ccedil;&atilde;o</h2>
+Este trabalho aborda um problema que se insere no &acirc;mbito da Intelig&ecirc;ncia
+Artificial Distribu&iacute;da (IAD), mais especificamente, Sistemas Multi-Agentes
+(SMA) [DEM90, BON88, WOO94]. Os SMA se op&otilde;e &agrave;s abordagens
+da IA cl&aacute;ssica, que tem como met&aacute;fora o comportamento humano
+individual, colocando como met&aacute;fora o comportamento social, com
+os sistemas computacionais sendo vistos como sociedades de agentes inteligentes
+e aut&ocirc;nomos.
+<p>Para que os agentes possam cooperar e coordenar suas a&ccedil;&otilde;es
+com os outros membros da sociedade, &eacute; necess&aacute;rio que tenham
+conhecimento das capacidades, habilidades, desejos e planos dos outros
+agentes. Grande parte do conhecimento a respeito dos outros pode ser extra&iacute;do
+dos pap&eacute;is que estes podem assumir na sociedade. Assim sendo, o
+problema colocado &eacute; como os agentes da sociedade conhecer&atilde;o
+ou aprender&atilde;o os pap&eacute;is uns dos outros para cooperarem na
+solu&ccedil;&atilde;o de problemas. Berthet, Demazeau e Boissier [BER92]
+colocam que a identifica&ccedil;&atilde;o do papel de um outro agente pode
+ser feita de duas formas: (i) <b>diretamente</b>, atrav&eacute;s de uma
+requisi&ccedil;&atilde;o expl&iacute;cita aos agentes (uma forma de utiliza&ccedil;&atilde;o
+pode ser verificada em [H&Uuml;B95b]); ou (ii) <b>indiretamente</b>, inferindo
+o papel a partir dos atos de comunica&ccedil;&atilde;o dos agentes (duas
+abordagens s&atilde;o apresentadas em [H&Uuml;B95a]).
+<p>Neste trabalho ser&aacute; descrito um mecanismo indireto de identifica&ccedil;&atilde;o
+de pap&eacute;is, onde &eacute; proposta um linguagem para descri&ccedil;&atilde;o
+de pap&eacute;is e um mecanismo de obten&ccedil;&atilde;o do papel a partir
+da observa&ccedil;&atilde;o. A fim de validar os mecanismos propostos,
+foram feitos testes numa sociedade hipot&eacute;tica, a sociedade de produtores
+e consumidores.
+<h2>
+2. Descri&ccedil;&atilde;o de pap&eacute;is de agentes</h2>
+Conforme [COS93a], existem tr&ecirc;s formas de descrever um agente: pela
+sua estrutura, pelo seu funcionamento e/ou pelo seu comportamento. V&ecirc;-se
+a seguinte rela&ccedil;&atilde;o entre estes tr&ecirc;s aspectos: a estrutura
+possibilita certos funcionamentos, dos quais o agente possui um; um funcionamento
+permite que o agente assuma um determinado conjunto de comportamentos,
+sendo o comportamento a parte externa (no sentido de observ&aacute;vel)
+do funcionamento (cf. [COS93b, p. 27ss] para uma an&aacute;lise destes
+tr&ecirc;s aspectos).
+<p>Para descrever o funcionamento do agente, pode-se utilizar a no&ccedil;&atilde;o
+de processos, uma vez que estes tamb&eacute;m descrevem um conjunto de
+comportamentos. Descrever os comportamentos poss&iacute;veis do agente,
+e n&atilde;o seus estados mentais, como &eacute; comum nos trabalhos onde
+existem modelos dos outros agentes com vista &agrave; coopera&ccedil;&atilde;o,
+apresenta a vantagem de que n&atilde;o &eacute; necess&aacute;rio conhecer
+ou descobrir qual seu estado mental, uma vez que esta informa&ccedil;&atilde;o
+nem sempre &eacute; acess&iacute;vel ou mesmo confi&aacute;vel.
+<h3>
+2.1 Processos</h3>
+Para descrever o processo que rege o comportamento do agente, &eacute;
+utilizado o formalismo de especifica&ccedil;&atilde;o de processos definido
+por Hoare para descrever comportamentos de objetos [HOA85]. A base para
+a especifica&ccedil;&atilde;o de processo est&aacute; nos eventos em que
+determinado objeto participa. Na verdade, um <i>evento</i>, como utilizado
+aqui, denota uma classe de eventos, ou seja, podem existir v&aacute;rias
+ocorr&ecirc;ncias de um evento no decorrer do tempo. O conjunto de eventos
+considerados relevantes para descrever o comportamento de um objeto, ou
+mais especificamente, de um agente, &eacute; chamado <i>alfabeto</i>. Um
+<i>processo</i>
+pode ser descrito em termos de um conjunto de eventos pertencentes ao alfabeto
+do objeto. A seguir, ser&atilde;o apresentadas algumas nota&ccedil;&otilde;es
+iniciais para especifica&ccedil;&atilde;o de processos.
+<h3>
+<font size=+1>2.1.1 Prefix</font></h3>
+Tomando <i>x</i> como um evento e <b>P</b> como um processo. Ent&atilde;o
+<ul><b>Q</b> = (<i>x</i> -> <b>P</b>)</ul>
+descreve um processo <b>Q</b> que primeiro participa no evento <i>x</i>
+e ent&atilde;o se comporta conforme o processo <b>P</b>. O alfabeto de
+<b>Q</b>,
+denotado a(<b>Q</b>), &eacute; igual ao de <b>P</b>, ou seja,
+<i>x</i>
+est&aacute; no alfabeto de <b>P</b>.
+<ul>a(<i>x</i> -> <b>P</b>) = a<b>P</b></ul>
+Existe um tipo especial de processo que marca o fim de uma execu&ccedil;&atilde;o,
+denotado por <b>STOP</b>.
+<p><b>Exemplo 1: sendo um agente do tipo Consumidor, com o alfabeto {</b><i>pegar_pe&ccedil;a</i>,
+<i>consumir</i>},
+e que consome uma &uacute;nica pe&ccedil;a, ent&atilde;o tem-se o seguinte
+processo:
+<ul><b>P</b> = (<i>pegar_pe&ccedil;a</i> -> <i>consumir</i> -> <b>STOP</b>).
+<br>a<b>P</b> = {<i>pegar_pe&ccedil;a</i>, <i>consumir</i>}</ul>
+
+<h3>
+<font size=+1>2.1.2 Recurs&atilde;o</font></h3>
+Prefix somente pode descrever processos que param. Processos que realizam
+coisas repetidamente podem ser descritos de maneira mais elegante utilizando
+recurs&atilde;o.
+<p><b>Exemplo 2: tomando o processo</b>
+<ul><b>C</b> = (<i>pedir_pe&ccedil;a</i> -> <i>receber_pe&ccedil;a -> consumir</i><b>C</b>).
+<br><b>C</b> = {<i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>, <i>consumir</i>}</ul>
+tem-se a descri&ccedil;&atilde;o de um objeto que infinitamente pede pe&ccedil;as
+a algu&eacute;m, recebe as pe&ccedil;as e as consome, ou seja, o processo
+realizado por um consumidor real.
+<h3>
+<font size=+1>2.1.3 Escolha</font></h3>
+Um objeto pode se comportar de formas diferentes, dependendo das circunst&acirc;ncias
+em que se encontra. Esse comportamento alternativo &eacute; descrito pela
+nota&ccedil;&atilde;o
+<ul>(<i>x</i> <b>P</b> | <i>y</i> <b>Q</b>), sendo <i>x not</i> = <i>y</i></ul>
+onde o objeto pode participar de um dos dois eventos (<i>x</i> ou <i>y</i>)
+e, depois disso, se comportar conforme <b>P</b>, se o primeiro evento foi
+<i>x</i>,
+ou conforme <b>Q</b> se foi <i>y</i>.
+<p><b>Exemplo 3: no caso do exemplo 2, o consumidor poderia n&atilde;o
+aceitar a pe&ccedil;a e devolv&ecirc;-la.</b>
+<ul><b>C</b> = (<i>pedir_pe&ccedil;a -> receber_pe&ccedil;a -> (devolver</i>
+-> <b>C</b> | <i>consumir</i> -> <b>C</b>)).
+<br><b>C</b> = {<i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>, <i>devolver</i>,
+<i>consumir</i>}</ul>
+
+<h3>
+<font size=+1>2.1.4 Seq&uuml;&ecirc;ncia</font></h3>
+Dois processos podem ser unidos, de modo que, quando um acaba, o outro
+inicia. Para isso, &eacute; utilizada a nota&ccedil;&atilde;o
+<ul><b>P</b> ; <b>Q.</b></ul>
+Normalmente um processo termina executando <b>STOP</b>, na caso da seq&uuml;&ecirc;ncia
+o primeiro processo n&atilde;o pode parar o funcionamento, mas deve passa-lo
+para o segundo processo. Assim, uma condi&ccedil;&atilde;o para utiliza&ccedil;&atilde;o
+deste operador &eacute; que o &uacute;ltimo evento do processo <b>P</b>
+seja <b>SKIP</b>.
+<p><b>Exemplo 4: um consumidor que consome duas pe&ccedil;as poderia ser
+descrito pelo processo P2</b>
+<ul><b>P</b> = (<i>pegar_pe&ccedil;a</i> -> <i>consumir</i> -> <b>SKIP</b>)
+<br><b>P2</b> = <b>P</b> ; <b>P</b> ; <b>STOP</b> .</ul>
+
+<h3>
+2.2 Pap&eacute;is de agentes</h3>
+Um agente tem processos internos e participa de processos globais. <i>Processos
+internos</i> s&atilde;o aqueles onde n&atilde;o existe intera&ccedil;&atilde;o
+com outros processos de outros agentes. Os <i>processos globais</i> s&atilde;o
+da sociedade como um todo, n&atilde;o "pertencem" a nenhum agente espec&iacute;fico.
+Processos globais s&atilde;o formados por eventos globais, um evento &eacute;
+caracterizado como global se envolve mais de um agente, logo, corresponde
+a uma intera&ccedil;&atilde;o. O conjunto dos eventos globais onde o agente
+participa define o seu comportamento. A participa&ccedil;&atilde;o do agente
+num processo global &eacute; feita por um processo que mistura eventos
+internos e eventos globais, este tipo de processo &eacute; chamado <i>processo
+de intera&ccedil;&atilde;o</i> (PI). Um PI define um comportamento parcial
+do agente, ou seja, o comportamento do agente em rela&ccedil;&atilde;o
+a um processo global. Um conjunto de PIs forma um modelo de <i>papel</i>.
+<p>Os modelos de pap&eacute;is s&atilde;o descritos, em Prolog, pelo predicado
+<ul>papel( Nome_do_Papel, Lista_de_PI).</ul>
+onde, os elementos de Lista_de_PI s&atilde;o
+<ul>pi( PRPI, Lista_de_Processos).</ul>
+O PRPI (papel relativo ao processo de intera&ccedil;&atilde;o) &eacute;
+o papel relacionado ao PI sendo definido. Por exemplo, um agente Produtor
+tem um processo de intera&ccedil;&atilde;o onde o PRPI &eacute; Intermedi&aacute;rio;
+um agente Intermedi&aacute;rio tem, no m&iacute;nimo, dois processos de
+intera&ccedil;&atilde;o, um com PRPI Produtor e outro com PRPI Consumidor.
+Cada processo de intera&ccedil;&atilde;o, al&eacute;m do PRPI, possui uma
+lista de processos que descreve como se d&aacute; esta intera&ccedil;&atilde;o.
+Por sua vez, os processos s&atilde;o descritos pelo predicado
+<ul>p( Nome_do_Processo, Corpo),</ul>
+onde o Corpo pode ser:
+<ul>
+<li>
+o processo <b>SKIP</b>;</li>
+
+<li>
+o processo <b>STOP</b>;</li>
+
+<li>
+a chamada de outro processo, na forma "p(Nome_Processo)";</li>
+
+<li>
+o operador "->", na forma "p(prefix, Evento Processo)";</li>
+
+<li>
+o operador "|", na forma "Processo ou Processo";</li>
+
+<li>
+o operador ";", na forma "Processo seq Processo".</li>
+</ul>
+<b>Exemplo 5: considerando as defini&ccedil;&otilde;es feitas acima, pode-se
+descrever o papel de consumidor da seguinte forma:</b>
+<ul>
+<pre>papel('<i>Consumidor'</i>,[
+pi( 'Intermedi&aacute;rio', [
+&nbsp;p('MAIN',&nbsp; p('CICLO')),
+&nbsp;p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;p('CICLO'(1), p(prefix, envia_mensagem(request(peca))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, recebe_mensagem(reply(peca(X)))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip))))
+])&nbsp; % Fim do pi
+]). % Fim do papel</pre>
+</ul>
+onde o Consumidor tem um PI com um Intermedi&aacute;rio ao qual ele pede
+pe&ccedil;as e recebe pe&ccedil;as.
+<h2>
+3. Identifica&ccedil;&atilde;o de pap&eacute;is por observa&ccedil;&atilde;o
+e classifica&ccedil;&atilde;o</h2>
+Este mecanismo se d&aacute; da seguinte maneira: um agente observador observa
+uma seq&uuml;&ecirc;ncia de eventos globais em que o agente observado est&aacute;
+participando, montando um <i>trace</i>, que &eacute; uma representa&ccedil;&atilde;o
+do comportamento do agente observado em rela&ccedil;&atilde;o a um outro
+agente. A partir do <i>trace</i>, &eacute; constru&iacute;do um processo
+que descreve o comportamento observado, da compara&ccedil;&atilde;o deste
+processo obtido com outros processos previamente definidos que caracterizam
+pap&eacute;is (por exemplo, o processo que define Consumidor no exemplo
+5) tem-se o papel do agente observado.
+<h3>
+<b>3.1</b><i> Traces</i> de processos</h3>
+"Um <i>trace</i> do comportamento de um processo &eacute; uma seq&uuml;&ecirc;ncia
+finita de s&iacute;mbolos representando os eventos em que o processo tem
+participado at&eacute; certo momento." [HOA85, p. 41] Um <i>trace </i>&eacute;
+denotado por uma seq&uuml;&ecirc;ncia de s&iacute;mbolos, separados por
+v&iacute;rgulas, colocados entre os sinais de maior e menor.
+<p><b>Exemplo 6: considerando o processo definido no exemplo 1, os seguintes
+</b><i>traces</i>
+seriam poss&iacute;veis:
+<p>&lt;> quando ainda n&atilde;o fez nada
+<br><i>&lt;pegar_pe&ccedil;a quando pegou a pe&ccedil;a</i>
+<br><i>pegar_pe&ccedil;a</i>, <i>consumir quando est&aacute; consumindo
+a pe&ccedil;a</i>
+<p><b>Exemplo 7: considerando o processo definido no exemplo 3, poderia-se
+ter o seguinte </b><i>trace</i>:
+<p><i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>,<i> devolver, pedir_pe&ccedil;a</i>,
+<i>receber_pe&ccedil;a</i>,<i>
+devolver,</i>
+<br><i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>,<i> consumir,
+pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>,<i> devolver,</i>
+<br><i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>,<i> consumir,
+.....</i>
+<h3>
+3.2 Constru&ccedil;&atilde;o de processos a partir de <i>traces</i></h3>
+Tendo-se um <i>trace</i> &eacute; poss&iacute;vel inferir o processo que
+o originou. O problema &eacute; encontrar o melhor processo que descreve
+o <i>trace</i>, uma vez que um mesmo <i>trace</i> &eacute; permitido por
+v&aacute;rios processos. Por exemplo, o <i>trace</i>:
+<p><i>x</i>, <i>y, x, y, x, y</i>
+<p>pode ter sido gerado por qualquer um tr&ecirc;s processos seguintes:
+<p><b>P1</b> = (<i>x y x y x y </i><b>STOP</b>).
+<br><b>P2</b> = (<i>x y x </i><b>P2</b>).
+<br><b>P3</b> = (<i>x y</i> <b>P3</b>). { provavelmente a melhor op&ccedil;&atilde;o
+}
+<h3>
+<font size=+1>Identifica&ccedil;&atilde;o de prefix em processos</font></h3>
+&Eacute; o caso mais simples, o processo &eacute; a pr&oacute;pria seq&uuml;&ecirc;ncia
+de eventos do <i>trace</i>. Por exemplo, para o &uacute;ltimo <i>trace</i>
+do exemplo 6, o processo seria
+<p><b>P</b> = (<i>pegar_pe&ccedil;a</i> <i>consumir</i> <b>STOP</b>).
+<h3>
+<font size=+1>Identifica&ccedil;&atilde;o de recurs&atilde;o</font></h3>
+Processos muito simples (com pequeno n&uacute;mero de eventos) podem ter
+<i>traces</i>
+muito extensos, &eacute; o caso de processos recursivos. Nestes casos,
+a t&eacute;cnica acima (identifica&ccedil;&atilde;o de prefix) n&atilde;o
+&eacute; eficiente. Considerando que os agentes sempre t&ecirc;m um comportamento
+c&iacute;clico, e portando a descri&ccedil;&atilde;o de seus pap&eacute;is
+incluem recurs&atilde;o, a identifica&ccedil;&atilde;o destes ciclos &eacute;
+essencial para a compara&ccedil;&atilde;o do processo observado com o previamente
+descrito.
+<p>O m&eacute;todo de identifica&ccedil;&atilde;o de ciclos consiste basicamente
+em verificar se duas sub-seq&uuml;&ecirc;ncias quaisquer no <i>trace</i>
+se repetem no <i>trace</i>, bem com identificar aquelas seq&uuml;&ecirc;ncias
+que n&atilde;o se repetem.
+<p><b>Exemplo 8: o trace </b><i>s</i> = <i>apresenta, pegar_pe&ccedil;a,
+consumir, pegar_pe&ccedil;a, consumir, pegar_pe&ccedil;a, consumir, pegar_pe&ccedil;a,
+tem um ciclo, pegar_pe&ccedil;a</i>, <i>consumir e o in&iacute;cio apresenta.
+Tem-se assim, o seguinte processo:</i>
+<p>(<i>apresenta </i><b>SKIP</b>)<b> </b>;<b> C</b>.
+<br><b>C = </b>(<i>pegar_pe&ccedil;a</i> <i>consumir</i> <b>SKIP</b>);
+<b>C</b>.
+<h3>
+<font size=+1>Identifica&ccedil;&atilde;o de escolha</font></h3>
+A identifica&ccedil;&atilde;o de escolha em um processo somente &eacute;
+percept&iacute;vel nos casos em que a escolha est&aacute; dentro de um
+ciclo, caso contr&aacute;rio, o comportamento alternativo nunca ser&aacute;
+observado. A princ&iacute;pio, cada ciclo identificado &eacute; uma alternativa
+de comportamento. Assim, para o <i>trace</i> do exemplo 7 seriam identificados
+dois ciclos:
+<p><i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>,<i> devolver e</i>
+<br><i>pedir_pe&ccedil;a</i>, <i>receber_pe&ccedil;a</i>,<i> consumir</i>
+<p>Dando origem aos processos
+<p><b>C</b> = <b>P<sub>1</sub></b> | <b>P<sub>2</sub></b> ; <b>C</b>.
+<br><b>P<sub>1</sub></b> = <i>pedir_pe&ccedil;a receber_pe&ccedil;a devolver</i><b>SKIP</b>.
+<br><b>P<sub>2</sub></b> = <i>pedir_pe&ccedil;a receber_pe&ccedil;a consumir</i><b>SKIP</b>.
+<p>que possui indeterminismo entre os processos <b>P<sub>1</sub> </b>e
+<b>P<sub>2</sub></b>.
+Portanto, o processo original do <i>trace </i>deveria ser definido como
+<p><b>C</b> = <b>P<sub>1</sub></b> ; <b>C</b>.
+<br><b>P<sub>1 </sub></b>= <i>pedir_pe&ccedil;a receber_pe&ccedil;a </i>(<i>devolver</i><b>SKIP</b>
+| <i>consumir</i> <b>SKIP</b>)
+<p>Um descri&ccedil;&atilde;o mais formaldos processos de transforma&ccedil;&atilde;o
+de <i>trace</i> em processo, incluindo os algoritmos, pode ser obtido em
+[H&Uuml;B95a].
+<h3>
+3.3 Reconhecimento de pap&eacute;is a partir do comportamento</h3>
+Como processos n&atilde;o consideram rela&ccedil;&otilde;es entre agentes,
+o que &eacute; essencial conforme a defini&ccedil;&atilde;o de pap&eacute;is,
+torna-se necess&aacute;rio acrescentar ao procedimento de reconhecimento
+de processos o aspecto relacional, ou seja, as intera&ccedil;&otilde;es
+do agente. Nos processos, as intera&ccedil;&otilde;es s&atilde;o consideradas
+como eventos globais, embora estes eventos n&atilde;o considerem quem &eacute;
+o outro agente na intera&ccedil;&atilde;o. Este problema &eacute; solucionado
+com a altera&ccedil;&atilde;o na forma de obten&ccedil;&atilde;o do <i>trace</i>,
+considera-se o <i>trace</i> da observa&ccedil;&atilde;o de um agente como
+sendo relativo &agrave;s suas intera&ccedil;&otilde;es com <b>um</b> outro.
+No caso do agente comunicar-se com mais de um agente no intervalo de observa&ccedil;&atilde;o,
+t&ecirc;m-se v&aacute;rios <i>traces</i> (uma para cada agente com quem
+mant&eacute;m comunica&ccedil;&atilde;o) e os seus v&aacute;rios processos
+reconhecidos. Estes processos reconhecidos s&atilde;o os processos de intera&ccedil;&atilde;o
+(PI).
+<p>Para proceder com a identifica&ccedil;&atilde;o do papel a partir do
+<i>trace</i>
+o agente observador deve possuir um conjunto pr&eacute;-estabelecido de
+pap&eacute;is e seus processos associados, onde cada elemento deste conjunto
+&eacute; chamado de <i>modelo</i> (como o apresentado no exemplo 5). Este
+conjunto de modelos deve descrever os pap&eacute;is em fun&ccedil;&atilde;o
+de processos de intera&ccedil;&atilde;o. Caso o papel tenha mais de um
+PI, considera-se que estes PIs executam concorrentemente formando um processo
+&uacute;nico e maior que caracteriza o papel.
+<p>Nesta forma de identifica&ccedil;&atilde;o de papel, procura-se nos
+modelos o processo correspondente ao processo observado (constru&iacute;do
+conforme visto acima). Quando encontrado, pode-se dizer que o papel do
+agente observado &eacute; o papel associado ao modelo encontrado. Esta
+abordagem apresenta como vantagem o fato de se ter uma descri&ccedil;&atilde;o
+(o processo) do agente observado mesmo que um processo pr&eacute;-definido
+correspondente ao observado n&atilde;o tenha sido encontrado. O processo
+reconhecido pode ser utilizado de outras formas que n&atilde;o sejam a
+de associar um papel ao agente, como por exemplo, para prever seu comportamento.
+<h2>
+4. Um Estudo de Caso: a Sociedade Produtor-Consumidor</h2>
+
+<h3>
+4. 1 Descri&ccedil;&atilde;o da sociedade</h3>
+A sociedade de Produtores e Consumidores &eacute; composta principalmente
+por agentes que assumem justamente estes dois pap&eacute;is. Resumidamente,
+Produtores produzem pe&ccedil;as e Consumidores as consomem (cf. [COS93a]
+para uma descri&ccedil;&atilde;o funcional desta sociedade). Para que esta
+sociedade funcione de maneira eficiente, introduz-se o papel de Intermedi&aacute;rio
+que recebe as pe&ccedil;as dos Produtores, guarda-as, e quando uma delas
+for requisitada, envia-a para um Consumidor. &Eacute; not&oacute;ria a
+necessidade dos agentes se conhecerem nesta sociedade, como fica exemplificado
+no caso de Produtores que precisam conhecer os agentes que assumem papel
+de Intermedi&aacute;rios para poder enviar-lhes suas pe&ccedil;as.
+<h3>
+4.2 Pap&eacute;is na sociedade PIC</h3>
+O papel de Produtor tem duas descri&ccedil;&otilde;es, uma que considera
+a resposta negativa de espa&ccedil;o e outra que n&atilde;o a considera.
+Isto se faz necess&aacute;rio porque um Produtor pode nunca receber essa
+resposta negativa (pelo fato do Intermedi&aacute;rio sempre ter espa&ccedil;o).
+Se isso acontecer, o papel deste agente nunca ser&aacute; conhecido sem
+o primeiro modelo de Produtor.
+<ul>
+<pre>papel('<i>Produtor'</i>, [
+pi( 'Intermedi&aacute;rio', [
+&nbsp;&nbsp; p('MAIN', p('CICLO')),
+&nbsp;&nbsp; p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;&nbsp; p('CICLO'(1), p(prefix, envia_mensagem(request(espaco)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, recebe_mensagem(reply(espaco_ok)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, envia_mensagem(inform(peca(X))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip)))))
+]) ]). % Fim do papel
+
+papel('<i>Produtor'</i>, [
+pi( 'Intermedi&aacute;rio', [
+&nbsp;&nbsp; p('MAIN', p('CICLO')),
+&nbsp;&nbsp; p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;&nbsp; p('CICLO'(1), p(prefix, envia_mensagem(request(espaco)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (p(prefix, recebe_mensagem(reply(espaco_ok)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, envia_mensagem(inform(peca(X))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip)))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ou
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, recebe_mensagem(reply(espaco_nok))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )))
+]) ]). % Fim do papel</pre>
+</ul>
+O papel Intermedi&aacute;rio tem a seguinte descri&ccedil;&atilde;o:
+<ul>
+<pre>papel( '<i>Intermedi&aacute;rio</i>', [
+pi( 'Consumidor', [
+&nbsp;&nbsp; p('MAIN',&nbsp; p('CICLO')),
+&nbsp;&nbsp; p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;&nbsp; p('CICLO'(1), p(prefix, recebe_mensagem(request(peca))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, envia_mensagem(reply(peca(X)))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip))))
+]),&nbsp; % Fim do pi
+pi( 'Produtor', [
+&nbsp;&nbsp; p('MAIN', p('CICLO')),
+&nbsp;&nbsp; p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;&nbsp; p('CICLO'(1), p(prefix, recebe_mensagem(request(espaco)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, envia_mensagem(reply(espaco_ok)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, recebe_mensagem(inform(peca(X))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip)))))
+]) ]). % Fim do papel
+
+papel( '<i>Intermedi&aacute;rio</i>', [
+pi( 'Consumidor', [
+&nbsp;&nbsp; p('MAIN',&nbsp; p('CICLO')),
+&nbsp;&nbsp; p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;&nbsp; p('CICLO'(1), p(prefix, recebe_mensagem(request(peca))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, envia_mensagem(reply(peca(X)))->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip))))
+]),&nbsp; % Fim do pi
+pi( 'Produtor', [
+&nbsp;&nbsp; p('MAIN', p('CICLO')),
+&nbsp;&nbsp; p('CICLO', p('CICLO'(1)) seq p('CICLO')),
+&nbsp;&nbsp; p('CICLO'(1), p(prefix, recebe_mensagem(request(espaco)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (p(prefix, envia_mensagem(reply(espaco_ok)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, recebe_mensagem(inform(peca(X))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip)))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ou
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(prefix, envia_mensagem(reply(espaco_nok))->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p(skip))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )))
+]) ]). % Fim do papel</pre>
+</ul>
+
+<h3>
+<b>4.3 </b><i>Traces</i> na sociedade PIC</h3>
+Os agentes da sociedade PIC se comunicam segundo regras definidas em um
+protocolo de comunica&ccedil;&atilde;o [H&Uuml;B95b], desta comunica&ccedil;&atilde;o
+&eacute; gerado um <i>trace </i>formado pelas a&ccedil;&otilde;es de comunica&ccedil;&atilde;o
+realizadas pelos agentes no decorrer do funcionamento da sociedade.
+<p><b>Exemplo 9: considerando os agentes Jomi, Rocha, e Renara, poderia-se
+ter o seguinte </b><i>trace</i> para as a&ccedil;&otilde;es do agente Renata:
+<ul>recebe_mensagem(request(pe&ccedil;a),Jomi),
+<br>recebe_mensagem(request(espa&ccedil;o),Rocha),
+<br>envia_mensagem(reply(espa&ccedil;o_ok),Rocha),
+<br>recebe_mensagem(inform(pe&ccedil;a(_)),Rocha),
+<br>envia_mensagem(reply(pe&ccedil;a(_)),Jomi),
+<br>recebe_mensagem(request(espa&ccedil;o),Rocha),
+<br>envia_mensagem(reply(espa&ccedil;o_ok),Rocha),
+<br>recebe_mensagem(inform(pe&ccedil;a(_)),Rocha),
+<br>recebe_mensagem(request(pe&ccedil;a),Jomi),
+<br>envia_mensagem(reply(pe&ccedil;a(_)),Jomi).</ul>
+
+<h3>
+4.4 Identifica&ccedil;&atilde;o dos pap&eacute;is</h3>
+Para ir da lista de a&ccedil;&otilde;es de um agente em uma descri&ccedil;&atilde;o
+de papel, s&atilde;o realizadas as seguintes transforma&ccedil;&otilde;es
+&agrave; lista de a&ccedil;&otilde;es resultante da observa&ccedil;&atilde;o
+(como mostra a figura 1):
+<ul>
+<li>
+Para cada agente com quem o agente alvo teve intera&ccedil;&otilde;es &eacute;
+criado um <i>trace</i>.</li>
+
+<li>
+Para cada <i>trace</i> observado &eacute; constru&iacute;do um PI associado.
+De todos os PIs, tem-se uma lista de PIs.</li>
+
+<li>
+A lista de PIs observada &eacute; comparada com a lista de PIs dos modelos.
+Esta compara&ccedil;&atilde;o consiste em verificar se os processos de
+intera&ccedil;&atilde;o do modelo s&atilde;o subconjunto dos processos
+de intera&ccedil;&atilde;o observados.</li>
+</ul>
+
+<center><img SRC="img00005.gif" height=496 width=215>
+<br><b>Figura 1 - Esquema da identifica&ccedil;&atilde;o de pap&eacute;is
+por observa&ccedil;&atilde;o e classifica&ccedil;&atilde;o.</b></center>
+
+<p><b>Exemplo 10: dando seq&uuml;&ecirc;ncia ao exemplo 9, os passos acima
+realizam as seguintes transforma&ccedil;&otilde;es:</b>
+<p>Pelo passo (i), a agente Renata tem os seguintes traces:
+<ul>t(Rocha, [recebe_mensagem(request(espa&ccedil;o)),envia_mensagem(reply(espa&ccedil;o_ok)),
+recebe_mensagem(inform(peca(_))),recebe_mensagem(request(espa&ccedil;o)),
+envia_mensagem(reply(espa&ccedil;o_ok)),recebe_mensagem(inform(peca(_)))])
+<p>t(Jomi,[recebe_mensagem(request(peca)), envia_mensagem(reply(peca(_))),
+recebe_mensagem(request(peca)), envia_mensagem(reply(peca(_)))])
+<p>t(Renata, []).</ul>
+O passo (ii) cria os processos:
+<p>Processo de Renata relacionado ao agente Rocha
+<ul>
+<pre>MAIN&nbsp;&nbsp;&nbsp; = CICLO.
+CICLO&nbsp;&nbsp; = (CICLO(1)) ; (CICLO).
+CICLO(1) =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recebe_mensagem(request(espa&ccedil;o)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; envia_mensagem(reply(espaco_ok)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recebe_mensagem(inform(peca(_))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SKIP.</pre>
+</ul>
+Processo de Renata relacionado ao agente Jomi
+<ul>
+<pre>MAIN = CICLO.
+CICLO = (CICLO(1)) ; (CICLO).
+CICLO(1) =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recebe_mensagem(request(peca)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; envia_mensagem(reply(peca(_))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SKIP.</pre>
+</ul>
+O passo (iii) junta estes dois processos de intera&ccedil;&atilde;o formando
+um conjunto do qual a descri&ccedil;&atilde;o de Intermedi&aacute;rio feita
+na se&ccedil;&atilde;o 4.2 &eacute; subconjunto, logo, o agente observado
+&eacute; Intermedi&aacute;rio. Como a agente Renata poderia ter intera&ccedil;&otilde;es
+com mais de um Produtor e/ou Consumidor, poderiam existir v&aacute;rios
+processos de intera&ccedil;&atilde;o (mais PIs do que no modelo), mas para
+caracterizar a agente como Intermedi&aacute;ria seriam necess&aacute;rios
+pelo menos um PI com um Consumidor e um PI com um Produtor.
+<p>O passo tr&ecirc;s coloca um problema interessante. &Eacute; condi&ccedil;&atilde;o
+que se conhe&ccedil;a o papel dos agentes relacionados com o agente alvo,
+ou melhor, os processos de intera&ccedil;&atilde;o tem um PRPI que, a princ&iacute;pio,
+n&atilde;o s&atilde;o conhecidos. No exemplo 10, deve-se conhecer os pap&eacute;is
+de Rocha e Jomi (Produtor e Consumidor, respectivamente) para que o papel
+de Renata possa ser classificado como Intermedi&aacute;rio. Sendo assim,
+a primeira vez que se classifica o papel de um agente n&atilde;o se pode
+considerar o PRPI. &Eacute; necess&aacute;rio uma revis&atilde;o futura
+dos pap&eacute;is j&aacute; identificados, quando um maior n&uacute;mero
+de pap&eacute;is for conhecido e existirem mais eventos a serem observados.
+<p>Para o exemplo 10, no passo (ii), a revis&atilde;o do papel de Renata
+passaria a ser:
+<p>Processo de Renata relacionado ao <b>papel Produtor</b>
+<ul>
+<pre>MAIN&nbsp;&nbsp;&nbsp; = CICLO.
+CICLO&nbsp;&nbsp; = (CICLO(1)) ; (CICLO).
+CICLO(1) =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recebe_mensagem(request(espa&ccedil;o)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; envia_mensagem(reply(espaco_ok)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recebe_mensagem(inform(peca(_))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SKIP.</pre>
+</ul>
+Processo de Renata relacionado ao <b>papel Consumidor</b>
+<ul>
+<pre>MAIN = CICLO.
+CICLO = (CICLO(1)) ; (CICLO).
+CICLO(1) =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recebe_mensagem(request(peca)) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; envia_mensagem(reply(peca(_))) ->&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SKIP.</pre>
+</ul>
+Estes dois processos de intera&ccedil;&atilde;o realmente caracterizam
+um Intermedi&aacute;rio, por considerarem o papel dos agentes relacionados.
+<h2>
+5. Conclus&otilde;es</h2>
+Conforme resultados obtidos pelos experimentos realizados, o mecanismo
+de identifica&ccedil;&atilde;o de pap&eacute;is apresentado mostrou-se
+bastante adequado, principalmente no caso de sociedades abertas, onde novos
+agentes podem dinamicamente entrar na sociedade j&aacute; em funcionamento.
+Por&eacute;m, devido a complexidade dos algoritmos, a identifica&ccedil;&atilde;o
+do papel de um agente pode ser demorada.
+<p>Poderia-se argumentar que este mecanismo &eacute; muito r&iacute;gido,
+j&aacute; que o agente deve se comportar exatamente como um dos processos
+pr&eacute;-definidos. Esta rigidez pode ser atenuada de duas formas: primeiro,
+descrevendo para cada papel v&aacute;rios processos que o caracterizam
+e, segundo, definindo os processos de maneira suficientemente gen&eacute;rica,
+dando mais "liberdade" ao comportamento dos agentes.
+<p>Novos trabalhos poderiam ser realizados considerando que este mecanismo
+n&atilde;o garante que o papel identificado &eacute; o real, pelos seguintes
+motivos:
+<ul>
+<li>
+o agente observador pode n&atilde;o ter observado suficientemente o agente
+alvo, e assim, o agente observado ainda pode apresentar um comportamento
+n&atilde;o observado anteriormente: o <i>problema da parada</i>;</li>
+
+<li>
+o agente observador n&atilde;o tem o papel observado no conjunto de pap&eacute;is
+pr&eacute;-definidos;</li>
+
+<li>
+o agente observador n&atilde;o tem capacidade de descrever o papel do agente
+observado.</li>
+</ul>
+
+<h2>
+6. Refer&ecirc;ncias Bibliogr&aacute;ficas</h2>
+[BER92] BERTHET, Sabine, DEMAZEAU, Yves, BOISSIER, Oliver. <b>Knowing Each
+Other Better.</b> In: <i>11st International Workshop on Distributed Artificial
+Intelligence</i>. Glen Arbor, 1992. p. 1-20.
+<p>[BON88] BOND, Alan H.; Gasser, Les (Eds.). <b>Readings in Distributed
+Artificial Intelligence</b>. San Matew, CA: Morgan Kaufmann, 1988.
+<p>[COS93a] COSTA, Ant&ocirc;nio Carlos da Rocha; CASTILHO, Jos&eacute;
+Mauro Volkmer de; CL&Aacute;UDIO, Dalc&iacute;dio Moraes. Functional Processes
+and Functional Roles in Societies of Computing Agents. In: SIMP&amp;OACUTE;SIO
+BRASILEIRO DE INTELIG&amp;ECIRC;NCIA ARTIFICIAL, 10., 1993, Porto Alegre.
+<b>Anais...</b>
+Porto Alegre: SBC, 1993.
+<p>[COS93b] COSTA, Ant&ocirc;nio Carlos da Rocha. <b>Intelig&ecirc;ncia
+de M&aacute;quina</b>: Esbo&ccedil;o de uma Abordagem Construtivista. Porto
+Alegre: CPGCC da UFRGS, 1993. 168p. Tese de Doutorado.
+<p>[COS94] COSTA, Ant&ocirc;nio Carlos da Rocha; H&Uuml;BNER, Jomi Fred;
+BORDINI, Rafael Heitor. On Entering an Open Society. In: SIMP&amp;OACUTE;SIO
+BRASILEIRO DE INTELIG&amp;ECIRC;NCIA ARTIFICIAL, 11., 1994, Fortaleza.
+<b>Anais...</b>
+Fortaleza: SBC, 1994. p. 535-546.
+<p>[DEM90] DEMAZEAU, Yves, M&Uuml;LLER, Jean Pierre. <b>Decentralized Artificial
+Intelligence.</b> In: <i>Decentralized Artificial Intelligence - 1</i>.
+Organiza&ccedil;&atilde;o: DEMAZEAU, Yves, M&Uuml;LLER Jean-Pierre. North-Holland,
+Elsevier Science Publishers, 1990. p. 3ss.
+<p>[HOA85] HOARE, Charles Antony Richard. <b>Communicating Sequential Processes.</b>
+New Jersey: Prentice-Hall, 1985. 256p.
+<p>[HUB95a] H&Uuml;BNER, Jomi Fred. <b>Migra&ccedil;&atilde;o de Agentes
+em Sistemas Multi-Agentes Abertos</b>. Porto Alegre, UFRGS, 1995. 124p.
+Disserta&ccedil;&atilde;o de Mestrado.
+<p>[H&Uuml;B95b] H&Uuml;BNER, Jomi Fred; COSTA, Ant&ocirc;nio C. R.; BORDINI;
+Rafael Heitor. Identifica&ccedil;&atilde;o de Pap&eacute;is por Apresenta&ccedil;&atilde;o
+na Entrada de Agentes em Sociedades Abertas. <b>Dymamis</b>, Blumenau,
+vl. 3, nr. 13, p.41-53, out/dez 1995.
+<p>[WOO94] WOOLDRIDGE, Michael J.; JENNINGS, Nicholas R (Eds.). <b>Intelligent
+Agentes</b>. Berlin, Germany: Springer-Verlag, 1994.</ul>
+
+</body>
+</html>

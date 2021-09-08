@@ -1,0 +1,526 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Dissertação</TITLE>
+<META NAME="Template" CONTENT="I:\WINDOWS\WORD6\MODELOS\ufgrs.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<B><FONT SIZE=5><P ALIGN="CENTER">Avalia&ccedil;&atilde;o da comunica&ccedil;&atilde;o entre agentes utilizando KQML</P>
+</B></FONT><FONT SIZE=5><P ALIGN="CENTER">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><P ALIGN="RIGHT">Jomi Fred H&uuml;bner</P>
+<P ALIGN="RIGHT">Alexandre Rodrigues Coelho</P>
+<B><FONT SIZE=4><P ALIGN="CENTER">Abstract</P>
+</B></FONT><P ALIGN="CENTER">In agents societies, one important feature is the skill of achieve a solution for a common problem working together, in working together they need to interact by communication. Inter agents communication only occurs if they have the same language. KQML (Knowledge Query and Manipulation Language) is an such language that has many wonder features. This paper presents an experimentation with an implementation of KQML, Java KQML, and draw some conclusions.</P>
+<B><FONT SIZE=4><P ALIGN="CENTER">Resumo</P>
+</B></FONT><P ALIGN="CENTER">Em sociedades de agentes, um dos aspectos mais importantes &eacute; capacidade dos agentes cooperarem na solu&ccedil;&atilde;o de um problema comum, tal coopera&ccedil;&atilde;o necessita de comunica&ccedil;&atilde;o. Para que ocorra a comunica&ccedil;&atilde;o entre os agentes &eacute; preciso estabelecer uma linguagem de comunica&ccedil;&atilde;o entre eles que obede&ccedil;a algumas exig&ecirc;ncias, tais como: ser linear, prover um modelo simples para se ajustar a uma ampla variedade de sistemas, se ajustar bem &agrave; arquitetura da rede. Uma proposta de linguagem com estas caracter&iacute;sticas &eacute; a KQML (Knowledge Query and Manipulation Language). Neste artigo estudou-se uma implementa&ccedil;&atilde;o de KQML dispon&iacute;vel na Internet, o JKQML (Java KQML).</P>
+<B><FONT SIZE=4><P ALIGN="CENTER">Palavras chaves</P>
+</B></FONT><P ALIGN="CENTER">Agentes; comunica&ccedil;&atilde;o entre agentes; KQML</P>
+<OL>
+
+<LI><A NAME="_Toc328734182"><A NAME="_Toc429222327"><B><FONT SIZE=4>Introdu&ccedil;&atilde;o</A></A></LI></OL>
+
+</B></FONT><P ALIGN="JUSTIFY">Os sistemas computacionais constru&iacute;dos a partir de um grupo de agentes apresentam caracter&iacute;sticas particulares que os diferenciam de programas convencionais, como, por exemplo: distribui&ccedil;&atilde;o das tarefas entre v&aacute;rios computadores numa rede; autonomia de funcionamento de cada agente; funcionamento continuo; capacidade de comunica&ccedil;&atilde;o com de outros agentes - sociabilidade; e mobilidade. O paradigma de desenvolvimento orientado a agentes &eacute; muito utilizados em aplica&ccedil;&otilde;es na Internet onde um agente pode &quot;navegar&quot; pela rede em busca de informa&ccedil;&otilde;es que sejam relevantes ao seu usu&aacute;rio [WOO94].</P>
+<P ALIGN="JUSTIFY">Os agentes s&atilde;o sistemas computacionais que apresentam caracter&iacute;sticas particulares que os diferenciam de programas convencionais, dentre elas, pode-se citar: tem maior autonomia (controlam seu fluxo de execu&ccedil;&atilde;o e dispensam intera&ccedil;&atilde;o constante com um usu&aacute;rio); est&atilde;o continuamente em funcionamento; s&atilde;o soci&aacute;veis (capacidade de comunica&ccedil;&atilde;o e conhecimento dos outros); e s&atilde;o m&oacute;veis (podem sair de um computador e continuar sua execu&ccedil;&atilde;o l&aacute;). Devido a estas caracter&iacute;sticas s&atilde;o muito utilizados, por exemplo, em aplica&ccedil;&atilde;o na Internet onde um agente pode &quot;navegar&quot; na rede em busca de informa&ccedil;&otilde;es que julge interessantes para seu usu&aacute;rio.</P>
+<P ALIGN="JUSTIFY">A utiliza&ccedil;&atilde;o da deste paradigma social traz uma s&eacute;rie de novas perspectivas para a computa&ccedil;&atilde;o pois considera sistemas:</P>
+<OL TYPE="i">
+
+<B><P ALIGN="JUSTIFY"><LI>Heterog&ecirc;neos</B>: agentes com estruturas diferentes, que funcionam em plataformas de <I>hardware</I> diferentes distribu&iacute;das numa rede de computadores, podem cooperar na solu&ccedil;&atilde;o de problemas. Isto permite o uso das potencialidades particulares de cada arquitetura e, pela distribui&ccedil;&atilde;o, acrescenta <I>performance</I> ao sistema.</LI></P>
+<B><P ALIGN="JUSTIFY"><LI>Adaptativos</B> e evolutivos: a sociedade de agentes t&ecirc;m capacidade de adapta&ccedil;&atilde;o &agrave; novas situa&ccedil;&otilde;es, principalmente pela inclus&atilde;o de novos agentes ao sistema.</LI></P>
+<B><P ALIGN="JUSTIFY"><LI>Continuamente</B> em funcionamento: estes sistemas n&atilde;o s&atilde;o feitos com um &uacute;nico objetivo final, mas, ao contr&aacute;rio, seu objetivo &eacute; funcionar.</LI></P>
+<B><P ALIGN="JUSTIFY"><LI>Abertos</B>: os agentes podem migrar entre sociedades, isto &eacute;, agentes podem sair e entrar em sociedades, o que permite a evolu&ccedil;&atilde;o e a adaptabilidade do sistema [COS&nbsp;94, H&Uuml;B&nbsp;95].</LI></P></OL>
+
+<P ALIGN="JUSTIFY">A incorpora&ccedil;&atilde;o destas caracter&iacute;sticas aos sistemas de computa&ccedil;&atilde;o atuais &eacute; de grande import&acirc;ncia para a melhoria da qualidade destes. Pela mudan&ccedil;a de enfoque, a IAD apresenta, em alguns casos, um modelo de solu&ccedil;&atilde;o muito mais simples que modelos tradicionais.</P>
+<P ALIGN="JUSTIFY">Como pode ser observado na pr&oacute;pria defini&ccedil;&atilde;o de agente, a intera&ccedil;&atilde;o entre eles &eacute; um dos aspectos mais importantes na resolu&ccedil;&atilde;o de um problema. Contudo, a forma, mais precisamente, o protocolo, desta comunica&ccedil;&atilde;o n&atilde;o &eacute; f&aacute;cil de ser implementado num sistema real. Na maioria dos casos, o componente de comunica&ccedil;&atilde;o de um agente n&atilde;o &eacute; bem estruturado e independente, estando disperso por todo o c&oacute;digo de programa que implementa o agente. Este artigo pretende apresentar a linguagem KQML como solu&ccedil;&atilde;o para comunica&ccedil;&atilde;o entre agentes e avaliar se ela demonstra as caracter&iacute;sticas desej&aacute;veis numa linguagem de comunica&ccedil;&atilde;o de agentes (LCA).</P>
+<OL>
+
+<LI><A NAME="_Toc328734187"><A NAME="_Toc429222351"><B><FONT SIZE=4>Linguagem de Comunica&ccedil;&atilde;o entre Agentes: KQML</A></LI></OL>
+
+</B></FONT><P ALIGN="JUSTIFY">Ambientes computacionais atualmente emergindo, como a Internet, t&ecirc;m v&aacute;rias caracter&iacute;sticas que colocam exig&ecirc;ncias para implementa&ccedil;&atilde;o de agente, pois o ambientes &eacute; heterog&ecirc;neo e envolve padr&otilde;es, plataformas e formatos de dados diferentes. Para a implementa&ccedil;&atilde;o de um mecanismo de comunica&ccedil;&atilde;o entre agentes neste ambiente &eacute; preciso cumprir algumas exig&ecirc;ncias b&aacute;sicas [MAY96]:</P>
+<OL TYPE="i">
+
+<P ALIGN="JUSTIFY"><LI>Cada mensagem que &eacute; passada de um agente a outro tem que viajar pelo fluxo de comunica&ccedil;&atilde;o e assim a linguagem deve ser linear ou facilmente traduz&iacute;vel em uma forma linear. </LI></P>
+<P ALIGN="JUSTIFY"><LI>A linguagem de comunica&ccedil;&atilde;o entre agentes deve prover um modelo simples que torne essa comunica&ccedil;&atilde;o poss&iacute;vel, para se ajustar a uma ampla variedade de sistemas. </LI></P>
+<P ALIGN="JUSTIFY"><LI>A implementa&ccedil;&atilde;o da linguagem deve fazer uma distin&ccedil;&atilde;o entre conceitos da linguagem de comunica&ccedil;&atilde;o que expressa atos de comunica&ccedil;&atilde;o e a linguagem para o qual &eacute; usada que expressa fatos sobre o dom&iacute;nio.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Linguagens de comunica&ccedil;&atilde;o entre agentes devem ser eficientes, devem ajustar-se bem a ampla variedade de sistemas existentes e devem prover a possibilidade de uma implementa&ccedil;&atilde;o parcial.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Uma linguagem de comunica&ccedil;&atilde;o deve prover meios para que os agentes se comuniquem de maneira segura, deve garantir o isolamento e a integridade de dados, deve permitir a autentica&ccedil;&atilde;o de outros agentes e deve prover mecanismos de troca de dados confidenciais.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Uma linguagem de comunica&ccedil;&atilde;o entre agentes deve-se ajustar bem com a arquitetura da rede. A linguagem deve aceitar tipos diferentes de conex&otilde;es. </LI></P></OL>
+
+<P ALIGN="JUSTIFY">Uma proposta de atingir as caracter&iacute;sticas enumerados acima &eacute; KQML (Knowledge Query and Manipulation Language). KQML &eacute; uma linguagem e um protocolo para a comunica&ccedil;&atilde;o entre agentes, visando suportar a troca de informa&ccedil;&atilde;o e conhecimento entre os agentes. KQML pode ser utilizada como a linguagem que um agente utiliza para interagir com um outro agente, ou para dois ou mais sistemas inteligentes compartilharem conhecimento para solu&ccedil;&atilde;o cooperativa de problemas [FIN96].</P>
+<OL>
+<OL>
+
+<LI><A NAME="_Toc429222353"><B>Caracter&iacute;sticas</A></LI></OL>
+</OL>
+
+</B><P ALIGN="JUSTIFY">KQML &eacute; uma linguagem que pode ser dividida em tr&ecirc;s camadas [FIN96]:</P>
+<OL TYPE="i">
+
+<B><P ALIGN="JUSTIFY"><LI>A camada de conte&uacute;do</B> possui a mensagem e pode ter no seu conte&uacute;do qualquer representa&ccedil;&atilde;o de linguagem;</LI></P>
+<B><P ALIGN="JUSTIFY"><LI>A camada de comunica&ccedil;&atilde;o</B> codifica um conjunto de caracter&iacute;sticas para aceitar par&acirc;metros de alto n&iacute;vel, tais como a identidade de quem envia e recebe a mensagem e tamb&eacute;m um identificador &uacute;nico associado com a mensagem.;</LI></P>
+<B><P ALIGN="JUSTIFY"><LI>A camada de mensagem</B> forma o n&uacute;cleo da linguagem, que determina o tipo de intera&ccedil;&atilde;o que os agentes que falam KQML. A fun&ccedil;&atilde;o prim&aacute;ria desta camada &eacute; identificar o protocolo usado para transmitir a mensagem e a performativa que o transmissor anexa no conte&uacute;do. A performativa pode ser uma declara&ccedil;&atilde;o, uma consulta, um comando ou um conjunto de performativas conhecidas.</LI></P></OL>
+
+<P ALIGN="JUSTIFY">KQML &eacute; projetado para ser usado com v&aacute;rios mecanismos (atualmente h&aacute; implementa&ccedil;&otilde;es que usam TCP/IP, SMTP (email), HTTP e CORBA). O agente de KQML pode falar diretamente a outro agente ou pode enviar mensagens a m&uacute;ltiplo agentes do mesmo grupo.</P>
+<P ALIGN="JUSTIFY">O ambiente operacional para agentes KQML &eacute; altamente distribu&iacute;do, heterog&ecirc;neo e extremamente din&acirc;mico. Para satisfazer as exig&ecirc;ncias de tal ambiente, a linguagem KQML prove ferramentas formais que trabalham com outras linguagens e protocolos. </P>
+<P ALIGN="JUSTIFY">Apesar de atender os principais caracter&iacute;sticas de uma linguagem de comunica&ccedil;&atilde;o de agentes, KQML ainda n&atilde;o tratou adequadamente as quest&otilde;es de seguran&ccedil;a e autentica&ccedil;&atilde;o de agentes em mensagens KQML.</P>
+<OL>
+<OL>
+
+<LI><A NAME="_Toc429222355"><B>Sem&acirc;ntica</A> das mensagens</LI></OL>
+</OL>
+
+</B><P ALIGN="JUSTIFY">As categorias b&aacute;sicas de performativas (baseado na teoria dos atos de fala [ALL87]) s&atilde;o as seguintes:</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=642>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<B><P>Performativas</B></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<B><P>Identificadores</B></TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>Informa&ccedil;&otilde;es gen&eacute;ricas</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>tell, achieve, cancel, untell, unachieve</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>Consultas b&aacute;sicas</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>evaluate, ask-if, ask-in, ask-one, ask-all</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>M&uacute;ltiplas respostas para consultas</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>stream-in, stream-all</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>Resposta</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>reply, sorry</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>Geradoras</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>standby, ready, next, rest, dicard, generator</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>Defini&ccedil;&atilde;o de capacidade e notifica&ccedil;&atilde;o</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>advertise, subscribe, monitor, import, export</TD>
+</TR>
+<TR><TD WIDTH="38%" VALIGN="TOP">
+<P>Rede</TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<P>register, unregister, forward, broadcast, route, transport-address</TD>
+</TR>
+</TABLE>
+
+<P ALIGN="JUSTIFY">KQML tamb&eacute;m possui um conjunto de par&acirc;metros chaves reservados, sendo &uacute;til para estabelecer graus de uniformidade dos par&acirc;metros e suporte para que programas entendam performativas desconhecidas mas com par&acirc;metros conhecidos. Os par&acirc;metros reservados e seus significados est&atilde;o demonstrados na tabela seguinte:</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=642>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<B><P ALIGN="JUSTIFY">Par&acirc;metro Chave</B></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<B><P ALIGN="JUSTIFY">Significado</B></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: content</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">A informa&ccedil;&atilde;o sobre qual performativa expressa uma atitude</TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: force</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Se o transmissor ir&aacute; sempre negar o significado da performativa</TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: in-reply-to</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">O r&oacute;tulo esperado em resposta</TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: language</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">o nome de uma linguagem contida no par&acirc;metro :<I>content</I></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: ontology</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">o nome da ontologia usado no par&acirc;metro : <I>content</I></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: receiver</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">o receptor atual da performativa</TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: reply-with</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">se o transmissor espera uma resposta, e se sim, um r&oacute;tulo para a resposta</TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<I><P ALIGN="JUSTIFY">: sender</I></TD>
+<TD WIDTH="78%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">o atual transmissor da performativa</TD>
+</TR>
+</TABLE>
+
+<P ALIGN="JUSTIFY">Abaixo est&atilde;o apresentados exemplos de algumas performativas.</P>
+<P ALIGN="JUSTIFY">A performativa tell indica que a senten&ccedil;a est&aacute; na base de conhecimento do transmissor.</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=2><P>tell</P>
+<P>: content &lt;express&atilde;o&gt;</P>
+<P>: language &lt;palavra&gt;</P>
+<P>: ontology &lt;palavra&gt;</P>
+<P>: in-reply-to &lt;express&atilde;o&gt;</P>
+<P>: force &lt;palavra&gt;</P>
+<P>: sender &lt;palavra&gt;</P>
+<P>: receiver &lt;palavra&gt;</P></DIR>
+</DIR>
+
+</FONT><P ALIGN="JUSTIFY">A perfomativa <I>reply</I> indica que o transmissor acredita que : <I>content</I> &eacute; uma resposta apropriada para a consulta na mensagem: <I>in-reply-to.</P><DIR>
+<DIR>
+
+</I><FONT FACE="Courier New" SIZE=2><P>reply</P>
+<P>: content &lt;express&atilde;o&gt;</P>
+<P>: language &lt;palavra&gt;</P>
+<P>: ontology &lt;palavra&gt;</P>
+<P>: in-reply-to &lt;express&atilde;o&gt;</P>
+<P>: force &lt;palavra&gt;</P>
+<P>: sender &lt;palavra&gt;</P>
+<P>: receiver &lt;palavra&gt;</P></DIR>
+</DIR>
+
+<OL>
+
+</FONT><FONT FACE="Courier New" SIZE=1><LI><A NAME="_Toc429222356"></FONT><B><FONT SIZE=4>Java KQML</A></LI>
+</B></FONT><P ALIGN="JUSTIFY">Existem v&aacute;rias implementa&ccedil;&otilde;es de KQML, mas em especial foi estudada a implementa&ccedil;&atilde;o da linguagem feita pela IBM, chamada de JKQML. JKQML &eacute; uma implementa&ccedil;&atilde;o de KQML em Java que suporta 22 das performativas propostas na especifica&ccedil;&atilde;o de KQML (a qual define 36 performativas) [JQK98]. </P>
+<P ALIGN="JUSTIFY">Abaixo est&atilde;o demonstradas os tipos de mensagens aceitas por JKQML:</P>
+<P ALIGN="JUSTIFY">1) Performativas discursivas: ask-if, ask-all, tell, insert, delete-one, advertise, unadvertise, subscribe </P>
+<P ALIGN="JUSTIFY">2) Performativas de interven&ccedil;&atilde;o: error, sorry, discard </P>
+<P ALIGN="JUSTIFY">3) Perfomativas de facilita&ccedil;&atilde;o e de rede: register, unregister, transport-address, forward, broker-one, broker-all, recommend-one, recommend-all, recruit-one, recruit-all reply.</P>
+<OL>
+
+<LI><A NAME="_Toc428859788"><A NAME="_Toc429222357"><B>Facilitador</A></A></LI>
+</B><P ALIGN="JUSTIFY">Num grupo de agentes que comunica-se utilizando JQKML h&aacute; a necessidade de existir um agente que viabilize a comunica&ccedil;&atilde;o, este agente &eacute; chamado facilitador. Sua principal fun&ccedil;&atilde;o &eacute; conhecer o endere&ccedil;o e o nome dos agentes da sociedade, passando esta informa&ccedil;&atilde;o aos demais de  modo que eles possam trocar mensagens usando apenas o nome do agente como refer&ecirc;ncia. Todos os agentes t&ecirc;m que saber o endere&ccedil;o f&iacute;sico do facilitator para se comunicar com outros agentes. O arquivo que indica o endere&ccedil;o f&iacute;sico do facilitator e os protocolos que s&atilde;o suportados &eacute; facilitator.properties. O arquivo &eacute; configurado e deve ser armazenado no diret&oacute;rio onde est&aacute; especificado a vari&aacute;vel de ambiente "<FONT FACE="Arial">jkqml.home</FONT>".</P>
+<P ALIGN="JUSTIFY">Dois tipos de facilitadores s&atilde;o suportados. Um &eacute; o ATPFacilitator o qual utiliza o ATP protocolo (agent transfer protocol) e &eacute; executado no ambiente dos aglets. E o outro &eacute; o KTP protocolo (KQML transfer protocol).</P>
+<LI><A NAME="_Toc429222358"><B>E</A>xperimento</LI></OL>
+</OL>
+
+</B><P ALIGN="JUSTIFY">Para estudar e exemplificar o uso da ferramenta JQML foi desenvolvido um sistema com dois agentes:</P>
+<OL TYPE="i">
+
+<OL TYPE="i">
+
+<P ALIGN="JUSTIFY"><LI>Agente F&aacute;brica: espera pedidos de cota&ccedil;&atilde;o de pre&ccedil;o de um produto e envia a resposta.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Agente Pedido: faz um &uacute;nico pedido de cota&ccedil;&atilde;o &agrave; f&aacute;brica.</LI></P></OL>
+</OL>
+
+<P ALIGN="JUSTIFY">Na experimenta&ccedil;&atilde;o, h&aacute; a seguinte troca de mensagens:</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=4 WIDTH=453>
+<TR><TD WIDTH="46%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Agente Pedido envia a seguinte mensagem</TD>
+<TD WIDTH="54%" VALIGN="TOP">
+<P>(<B>ask-one </B><BR>
+:sender loja1 <BR>
+:receiver fabrica <BR>
+:reply-with id1 <BR>
+:language LISP <BR>
+:ontology logisticaMateriais <BR>
+:content (cotacao p1))</TD>
+</TR>
+<TR><TD WIDTH="46%" VALIGN="TOP">
+<P ALIGN="JUSTIFY">Agente Fabrica manda a mensagem</TD>
+<TD WIDTH="54%" VALIGN="TOP">
+<P>(<B>tell</B> <BR>
+:sender fabrica <BR>
+:receiver loja1 <BR>
+:reply-with id2 <BR>
+:in-reply-to id1<BR>
+:language LISP <BR>
+:ontology logisticaMateriais <BR>
+:content (cotacao p1 10.00))</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<OL>
+<OL>
+<OL>
+
+<B><LI>Classe Agente</LI>
+</B><FONT FACE="Courier" SIZE=1 COLOR="#008000"><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><FONT FACE="Courier" SIZE=1><P>// Modelo de agente que usa KQML</P>
+<P>//</P>
+<P>// implementa os metodos</P>
+<P>//&#9;registra: registra o agente no facilitador e cria o gerente de mensagens KQML</P>
+<P>//&#9;termina: tira o registro no facilitador e para o gerente KQML</P>
+<P>//</P>
+<P>import com.ibm.acl.kqml.*;</P>
+<P>import com.ibm.acl.util.Syslog;</P>
+<P>import java.net.*;</P>
+<P>&nbsp;</P>
+<P>public class <B>Agente</B> {</P>
+<P>&nbsp;</P>
+<P>&#9;KQMLManager km;</P>
+<P>&#9;String      facilitator = "facilitator";</P>
+<P>&#9;String      meuNome;</P>
+<P>&#9;String      nroRegistro;</P>
+<P>&#9;String      localHost;</P>
+<P>&#9;int         porta;</P>
+<P>&#9;int         timeout = 10000;</P>
+<P>&nbsp;</P>
+<P>// Constructor</P>
+<P>public Agente(String agentName, int port) {</P>
+<P>&#9;this.meuNome = agentName;</P>
+<P>&#9;this.porta = port;</P>
+<P>&#9;try {</P>
+<P>&#9;&#9;StringBuffer buf = new StringBuffer("ktp://");</P>
+<P>&#9;&#9;InetAddress home = InetAddress.getLocalHost();</P>
+<P>&#9;&#9;buf.append(home.getHostName() + ":");</P>
+<P>&#9;&#9;buf.append(Integer.toString(port));</P>
+<P>&#9;&#9;localHost = new String(buf.toString());</P>
+<P>&#9;&#9;// cria o KQMLManager usando protocolo ktp</P>
+<P>&#9;&#9;km = new KQMLManager(meuNome, "ktp", porta);</P>
+<P>&#9;&#9;registra();</P>
+<P>&#9;} catch (Exception e) {</P>
+<P>&#9;&#9;System.err.println("Erro na criacao do agente!");</P>
+<P>&#9;&#9;System.exit(1);</P>
+<P>}&#9;}</P>
+<P>&nbsp;</P>
+<B><P>void registra() {</P>
+</B><P>&#9;// cria a mensagem KQML de registro</P>
+<P>&#9;KQML registro = new KQML();</P>
+<P>&#9;registro.setPerformative(KQML.REGISTER);</P>
+<P>&#9;registro.setSender(localHost);</P>
+<P>&#9;registro.setReceiver(facilitator);</P>
+<P>&#9;registro.setRW(km.getInitialID());</P>
+<P>&#9;registro.setLanguage("anACL");</P>
+<P>&#9;registro.setOntology("whitepages");</P>
+<P>&#9;registro.setContent("(:name " + meuNome + " :url " + localHost + ")");</P>
+<P>&nbsp;</P>
+<P>&#9;Conversation conv = null; &#9;// manda a mensagem</P>
+<P>&#9;try {</P>
+<P>&#9;&#9;imprime(registro.toString());</P>
+<P>&#9;&#9;conv = km.sendMessage(registro);</P>
+<P>&#9;&#9;nroRegistro = (String) conv.waitAndGetResponse(timeout);  // espera a resposta</P>
+<P>&#9;&#9;imprime("Registro ok. Nro &eacute; " + nroRegistro);</P>
+<P>&#9;} catch (Exception ex) {</P>
+<P>&#9;&#9;System.err.println("Registro falhou!");</P>
+<P>&#9;&#9;System.exit(1);</P>
+<P>}&#9;}</P>
+<P>&nbsp;</P>
+<B><P>public void termina() {</P>
+</B><P>    // tira o registro no facilitador</P>
+<P>    KQML unregister = new KQML();</P>
+<P>    unregister.setPerformative(KQML.UNREGISTER);</P>
+<P>    unregister.setSender(localHost);</P>
+<P>    unregister.setReceiver(facilitator);</P>
+<P>    unregister.setRW(km.getInitialID());</P>
+<P>    unregister.setLanguage("anACL");</P>
+<P>    unregister.setOntology("whitepages");</P>
+<P>    unregister.setContent("(:name "+meuNome+&#9;" :registration_number "+nroRegistro+")");</P>
+<P>&nbsp;</P>
+<P>    Conversation conv = null;</P>
+<P>    try {</P>
+<P>    &#9;&#9;imprime(unregister.toString());</P>
+<P>&#9;&#9;conv = km.sendMessage(unregister);</P>
+<P>&#9;&#9;String result = (String) conv.waitAndGetResponse(timeout);</P>
+<P>&#9;&#9;imprime("Retorno tirando registro: " + result);</P>
+<P>    } catch (Exception ex) {</P>
+<P>&#9;&#9;System.err.println("unregister failed, exit.");</P>
+<P>&#9;&#9;System.exit(1);</P>
+<P>    }</P>
+<P>    km.stop(timeout); // termina o gerenciador de mensagens</P>
+<P>}}</P>
+</FONT><B><LI>Classe AgenteFabrica</LI>
+</B><FONT FACE="Courier" SIZE=1><P>// Agente F&aacute;brica</P>
+<P>//</P>
+<P>//&#9;espera mensagens (ASK ONE) pedindo cotacao de um produto, e responde a cotacao (TELL)</P>
+<P>//</P>
+<P>import com.ibm.acl.kqml.*;</P>
+<P>import com.ibm.acl.kqml.contentinterpreter.*;</P>
+<P>import com.ibm.acl.util.Syslog;</P>
+<P>import java.net.*;</P>
+<P>&nbsp;</P>
+<P>public&#9;class <B>AgenteFabrica </P>
+</B><P>&#9;&#9;extends Agente </P>
+<P>&#9;&#9;implements ContentInterpreter {</P>
+<P>&nbsp;</P>
+<P>// Constructor</P>
+<P>public AgenteFabrica(String agentName, int port) {</P>
+<P>    super(agentName, port);</P>
+<P>    km.addContentInterpreter("LISP", "logisticaMateriais", this);</P>
+<P>}</P>
+<P>&nbsp;</P>
+<P>public ResponseSet doInterpret(Conversation conversation, KQML msg) </P>
+<P>    throws ContentException, PerformativeHandlerNotFoundException {</P>
+<P>&#9;// Medodo que interpreta as mensagens vindas para o agente</P>
+<P>&#9;imprime("Recebeu "+msg);</P>
+<P>&nbsp;</P>
+<P>&#9;String performative = msg.getPerformative();</P>
+<P>&#9;if (performative.equalsIgnoreCase(KQML.ASK_ONE)) {</P>
+<P>&#9;&#9;try&#9;{</P>
+<P>&#9;&#9;&#9;KQML r = new KQML(); // response message </P>
+<P>&#9;&#9;&#9;r.setSender(msg.getReceiver());</P>
+<P>&#9;&#9;&#9;r.setReceiver(msg.getSender());</P>
+<P>&#9;&#9;&#9;r.setIRT(msg.getRW());</P>
+<P>&#9;&#9;&#9;r.setRW(km.getInitialID());</P>
+<P>&#9;&#9;&#9;r.setLanguage(msg.getLanguage());</P>
+<P>&#9;&#9;&#9;r.setOntology(msg.getOntology());</P>
+<P>&nbsp;</P>
+<P>&#9;&#9;&#9;String content = (String) msg.getContent();</P>
+<P>&#9;&#9;&#9;imprime("Conteudo="+content);</P>
+<P>&#9;&#9;&#9;if (content.startsWith("(cotacao")) {</P>
+<P>&#9;&#9;&#9;&#9;String produto = content.substring(9,content.length()-1);</P>
+<P>&#9;&#9;&#9;&#9;r.setPerformative(KQML.TELL);</P>
+<P>&#9;&#9;&#9;&#9;r.setContent("(cotacao "+produto+" 10.00)");</P>
+<P>&#9;&#9;&#9;} else {</P>
+<P>&#9;&#9;&#9;&#9;r.setPerformative(KQML.SORRY);</P>
+<P>&#9;&#9;&#9;&#9;r.setContent("metodo nao conhecido!");</P>
+<P>&#9;&#9;&#9;}</P>
+<P>&#9;&#9;&#9;imprime("Respondendo "+r);</P>
+<P> &#9;&#9;      ResponseSet resposta = new ResponseSet();</P>
+<P>&#9;&#9;&#9;resposta.addElement(r);</P>
+<P>&#9;&#9;&#9;return resposta;</P>
+<P>&#9;&#9;} catch (Exception e)</P>
+<P>&#9;&#9;&#9;throw new ContentException("Um erro qquer");</P>
+<P>&#9;} else</P>
+<P>&#9;  throw new PerformativeHandlerNotFoundException("Sem manipulador para esta performativa.");</P>
+<P>}</P>
+<P>&nbsp;</P>
+<P>public static void main(String[] args) {</P>
+<P>    int porta = 8003;</P>
+<P>    if (args.length == 1) {</P>
+<P>&#9;porta = Integer.parseInt(args[0]);</P>
+<P>    } </P>
+<P>    AgenteFabrica ag = new AgenteFabrica("fabrica", porta);</P>
+<P>}}</P>
+</FONT><B><LI>Classe AgentePedido</LI>
+</B><FONT FACE="Courier" SIZE=1><P>// Agente Pedido</P>
+<P>//</P>
+<P>//  manda um pedido de cotacao para o fabrica</P>
+<P>//</P>
+<P>import com.ibm.acl.kqml.*;</P>
+<P>import com.ibm.acl.kqml.contentinterpreter.*;</P>
+<P>import com.ibm.acl.util.Syslog;</P>
+<P>import java.net.*;</P>
+<P>&nbsp;</P>
+<P>public class </FONT><B><FONT FACE="Courier" SIZE=1>AgentePedido</B></FONT><FONT FACE="Courier" SIZE=1> </P>
+<P>&#9;&#9;&#9;extends Agente </P>
+<P>&#9;&#9;&#9;implements ContentInterpreter {</P>
+<P>&#9;private String fabrica = "fabrica";</P>
+<P>&nbsp;</P>
+<P>// Constructor</P>
+<P>public AgentePedido(String agentName, int port) {</P>
+<P>    super(agentName, port);</P>
+<P>    km.addContentInterpreter("LISP", "logisticaMateriais", this);</P>
+<P>}</P>
+<P>&nbsp;</P>
+<P>public ResponseSet doInterpret(Conversation conversation, KQML msg) </P>
+<P>    throws ContentException, PerformativeHandlerNotFoundException {</P>
+<P>&nbsp;</P>
+<P>&#9;imprime("Recebeu "+msg);</P>
+<P>&#9;String performative = msg.getPerformative();</P>
+<P>&#9;if (performative.equalsIgnoreCase(KQML.TELL)) {</P>
+<P>&#9;&#9;String content = (String) msg.getContent();</P>
+<P>&#9;&#9;String valor = "-1";</P>
+<P>&#9;&#9;String produto = "";</P>
+<P>&#9;&#9;imprime("Conteudo="+content);</P>
+<P>&#9;&#9;if (content.startsWith("(cotacao")) {</P>
+<P>&#9;&#9;&#9;int posEspaco = content.lastIndexOf(" ");</P>
+<P>&#9;&#9;&#9;produto = content.substring(9,posEspaco);</P>
+<P>&#9;&#9;&#9;valor = content.substring(posEspaco+1,&#9; content.length()-1);</P>
+<P>&#9;&#9;&#9;imprime("Recebeu "+produto+"="+valor);</P>
+<P>&#9;&#9;&#9;conversation.setResponse(valor);</P>
+<P>&#9;&#9; &#9;return null;</P>
+<P>&#9;&#9;} else throw new ContentException("Recebido TELL que nao era esperado");</P>
+<P>&#9;} else</P>
+<P> &#9;  throw new PerformativeHandlerNotFoundException("Sem manipulador para esta performativa.");</P>
+<P>}    </P>
+<P>&nbsp;</P>
+<B><P>void cotacao(String prod) {</P>
+</B><P>    KQML cotacao = new KQML();</P>
+<P>    cotacao.setPerformative(KQML.ASK_ONE);</P>
+<P>    cotacao.setSender(meuNome);</P>
+<P>    cotacao.setReceiver(fabrica);</P>
+<P>    cotacao.setRW(km.getInitialID());</P>
+<P>    cotacao.setLanguage("LISP");</P>
+<P>    cotacao.setOntology("logisticaMateriais");</P>
+<P>    cotacao.setContent("(cotacao "+prod+")");</P>
+<P>    </P>
+<P>    imprime(cotacao.toString());</P>
+<P>    Conversation conv = null;</P>
+<P>    try {</P>
+<P>&#9;&#9;conv = km.sendMessage(cotacao);</P>
+<P>&#9;&#9;String result = (String) conv.waitAndGetResponse(timeout);</P>
+<P>&#9;&#9;imprime("Resultado da cotacao de "+prod+" = "+result);</P>
+<P>    } catch (Exception ex) {</P>
+<P> &#9;System.err.println("Erro no envio/recebimento da cotacao!");</P>
+<P>      termina();</P>
+<P>      System.exit(1);</P>
+<P>}   }</P>
+<P>&nbsp;</P>
+<P>public static void main(String[] args) {</P>
+<P>    int porta = 8002;</P>
+<P>    if (args.length == 1)</P>
+<P>&#9;porta = Integer.parseInt(args[0]);</P>
+<P>AgentePedido ag = new AgentePedido("loja1", porta);</P>
+<P>    ag.cotacao("p1");</P>
+<P>    ag.termina();</P>
+<P>}}</P>
+</FONT><B><LI>Dump de execu&ccedil;&atilde;o</LI></OL>
+</OL>
+</OL>
+
+</B><P>Executar o facilitador:<BR>
+ &#9;java -Djkqml.home=h:/java/jkqml com.ibm.acl.facilitator.Facilitator</P>
+<P>Executar o agente f&aacute;brica:<BR>
+ &#9;java -Djkqml.home=h:/java/jkqml AgenteFabrica</P>
+<P><IMG SRC="Image4.gif" WIDTH=560 HEIGHT=328></P>
+<P>Executar o agente pedido:<BR>
+ &#9;java -Djkqml.home=h:/java/jkqml AgentePedido</P>
+<P><IMG SRC="Image5.gif" WIDTH=560 HEIGHT=329></P>
+<OL>
+
+<LI><A NAME="_Toc429222369"><B><FONT SIZE=4>Conclus&otilde;es</A></LI></OL>
+
+</B></FONT><P ALIGN="JUSTIFY">A linguagem KQML implementa as principais carater&iacute;sticas desej&aacute;veis em uma linguagem de comunica&ccedil;&atilde;o de agentes, no caso da implementa&ccedil;&atilde;o estudada (JKQML), apresenta as seguintes propriedades: </P>
+<OL TYPE="i">
+
+<P ALIGN="JUSTIFY"><LI>A implementa&ccedil;&atilde;o da linguagem deve fazer uma distin&ccedil;&atilde;o entre conceitos da linguagem de comunica&ccedil;&atilde;o que expressa atos de comunica&ccedil;&atilde;o e a linguagem para o qual &eacute; usada que expressa fatos sobre o dom&iacute;nio.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Linguagens de comunica&ccedil;&atilde;o entre agentes devem ser eficientes, devem ajustar-se bem a ampla variedade de sistemas existentes e devem prover a possibilidade de uma implementa&ccedil;&atilde;o parcial.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Uma linguagem de comunica&ccedil;&atilde;o entre agentes deve-se ajustar bem com a arquitetura da rede. A linguagem deve aceitar tipos diferentes de conex&otilde;es. </LI></P></OL>
+
+<OL>
+
+<LI><A NAME="_Toc429222370"><B><FONT SIZE=4>Bibliografia</A></A></LI></OL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><P ALIGN="JUSTIFY">[ALL87]&#9;ALLEN, J. F.. Speech Acts. In: Encyclopedia of AI Vol II. Shapiro et. al. (Ed.). New York, John Wiley &amp; Sons, 1987. </P>
+<P ALIGN="JUSTIFY">[COS94]&#9;COSTA, Ant&ocirc;nio Carlos da Rocha; H&Uuml;BNER, Jomi Fred; BORDINI, Rafael Heitor. <B>On Entering an Open Society.</B> In: XI Simp&oacute;sio Brasileiro de Intelig&ecirc;ncia Artificial. <I>Anais</I>... Fortaleza: SBC, p.&nbsp;535-546, 1994. </P>
+<P ALIGN="JUSTIFY">[FIN96]&#9;FININ, Tim. <B>UMBC KQML Web</B>. Lab for Advanced Information Technology, 1996. (http://www.cs.umbc.edu/kqml)</P>
+<P ALIGN="JUSTIFY">[H&Uuml;B95]&#9;H&Uuml;BNER, Jomi Fred. <B>Migra&ccedil;&atilde;o de Agentes em Sistemas Multi-Agentes Abertos</B>. Porto Alegre, II/UFRGS, 1994. 124p. (Disserta&ccedil;&atilde;o de Mestrado).</P>
+<P ALIGN="JUSTIFY">[JKQ98]&#9;IBM. Java KQML.<A HREF="http://www.alphaWorks.ibm.com/formula/jkqml">http://www.alphaWorks.ibm.com/formula/jkqml</A></P>
+<P ALIGN="JUSTIFY">[MAY96]&#9;MAYFIELD, James; LABROU, Yannis; FININ, Tim. <B>Evaluation of KQML as an Agent Communication Language</B>. In: ECAI&nbsp;95 Workshop on Agent Theories, Architectures &amp; Languages, aug. 95, Montreal, Canada. <I>Proceedings... </I>Berlin : Springer-Verlag , 1996.</P>
+<P ALIGN="JUSTIFY">[WOO94]&#9;WOOLDRIDGE, Michael J.; JENNIGS, Nicholas R. <B>Agent Theories, Architectures, and Languagees: A Survey</B>. In: <I>Proceedings of ECAI&nbsp;94 Workshop on Agent Theories, Architectures &amp; Languages</I>. Amesterdam The Netherlands, p. 1-32.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</BODY>
+</HTML>

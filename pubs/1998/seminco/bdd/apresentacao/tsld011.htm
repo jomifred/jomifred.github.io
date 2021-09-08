@@ -1,0 +1,52 @@
+
+<HTML>
+
+<HEAD>
+
+<meta name="GENERATOR" content="Microsoft Internet Assistant for PowerPoint 97">
+ <TITLE>JDBC</TITLE> 
+</HEAD>
+
+<BODY  BGCOLOR="#ffffff"  TEXT="#000000"  LINK="#6600ff"  VLINK="#cc3399" >
+
+ <H1>JDBC</H1> 
+ <P><UL>
+<LI><H2>API para acesso a BD relacional por meio de comandos SQL
+</H2>
+</UL><UL>
+<H2>
+</H2>
+</UL><UL>
+<H2>Class.forName (“oracle.jdbc.driver.OracleDriver”); 
+</H2>
+</UL><UL>
+<H2>Connection conn = DriverManager.getConnection
+</H2>
+</UL><UL>
+<H2>  ("jdbc:oracle:thin:@mariscal.inf.furb.rct-     sc.br:1521:ORAP", "scott", "tiger");
+</H2>
+<UL>
+Statement stmt = conn.createStatement ();
+<BR><BR>ResultSet rset = stmt.executeQuery 
+<BR>    ("select ENAME from EMP");
+</UL></UL><UL>
+<H2>while (rset.next ()){
+</H2>
+<UL>
+System.out.println (rset.getString (1));
+<BR><BR>}</UL></UL></P>
+<P></P> 
+<P>
+<TABLE>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld010.htm">Slide anterior</A> </TD>
+  <TD HEIGHT=100 WIDTH=100> <A HREF="tsld012.htm">Slide seguinte</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="tsld001.htm">Voltar para o primeiro slide</A> </TD>
+  <TD HEIGHT=100 WIDTH=150> <A HREF="sld011.htm">Exibir versão do elemento gráfico</A> </TD>
+</TABLE>
+<BR>
+</P>
+
+
+
+</Body>
+</HTML>

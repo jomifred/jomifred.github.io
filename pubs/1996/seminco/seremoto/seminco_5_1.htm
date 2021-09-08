@@ -1,0 +1,522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Implementa&ccedil;&atilde;o de um Sistema Especialista remoto na Web 
+</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; AIX 1) [Netscape]">
+</HEAD>
+<BODY TEXT="#000040" BGCOLOR="#C0C0C0" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000" BACKGROUND="fundo.jpg">
+
+<UL>
+<H1 ALIGN=CENTER><B><FONT FACE="Times New Roman">Implementa&ccedil;&atilde;o
+de um Sistema Especialista remoto na Web utilizando Java </FONT></B><BR>
+</H1>
+
+<DIV ALIGN=right><P><FONT FACE="Times New Roman">Alexandre Leopoldo Gon&ccedil;alves<BR>
+Jomi Fred H&uuml;bner</FONT> </P></DIV>
+
+<CENTER><P><B><FONT FACE="Times New Roman"><FONT SIZE=+1>Resumo</FONT></FONT></B>
+</P></CENTER>
+
+<CENTER><P><FONT FACE="Times New Roman">O artigo faz uma breve introdu&ccedil;&atilde;o
+a Sistemas Especialistas (SEs), relata alguns de seus problemas e limita&ccedil;&otilde;es
+sugerindo um prot&oacute;tipo distribu&iacute;do utilizando a Internet.
+O prot&oacute;tipo visa implementar um SE dividido em tr&ecirc;s partes:
+um servidor que aceita requisi&ccedil;&otilde;es de usu&aacute;rios distribu&iacute;dos
+geograficamente, resolvendo tais requisi&ccedil;&otilde;es devolvendo uma
+resposta, a interconex&atilde;o entre cliente/servidor utilizando redes
+TCP/IP com o conceito de <I>sockets</I> e, por &uacute;ltimo, o lado do
+cliente que efetua consultas por meio de uma interface conhecida, a WWW.</FONT>
+</P></CENTER>
+
+<CENTER><P><FONT FACE="Times New Roman">Palavras-chave: Sistema Especialista
+Distribu&iacute;do, Internet, Cliente/Servidor, Sockets, Aplica&ccedil;&atilde;o
+Java</FONT> </P></CENTER>
+
+<CENTER><P><B><FONT FACE="Times New Roman"><FONT SIZE=+1>Abstract</FONT></FONT></B>
+</P></CENTER>
+
+<CENTER><P><FONT FACE="Times New Roman">The article introduces Expert Systems
+(ES), it is showed the problems and limitations of those systems and, also,
+it is suggested a distributed prototype based on Internet. The prototype
+aim to implement an ES divided in three parts: a server that receive requisitions
+of geographic distributed users and solve this requisitions sending an
+answer, the interconection between client/server using TCP/IP networks
+with sockets concepts and at last the client side that realize consultation
+with known interface, the WWW.</FONT></P></CENTER>
+
+<H1><FONT FACE="Times New Roman"><FONT SIZE=+1>1. Introdu&ccedil;&atilde;o</FONT></FONT>
+</H1>
+
+<P><FONT FACE="Times New Roman">Intelig&ecirc;ncia Artificial (IA) &eacute;
+um campo de estudos que busca o desenvolvimento de sistemas inteligentes.
+Um sistema inteligente &eacute; aquele capaz de resolver problemas, que,
+quando resolvidos por humanos, exigem um comportamento dito inteligente
+[HAR 88]. </FONT></P>
+
+<P><FONT FACE="Times New Roman">Para tornar poss&iacute;vel a tarefa de
+resolver problemas de maneira inteligente, os pesquisadores de IA desenvolveram
+sistemas que utilizam muito conhecimento sobre alguma &aacute;rea espec&iacute;fica.
+Estes sistemas s&atilde;o chamados de Sistemas Especialistas (SEs) e representam
+um ramo da IA aplicada que ocupa-se em desenvolver programas que usem o
+conhecimento simb&oacute;lico para simular o comportamento de especialistas
+humanos [HAR 88].</FONT> </P>
+
+<P><FONT FACE="Times New Roman">O professor Edward Feigenbaum, da Universidade
+de Stanford, um dos principais pesquisadores em sistemas especialistas,
+definiu um SE como:</FONT> </P>
+
+<P><I><FONT FACE="Times New Roman">&quot;...um programa inteligente de
+computador que usa conhecimento e procedimentos inferenciais, para resolver
+problemas que s&atilde;o bastante dif&iacute;ceis de forma a requererem,
+para sua solu&ccedil;&atilde;o, muita per&iacute;cia humana. O conhecimento
+necess&aacute;rio para atuar a esse n&iacute;vel, mais os procedimentos
+inferenciais empregados, pode considerar-se um modelo da per&iacute;cia
+aos melhores profissionais do ramo.</FONT></I> </P>
+
+<P><FONT FACE="Times New Roman"><I>O conhecimento de um sistema especialista
+consiste em fatos e heur&iacute;sticas. Os fatos constituem um corpo de
+informa&ccedil;&atilde;o que &eacute; largamente compartilhado, publicamente
+dispon&iacute;vel e geralmente aceito pelos especialistas em um campo.
+As heur&iacute;sticas s&atilde;o em sua maioria privadas, regras pouco
+discutidas de bom discernimento (regras do racioc&iacute;nio plaus&iacute;vel,
+regras de boa conjectura), que caracterizam a tomada de decis&atilde;o
+a n&iacute;vel de especialista na &aacute;rea. O n&iacute;vel de desempenho
+de um sistema especialista &eacute; fun&ccedil;&atilde;o principalmente
+do tamanho e da qualidade do banco de conhecimento que possui</I> [HAR
+88]&quot;.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">Faigenbaum chama os que constr&oacute;em
+Sistemas Especialistas baseados no conhecimento de &quot;engenheiros do
+conhecimento&quot; e refere-se &agrave; sua tecnologia como &quot;engenharia
+do conhecimento&quot;.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">Contudo, os SEs possuem certas limita&ccedil;&otilde;es
+ou enfrentam problemas tais como:</FONT> </P>
+
+<UL>
+<LI><FONT FACE="Times New Roman"><B>Fragilidade</B>: como os SEs possuem
+conhecimentos altamente espec&iacute;fico a respeito de um determinado
+dom&iacute;nio, estes n&atilde;o podem contar com conhecimentos mais gen&eacute;ricos
+quando surge uma necessidade;</FONT> </LI>
+
+<LI><FONT FACE="Times New Roman"><B>Falta de Metaconhecimento</B>: os SEs
+n&atilde;o tem conhecimento muito sofisticado ou tem dificuldade de raciocinar
+sobre seu pr&oacute;prio escopo e restri&ccedil;&otilde;es;</FONT> </LI>
+
+<LI><FONT FACE="Times New Roman"><B>Aquisi&ccedil;&atilde;o de Conhecimento</B>:
+mesmo com o desenvolvimento de ferramentas a aquisi&ccedil;&atilde;o de
+conhecimento continua sendo um grande problema uma vez que transferir o
+conhecimento de um especialista humano para o computador nem sempre &eacute;
+tarefa f&aacute;cil.</FONT> </LI>
+
+<LI><FONT FACE="Times New Roman"><B>Valida&ccedil;&atilde;o</B>: fazer
+uma valida&ccedil;&atilde;o ou medir o conhecimento de um SE torna-se dif&iacute;cil,
+pois &eacute; dif&iacute;cil quantificar o uso do conhecimento;</FONT>
+</LI>
+
+<LI><FONT FACE="Times New Roman"><B>Distribui&ccedil;&atilde;o de Usu&aacute;rios</B>:
+na maioria dos SEs o usu&aacute;rio est&aacute; muito ligado ao sistema
+n&atilde;o podendo utiliz&aacute;-lo em qualquer lugar ou sua atualiza&ccedil;&atilde;o
+n&atilde;o &eacute; din&acirc;mica;</FONT> </LI>
+
+<LI><FONT FACE="Times New Roman"><B>Interfaces Complicadas</B>: as interfaces
+s&atilde;o dirigidas ao problema (geralmente sem padr&atilde;o), dif&iacute;ceis
+de operar tornando-se complicadas para o usu&aacute;rio.</FONT> </LI>
+</UL>
+
+<P><FONT FACE="Times New Roman">As t&eacute;cnicas de IA permitem a constru&ccedil;&atilde;o
+de SEs onde cada parte representa uma etapa altamente independente e identific&aacute;vel
+em dire&ccedil;&atilde;o &agrave; solu&ccedil;&atilde;o de um problema
+ou de um conjunto de problemas [LEV 88].</FONT> </P>
+
+<P><FONT FACE="Times New Roman">Este trabalho tem por objetivo o desenvolvimento
+de um prot&oacute;tipo de SE Distribu&iacute;do tornando poss&iacute;vel
+que usu&aacute;rios independente de sua localiza&ccedil;&atilde;o tenham
+acesso a conhecimento especialista sobre determinado problema por meio
+de uma interface padronizada e bastante conhecida.</FONT> </P>
+
+<H1><FONT FACE="Times New Roman"><FONT SIZE=+1>2. T&eacute;cnicas de Comunica&ccedil;&atilde;o
+de Processos Distribu&iacute;dos</FONT></FONT> </H1>
+
+<P><FONT FACE="Times New Roman">Os SEs promovem ampla utiliza&ccedil;&atilde;o
+em aplica&ccedil;&otilde;es pr&aacute;ticas (aux&iacute;lio na resolu&ccedil;&atilde;o
+de problemas de otimiza&ccedil;&atilde;o industrial, sistemas gerenciais,
+sistemas financeiros etc.). Contudo deve-se procurar n&atilde;o s&oacute;
+por necessidade mas tamb&eacute;m por quest&otilde;es de agilidade a redu&ccedil;&atilde;o
+de custos e tempos visando distribuir o conhecimento. Para tal &eacute;
+preciso levar em conta algumas caracter&iacute;sticas que viabilizam a
+implementa&ccedil;&atilde;o desses sistemas. </FONT></P>
+
+<P><FONT FACE="Times New Roman">Primeiramente um ambiente nativamente distribu&iacute;do
+como a Internet que &eacute; baseado em uma interface padronizada e bastante
+conhecida como a <I>World Wide Web</I> (WWW), sendo esta a parte mais interessante
+da grande rede e uma importante fonte de aux&iacute;lio para pesquisadores
+ou simplesmente usu&aacute;rios que desejem acesso a determina informa&ccedil;&atilde;o.
+A <I>Web</I> est&aacute; baseada na <I>Hypertext Markup Language</I> (HTML),
+que &eacute; uma linguagem para confec&ccedil;&atilde;o de p&aacute;ginas
+e no <I>Hypertext Transfer Protocol</I> (HTTP) [LYN 93], que &eacute; um
+protocolo baseado no TCP/IP [GAS&nbsp;93] para acesso de informa&ccedil;&atilde;o
+entre <I>sites Web</I>. Tendo escrito uma p&aacute;gina HTML pode-se carregar
+o seu resultado utilizado os chamados b<I>rowsers</I>, programas que viabilizam
+a navega&ccedil;&atilde;o pela Internet bem como a carga de p&aacute;ginas
+HTML. </FONT><!--A WWW, nasceu na Su&iacute;&ccedil;a, no in&iacute;cio desta d&eacute;cada. L&aacute;, os pesquisadores do CERN, um laborat&oacute;rio de f&iacute;sica nuclear, come&ccedil;aram  a agrupar informa&ccedil;&otilde;es dispersas pela Internet em p&aacute;ginas que ligavam-se umas as outras atrav&eacute;s de links hipertexto. Esse sistema admite a presen&ccedil;a de sons, fotos e v&iacute;deo.--></P>
+
+<P><FONT FACE="Times New Roman">Em seguida pode-se considerar uma linguagem
+com propriedades distribu&iacute;das possibilitando guanhos no desenvolvimento
+de aplica&ccedil;&otilde;es levando-se em conta somente as caracter&iacute;sticas
+relevantes ao projeto de sistemas. A linguagem de programa&ccedil;&atilde;o
+Java &eacute; projetada para resolver v&aacute;rios problemas nas modernas
+pr&aacute;ticas de programa&ccedil;&atilde;o incorporando uma s&eacute;rie
+de objetos prontos, o que facilita a programa&ccedil;&atilde;o. Devido
+a sua arquitetura neutra, aplica&ccedil;&otilde;es em Java s&atilde;o ideais
+para ambientes como a Internet [SUN 95].</FONT> </P>
+
+<P><FONT FACE="Times New Roman">Java possui duas formas b&aacute;sicas
+de utiliza&ccedil;&atilde;o:</FONT> </P>
+
+<UL>
+<LI><FONT FACE="Times New Roman"><B>Applet</B>: s&atilde;o como programas,
+mas s&atilde;o executados por um <I>browser</I> tal como HotJava ou Netscape
+Navigator que interpretam o c&oacute;digo Java, ou seja, o c&oacute;digo
+bin&aacute;rio que esta sendo transportado pela rede. Para que isso seja
+poss&iacute;vel o documento HTML cont&eacute;m uma refer&ecirc;ncia a uma
+classe Java que encontra-se no servidor e ser&aacute; executada na m&aacute;quina
+cliente.</FONT> </LI>
+
+<LI><FONT FACE="Times New Roman"><B>Aplica&ccedil;&atilde;o</B>: difere
+de um Applet por possuir a fun&ccedil;&atilde;o <I>main</I>(). A aplica&ccedil;&atilde;o
+executa como qualquer outro programa tradicional podendo estar na m&aacute;quina
+servidora ou em uma m&aacute;quina <I>stand-alone</I>.</FONT> </LI>
+</UL>
+
+<P><FONT FACE="Times New Roman">E por &uacute;ltimo deve-se considerar
+o meio de conex&atilde;o entre o cliente e o servidor. Para que isso seja
+poss&iacute;vel &eacute; necess&aacute;rio a implementa&ccedil;&atilde;o
+de <I>sockets</I> em redes TCP/IP (como a Intenet). <I>Sockets</I> s&atilde;o
+um meio de comunica&ccedil;&atilde;o de alto n&iacute;vel entre aplicac&otilde;es
+executando em uma rede (conex&atilde;o entre programas clientes e programas
+servidores) baseados em um protocolo comum para que haja a conex&atilde;o
+[SUN 95]. Na linguagem Java devem ser definidas as classes <I>Sockets</I>
+tanto no lado do servidor quanto no lado do cliente visando efetuar as
+conex&otilde;es e trocas de mensagens. No lado do servidor s&atilde;o definidas
+as propriedades de conex&atilde;o e gerenciamento de requisi&ccedil;&otilde;es,
+por exemplo, o seguinte trecho de programa</FONT> </P>
+
+<UL>
+<DT><FONT FACE="Times New Roman">try {</FONT> </DT>
+
+<DT><B><FONT FACE="Times New Roman">serverSocket = new ServerSocket(10000);</FONT></B>
+</DT>
+
+<DT><FONT FACE="Times New Roman">} catch (IOException e) {</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">System.out.println(&quot;N&atilde;o &eacute;
+poss&iacute;vel escutar a porta: &quot; + 10000 + &quot;, &quot; + e);</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">System.exit(1);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">}</FONT> </DT>
+</UL>
+
+<P><FONT FACE="Times New Roman">cria um objeto &quot;serverSocket&quot;
+que recebe o n&uacute;mero de uma porta que este deve ficar escutando.
+Se o servidor consegue conectar-se a porta com sucesso, este fica pronto
+para aceitar conex&otilde;es de clientes. Ap&oacute;s isso cria-se os objetos
+de recebimento e envio de mensagens.</FONT> </P>
+
+<UL>
+<DT><FONT FACE="Times New Roman">Socket clientSocket = null;</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">try {</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">clientSocket = serverSocket.accept();</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">} catch (IOException e) {</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">System.out.println(&quot;Falha na tentativa
+de conex&atilde;o: &quot; + 10000 + &quot;, &quot; + e);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">System.exit(1);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">}</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">DataInputStream entrada = new DataInputStream(</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">new BufferedInputStream(clientSocket.getInputStream()));</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">PrintStream saida = new PrintStream(</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">new BufferedOutputStream(clientSocket.getOutputStream(),
+1024), false);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">String inputLine, outputLine;</FONT> </DT>
+</UL>
+
+<P><FONT FACE="Times New Roman">Tendo efetuado a conex&atilde;o, o servidor
+fica esperando em <I>loop</I> por requisi&ccedil;&otilde;es de clientes
+at&eacute; que seja finalizada a conex&atilde;o.</FONT> </P>
+
+<UL>
+<DT><FONT FACE="Times New Roman">while ((inputLine = entrada.readLine())
+!= null) {</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">outputLine = kkp.processInput(inputLine);</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">saida.println(outputLine);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">saida.flush();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">if (outputLine.equals(&quot;fim&quot;))
+break;</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">}</FONT> </DT>
+</UL>
+
+<P><FONT FACE="Times New Roman">O <I>loop</I> l&ecirc; as entradas do <I>socket</I>
+(pelo comando &quot;readLine()&quot;) que s&atilde;o recebidas pelo objeto
+&quot;entrada&quot; onde este cont&eacute;m o conte&uacute;do da <I>string</I>
+do <I>socket</I>. O objeto &quot;kkp&quot; processa as entradas devolvendo
+uma resposta que ser&aacute; mostrada pelo objeto &quot;saida&quot;. O
+programa termina quando &eacute; encontrada a palavra &quot;fim&quot;,
+o que provoca o fechamento de todas as entradas, sa&iacute;das, o <I>socket</I>
+cliente e o <I>socket</I> servidor.</FONT> </P>
+
+<UL>
+<DT><FONT FACE="Times New Roman">os.close();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">is.close();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">clientSocket.close();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">serverSocket.close();</FONT> </DT>
+</UL>
+
+<P><FONT FACE="Times New Roman">Do outro lado, cria-se um objeto para que
+o cliente possa conversar com o servidor. Contudo para isso ser poss&iacute;vel,
+o servidor tem que estar ativo, ou seja, j&aacute; deve estar executando
+na porta especificada esperando por uma requisi&ccedil;&atilde;o de conex&atilde;o
+do cliente, por exemplo, o seguinte trecho de programa cria um objeto &quot;kkSocket&quot;,
+um objeto de recebimento e um de envio de mensagens para que seja realiza
+uma conex&atilde;o.</FONT> </P>
+
+<UL>
+<DT><B><FONT FACE="Times New Roman">Socket kkSocket = new Socket(&quot;camboriu&quot;,
+10000);</FONT></B> </DT>
+
+<DT><FONT FACE="Times New Roman">PrintStream saida = new PrintStream(kkSocket.getOutputStream());</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">DataInputStream entrada = new DataInputStream(kkSocket.getInputStream());</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">StringBuffer buf = new StringBuffer(50);
+</FONT></DT>
+</UL>
+
+<P><FONT FACE="Times New Roman">O programa cliente fica recebendo todas
+as mensagens vindas do servidor contidas no objeto &quot;entrada&quot;.
+Caso o cliente necessite fazer novas consultas &eacute; enviada ao servidor
+as op&ccedil;&otilde;es desejadas anexadas ao <I>socket</I> pelo objeto
+&quot;saida&quot;.</FONT> </P>
+
+<UL>
+<DT><FONT FACE="Times New Roman">while ((fromServer = entrada.readLine())
+!= null) {</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">if (fromServer.equals(&quot;fim&quot;))
+break;</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">while ((c = System.in.read()) != '\n')
+{</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">buf.append((char)c);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">}</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">saida.println(buf.toString());</FONT>
+</DT>
+
+<DT><FONT FACE="Times New Roman">saida.flush();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">buf.setLength(0);</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">}</FONT> </DT>
+</UL>
+
+<P><FONT FACE="Times New Roman">A comunica&ccedil;&atilde;o termina quando
+&eacute; encontrado a palavra &quot;fim&quot; provocando a desconex&atilde;o
+do programa cliente e o fechamento de todas as entradas, sa&iacute;das
+e o <I>socket</I>.</FONT> </P>
+
+<UL>
+<DT><FONT FACE="Times New Roman">saida.close();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">entrada.close();</FONT> </DT>
+
+<DT><FONT FACE="Times New Roman">kkSocket.close();</FONT> </DT>
+</UL>
+
+<H1><FONT FACE="Times New Roman"><FONT SIZE=+1>3. Proposta de Sistema Especialista
+Distribu&iacute;do</FONT></FONT></H1>
+
+<P><FONT FACE="Times New Roman">Esta proposta visa apresentar um modelo
+de SE Distribu&iacute;do possiblitando que usu&aacute;rios fa&ccedil;am
+consultas de qualquer parte do mundo atrav&eacute;s da Internet. A figura
+1 apresenta um diagrama da jun&ccedil;&atilde;o de tecnol&oacute;gias utililizadas
+na resolu&ccedil;&atilde;o do problema de distribui&ccedil;&atilde;o de
+um SE.</FONT> </P>
+
+<CENTER><P><IMG SRC="img00002.gif" HEIGHT=202 WIDTH=418> </P></CENTER>
+
+<CENTER><P><B><FONT SIZE=-1>Figura 1: Sistema Especialista Distribu&iacute;do.</FONT></B>
+</P></CENTER>
+
+<P><FONT FACE="Times New Roman">O modelo possui um servidor de conhecimento
+contendo as regras de infer&ecirc;ncias e fatos. Recebe requisi&ccedil;&otilde;es
+de clientes (usu&aacute;rios Web), realiza as inter&ecirc;ncias e envia
+uma mensagem contendo o resultado. Do outro lado ficam os usu&aacute;rios
+que efetuam consultas ao SE por meio da Internet utilizando-se de um <I>browser</I>
+capaz de interpretar o c&oacute;digo Java. Para que se torne poss&iacute;vel
+a comunica&ccedil;&atilde;o entre cliente e servidor utiliza-se o protocolo
+TCP/IP e o conceito de <I>socket</I> para criar um <I>link</I> entre o
+cliente e o servidor. O SE servidor executa permanentemente esperando requisi&ccedil;&otilde;es
+e quando o usu&aacute;rio deseja fazer consultas este chama o sistema pela
+Internet devendo efetuar a conex&atilde;o que &eacute; requisitada na p&aacute;gina
+Web. </FONT></P>
+
+<P><FONT FACE="Times New Roman">Outra alternativa de funcionamento seria
+implementar todo o SE como um Applet que executa somente no lado do cliente,
+por&eacute;m isto geraria muito tr&aacute;fego na rede.</FONT> </P>
+
+<H1><FONT FACE="Times New Roman"><FONT SIZE=+1>4. Estudo de Caso</FONT></FONT>
+</H1>
+
+<P><FONT FACE="Times New Roman">Para verificar a viabilidade de utiliza&ccedil;&atilde;o
+do modelo proposto implementou-se um SE de teste. O sistema permite que
+usu&aacute;rios fa&ccedil;am consultas para saber se o seguro aprova ou
+reprova determinado tipo de tratamento estando baseado em uma &aacute;rvore
+de decis&atilde;o simples descrita na figura 2.</FONT> </P>
+
+<CENTER><P><IMG SRC="img00003.gif" HEIGHT=340 WIDTH=344> </P></CENTER>
+
+<CENTER><P><B><FONT FACE="Times New Roman"><FONT SIZE=-1>Figura 2: &Aacute;rvore
+de decis&atilde;o do prot&oacute;tipo.</FONT></FONT></B> </P></CENTER>
+
+<P><FONT FACE="Times New Roman">A implementa&ccedil;&atilde;o constituiu-se
+em duas etapas: implementa&ccedil;&atilde;o do cliente e implementa&ccedil;&atilde;o
+do servidor.</FONT> </P>
+
+<UL>
+<LI><FONT FACE="Times New Roman"><B>Cliente</B>: baseado em um Applet (figura
+3) que l&ecirc; os campos para que o usu&aacute;rio fa&ccedil;a suas escolhas
+e envia os dados para a aplica&ccedil;&atilde;o servidora atrav&eacute;s
+do bot&atilde;o &quot;Atualiza&quot;. Para que um Applet possa ser carregado
+via rede &eacute; necess&aacute;rio que exista uma refer&ecirc;ncia embutida
+dentro da p&aacute;gina HTML &agrave; classe Java compilada, bem como um
+<I>browser</I> compat&iacute;vel com a linguagem. O prot&oacute;tipo pode
+ser acessado em http://furb.rct-sc.br/~alex/prototipo.html;</FONT> </LI>
+
+<UL>
+<LI><FONT FACE="Times New Roman"><B>Servidor</B>: constitui-se em uma aplica&ccedil;&atilde;o
+Java baseada na &aacute;rvore de decis&atilde;o da figura 2. A aplica&ccedil;&atilde;o
+&eacute; conectada a uma porta, no caso 10000, estando pronta para receber
+pedidos de conex&otilde;es e consultas. Feita a conex&atilde;o estabelece-se
+um link entre o cliente e o servidor onde o cliente faz as requisi&ccedil;&otilde;es
+e o servidor realiza as infer&ecirc;ncias devolvendo o resultado que &eacute;
+visualizada pelo cliente.</FONT> </LI>
+</UL>
+</UL>
+
+<CENTER><P><IMG SRC="img00004.gif" HEIGHT=500 WIDTH=312> </P></CENTER>
+
+<CENTER><P><B><FONT FACE="Times New Roman"><FONT SIZE=-1>Figura 3: Applet
+representado a entrada de dados do Sistema Especialista.</FONT></FONT></B>
+</P></CENTER>
+
+<P><B><FONT FACE="Times New Roman"><FONT SIZE=+1>5. Conclus&otilde;es</FONT></FONT></B>
+</P>
+
+<P><FONT FACE="Times New Roman">Este trabalho apresenta uma proposta para
+resolu&ccedil;&atilde;o do problema de SEs Distribu&iacute;dos na Internet
+por meio da integra&ccedil;&atilde;o de tr&ecirc;s tecnologias: WWW, Java
+e TCP/IP/<I>sockets</I>. O modelo foi verificado em um estudo de caso que
+mostrou a viabilidade da implementa&ccedil;&atilde;o desses sistemas uma
+vez que usu&aacute;rios, independente de sua localiza&ccedil;&atilde;o,
+tem a possibilidade de obter conhecimento especializado sobre um assunto
+por meio de uma interface padronizada e conhecida. </FONT></P>
+
+<P><FONT FACE="Times New Roman">Os SEs possuem certas limita&ccedil;&otilde;es
+havendo a necessidade de incorporar outras metodologias. Entre estas, podem-se
+citar a Intelig&ecirc;ncia Artificial Distribu&iacute;da (IAD) [DEM 90],
+[WEI 95], [GAS 88] que est&aacute; suportada na tecnologia de Agentes.
+Estes Agentes podem otimizar o processo de consulta e infer&ecirc;ncia
+a sistemas baseados em conhecimento a partir da coopera&ccedil;&atilde;o
+e distribu&iacute;&ccedil;&atilde;o de tarefas. Outra t&eacute;cnica que
+poderia ser utilizada para otimizar os SEs Distribu&iacute;dos seria a
+l&oacute;gica difusa [COX 94], [JEN 95] proporcionando a estes sistemas
+a capacidade de tratar dados imprecisos e qualitativos.</FONT></P>
+
+<P><FONT FACE="Times New Roman">Os SE bem como outras t&eacute;cnicas da
+IA promovem revolu&ccedil;&otilde;es nas &aacute;reas de conhecimento onde
+s&atilde;o implementadas. Tais t&eacute;cnicas j&aacute; se encontram aplicadas
+em sistemas industriais, engenharia de computadores, nos sistemas comerciais
+e na &aacute;rea militar. Contudo &eacute; preciso evoluir muito e a compreens&atilde;o
+de como o ser humano pensa torna-se cada vez mais necess&aacute;rio para
+conseguir-mos respostas adequadas as crescentes necessidades da sociedade.</FONT>
+</P>
+
+<H1><FONT FACE="Times New Roman"><FONT SIZE=+1>6. Bibliografia</FONT></FONT>
+</H1>
+
+<P><FONT FACE="Times New Roman">[HAR 88] HARMON, Paul ; KING, David. <B>Sistemas
+Especialistas.</B> Rio de Janeiro: Campus, 1988.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[GAS 93] GASPARINI, Anteu FabianoL. ; BARRELA,
+Francisco Eugenio. <B>TCP/IP Solu&ccedil;&atilde;o para conectividade.</B>
+1.ed. S&atilde;o Paulo: &Eacute;rica, 1993.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[LYN 93] LYNCH, Daniel C. ; ROSE, Marshall
+T. <B>Internet System Handbook.</B> [s.l.]: Addison-Wesley Publishing Company,
+1993.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[SUN 95] Sun Microsystems. <B>The Java
+Language : A White Paper.</B> [s.l.]: Sun Microsystems, 1995.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[LEV 88] LEVINE, Robert I. ; DRANG, Diane
+E. ; EDELSON, Barry. <B>Intelig&ecirc;ncia Artificial e Sistemas Especialistas.</B>
+S&atilde;o Paulo: McGraw-Hill, 1988.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[DEM 90] DEMAZEAU, Yves; M&Uuml;LLER, Jean-Pierre
+(Eds). <B>Decentralized Artificial Intelligence</B>. vls 1,2 e 3. North-Holland
+: Elsevier Science Publishers, 1990.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[WEI 95] WEISER, Mark. <B>Intelligent Agents
+on the Internet: Fact, Fiction, and Forecast.</B> <U>IEEE Expert</U>, V.10,
+No.4, p.44-49, 1995.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[GAS 88] GASSER, Les. <B>Distribution and
+Coordination of Tasks Among Intelligent Agents.</B> In: Proceeding of the
+JCAI'88. Scandinavian Conference on AI. Amsterdam, Springfield, 1988.</FONT>
+</P>
+
+<P><FONT FACE="Times New Roman">[COX 94] COX, Garl. <B>The Fuzzy Systems
+Handbook.</B> Massachusetts, Cambridge, :[s.l.], 1994.</FONT> </P>
+
+<P><FONT FACE="Times New Roman">[JEN 95] JENG, Bing Chiang and LIANG, Ting-Peng.
+<B>Fuzzy Indexing and Retrievel in Case-Based Systems.</B> <U>Expert Systems
+With Applications</U>, National SunYat-sen University, Taiwan, V.8, No.1,
+p.135-142, 1995.</FONT><BR>
+<BR>
+</P>
+</UL>
+
+</BODY>
+</HTML>
