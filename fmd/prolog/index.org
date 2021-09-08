@@ -1,0 +1,27 @@
+#+TITLE:    Lógica
+#+AUTHOR:   Jomi F. Hübner
+#+EMAIL:    jomi.hubner@ufsc.br
+#+DATE:     2017
+
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  pt
+#+OPTIONS: email:t H:2 toc:nil num:nil author:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://jomifred.github.io/ia/ia.css" />
+  
+* Material
+  - [[./logica.pdf][Slides Lógica]]
+  - [[./guiaRef.pdf][Guia de referência]]
+  - [[./prolog/slides-prolog.pdf][Slides Prolog]]
+
+* Exercícios
+  - [[./exercicio-Argumentos.pdf][Análise de argumentos]]
+  - [[./exercicio-LogProp.pdf][Lógica proposicional]]
+  - [[./exercicio-LogPred.pdf][Lógica de predicados]]
+  - [[./prolog/bichos.pdf][Prolog: bichos]]
+  - [[./prolog/familia.pdf][Prolog: genealogia]]
+  - [[./prolog/prolog-video-locadora.pdf][Prolog: vídeo locadora]]
+
+
+----

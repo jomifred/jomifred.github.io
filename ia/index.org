@@ -6,7 +6,7 @@
 #+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
 #+OPTIONS: toc:nil
 #+REVEAL_THEME: moon
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://jomi.das.ufsc.br/ia/ia.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://jomifred.github.io/ia/ia.css" />
 * Geral
   - Uma visão otimista da IA: [[./geral/seminco.pdf][slides]]
 * Busca
