@@ -64,14 +64,14 @@ Scholar]
 
 === Graduação (ECA)
 
-* http://jomi.das.ufsc.br/ia[Inteligência Artificial Aplicada a Automação e Controle]
-* http://jomi.das.ufsc.br/das5334[Introdução à Informática para Automação]
+* link:./ia[Inteligência Artificial Aplicada a Automação e Controle]
+* link:./das5334[Introdução à Informática para Automação]
 
 === Pós-graduação (PPGEAS)
 
-* http://jomi.das.ufsc.br/das6609[Fundamentos de Matemática Discreta para Controle e Automação]
-* http://jomi.das.ufsc.br/ia[Inteligência Artificial & Aprendizado de Máquina]
-* http://jomi.das.ufsc.br/mas[Sistemas Multiagentes]
+* link:./das6609[Fundamentos de Matemática Discreta para Controle e Automação]
+* link:./ia[Inteligência Artificial & Aprendizado de Máquina]
+* link:./mas[Sistemas Multiagentes]
 
 == Conferences
 
