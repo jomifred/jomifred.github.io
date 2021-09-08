@@ -1,0 +1,745 @@
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>lab-aprendizado</TITLE>
+<META NAME="description" CONTENT="lab-aprendizado">
+<META NAME="keywords" CONTENT="lab-aprendizado">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="http://www.das.ufsc.br/%7Ejomi/labs.css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+
+<table style="vertical-align; top; width: 100%;" border="0" cellspacing="0" cellpadding="0">
+<td>
+
+<P>
+<A NAME="tex2html1"
+  HREF="http://www.ufsc.br">Universidade Federal de Santa Catarina</A>
+
+<BR> <A NAME="tex2html2"
+  HREF="http://www.das.ufsc.br/das/graduacao"><B>Engenharia de Controle e Automa&#231;&#227;o</B></A>
+<BR>
+<A NAME="tex2html3"
+  HREF="http://www.das.ufsc.br/~jomi/das5341"><B>Intelig&#234;ncia Artificial Aplicada a Controle e Automa&#231;&#227;o</B> - DAS 5341</A>
+<BR><A NAME="tex2html4"
+  HREF="http://www.das.ufsc.br/~jomi">Professor: Jomi Fred H&#252;bner</A>
+<BR>
+<P>
+
+</td>
+<td style="text-align: right;">
+<a href="http://www.furb.br">
+<img
+style="border: 0px solid ; width: 123px; height: 76px;" alt="logo"
+src="http://www.ufsc.br/paginas/imgs/transparente.gif">
+</a>
+</td>
+</table>
+
+<P>
+
+<P>
+
+<h0>
+        Exerc&#237;cio em laborat&#243;rio:
+<BR>  <B>Aprendizado Supervisionado</B> 
+<BR>  - &#193;rvores de decis&#227;o e Redes Neurais -
+
+        
+        </h0>
+
+<P>
+
+<P>
+<BR>
+
+<H2><A NAME="SECTION00010000000000000000">
+Sum&aacute;rio</A>
+</H2>
+<!--Table of Contents-->
+
+<UL>
+<LI><A NAME="tex2html19"
+  HREF="lab-aprendizado.html#SECTION00020000000000000000">1 Aprendizado de árvores de decisão</A>
+<LI><A NAME="tex2html20"
+  HREF="lab-aprendizado.html#SECTION00030000000000000000">2 Redes Neurais</A>
+<UL>
+<LI><A NAME="tex2html21"
+  HREF="lab-aprendizado.html#SECTION00031000000000000000">2.1 Exemplo do XOR</A>
+<LI><A NAME="tex2html22"
+  HREF="lab-aprendizado.html#SECTION00032000000000000000">2.2 Exercícios</A>
+</UL><BR>
+<LI><A NAME="tex2html23"
+  HREF="lab-aprendizado.html#SECTION00040000000000000000">3 Comparação entre AD e RN</A>
+<LI><A NAME="tex2html24"
+  HREF="lab-aprendizado.html#SECTION00050000000000000000">Refer&ecirc;ncias Bibliogr&aacute;ficas</A>
+</UL>
+<!--End of Table of Contents-->
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">
+1 Aprendizado de &#225;rvores de decis&#227;o</A>
+</H1>
+
+<P>
+Para a realiza&#231;&#227;o deste laborat&#243;rio ser&#225; utilizado o software de Data Mining
+<A NAME="tex2html5"
+  HREF="http://www.cs.waikato.ac.nz/~ml/index.html">Weka</A>
+[<A
+ HREF="lab-aprendizado.html#witten:00">3</A>]. H&#225; uma <A NAME="tex2html6"
+  HREF="http://www.das.ufsc.br/~jomi/das5341/downloads">c&#243;pia
+  local</A>
+do Weka para
+download.
+
+<P>
+
+<OL>
+<LI>Digite um dos exemplos vistos em sala (escolha de uma linguagem
+  de programa&#231;&#227;o, por exemplo) no formato
+  <TT>arff</TT> do Weka. 
+
+<P>
+Exemplo do formato para a decis&#227;o de ir jogar t&#234;nis (exemplo do
+  cap&#237;tulo 3 do livro [<A
+ HREF="lab-aprendizado.html#mitchell:97">1</A>]):
+<PRE>
+@relation weather.symbolic
+
+@attribute outlook {sunny, overcast, rainy}
+@attribute temperature {hot, mild, cool}
+@attribute humidity {high, normal}
+@attribute windy {TRUE, FALSE}
+@attribute play {yes, no}
+
+@data
+sunny,hot,high,FALSE,no
+sunny,hot,high,TRUE,no
+overcast,hot,high,FALSE,yes
+rainy,mild,high,FALSE,yes
+rainy,cool,normal,FALSE,yes
+rainy,cool,normal,TRUE,no
+overcast,cool,normal,TRUE,yes
+sunny,mild,high,FALSE,no
+sunny,cool,normal,FALSE,yes
+rainy,mild,normal,FALSE,yes
+sunny,mild,normal,TRUE,yes
+overcast,mild,high,TRUE,yes
+overcast,hot,normal,FALSE,yes
+rainy,mild,high,TRUE,no
+</PRE>
+
+<P>
+</LI>
+<LI>Execute o Weka e escolha a op&#231;&#227;o ``Explorer''.
+
+<P>
+</LI>
+<LI>Abra o arquivo de dados (um dos tr&#234;s digitados) por meio do
+  bot&#227;o ``Open file...''.
+
+<P>
+</LI>
+<LI>Na aba ``Classify'', escolha o classificador ID3 e aperte no
+  bot&#227;o ``Start''. A &#225;rvore de decis&#227;o aparece em modo texto.
+
+<P>
+</LI>
+<LI>Escolha como classificador o J4.8 (uma variante do C4.5) e
+  novamente aperte no bot&#227;o "Start". No "result list", selecione o
+  j48, bot&#227;o direito e "visualize tree" para ver a &#225;rvore de
+  decis&#227;o.
+
+<P>
+Caso se deseje diminuir a poda na constru&#231;&#227;o da &#225;rvore, pode-se
+  setar os par&#226;metros "confidenceFactor = 1" e "minNumObj=1".
+
+<P>
+</LI>
+<LI>Repita estas opera&#231;&#245;es para os outros arquivos de exemplos, em
+  especial, para os exemplos da tabela abaixo (do cap&#237;tulo 18 do livro
+  [<A
+ HREF="lab-aprendizado.html#russell:03">2</A>]).<A NAME="e"></A>
+<P>
+<FONT SIZE="-1">  </FONT><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1">
+    Tem </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Tem &#225;rea </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Quinta </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Tem </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Lota&#231;&#227;o </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Pre&#231;o </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Est&#225; </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Tem </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Tempo </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Espera? </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1">Alternativa </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> espera </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1">  </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Fome </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Chovendo </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> Reserva </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1">  Espera </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1">
+    s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> pouca </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $$$ </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 0-10 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> cheia </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $$   </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 30-60 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> pouca </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $     </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 0-10 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> cheia </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $     </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 10-30 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> cheia </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $$$ </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> &gt;60 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> pouca </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $$   </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 0-10 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1">nenhuma</FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $     </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 0-10 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> pouca </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $$   </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 0-10 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> cheia </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $     </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> &gt; 60 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> cheia </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $$$ </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 10-30 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1">nenhuma</FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $     </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 0-10 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><FONT SIZE="-1"> 
+    s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> cheia </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> $     </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> n </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> 30-60 </FONT></TD>
+<TD ALIGN="CENTER"><FONT SIZE="-1"> s </FONT></TD>
+</TR>
+</TABLE>
+
+<P>
+</LI>
+<LI>Avalie o resultado do J4.8 para o arquivo
+  <A NAME="tex2html7"
+  HREF="http://www.das.ufsc.br/~jomi/das5341/downloads/titanic.arff">titanic.arff</A>,
+
+que contem as caracter&#237;sticas dos passageiros do Titanic e se
+  sobreviveram ou n&#227;o.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">
+2 Redes Neurais</A>
+</H1>
+
+<P>
+Para a constru&#231;&#227;o, treinamento e valida&#231;&#227;o da RN, ser&#225; utilizado o
+software Joone (<TT><A NAME="tex2html8"
+  HREF="http://www.jooneworld.com">http://www.jooneworld.com</A></TT>). Baixe e instale este
+programa, h&#225; uma <A NAME="tex2html9"
+  HREF="http://www.das.ufsc.br/~jomi/das5341/downloads">c&#243;pia local</A>.
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000">
+2.1 Exemplo do XOR</A>
+</H2>
+
+<P>
+Fa&#231;a o exemplo da RN que aprende o XOR seguindo os passos que est&#227;o no
+help do Joone (Help/Tutorial/How to Create a Simple Network).
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000">
+2.2 Exerc&#237;cios</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Fazer uma RN aprender os exemplos de decis&#227;o sobre escolha de uma linguagen de programa&#231;&#227;o para um projeto.
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">Comercial</TD>
+<TD ALIGN="CENTER">Distribu&#237;da</TD>
+<TD ALIGN="CENTER">Internet</TD>
+<TD ALIGN="CENTER">Matem&#225;tica</TD>
+<TD ALIGN="CENTER">Tempo Real</TD>
+<TD ALIGN="CENTER">Linguagem</TD>
+</TR>
+<TR><TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">Delphi</TD>
+</TR>
+<TR><TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">C++</TD>
+</TR>
+<TR><TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">Java</TD>
+</TR>
+<TR><TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">Java</TD>
+</TR>
+<TR><TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">C++</TD>
+</TR>
+<TR><TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">s</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">n</TD>
+<TD ALIGN="CENTER">Java</TD>
+</TR>
+</TABLE>
+
+<P>
+</LI>
+<LI>Fazer uma RN aprender os exemplos de decis&#227;o sobre esperar vaga
+  em um restaurante (visto acima na parte de &#225;rvores de decis&#227;o <A HREF="#e"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A>).
+
+<P>
+</LI>
+<LI>Fazer uma RN aprender os exemplos de concess&#227;o de empr&#233;stimo.
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">Idade</TD>
+<TD ALIGN="CENTER">Sexo</TD>
+<TD ALIGN="CENTER">Casa</TD>
+<TD ALIGN="CENTER">Carro</TD>
+<TD ALIGN="CENTER">Casado/a</TD>
+<TD ALIGN="CENTER">Nro. Filhos</TD>
+<TD ALIGN="RIGHT">Renda</TD>
+<TD ALIGN="CENTER">Resultado</TD>
+</TR>
+<TR><TD ALIGN="CENTER">18</TD>
+<TD ALIGN="CENTER">mas.</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="RIGHT">1200</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+</TR>
+<TR><TD ALIGN="CENTER">19</TD>
+<TD ALIGN="CENTER">mas.</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="RIGHT">700</TD>
+<TD ALIGN="CENTER">sim</TD>
+</TR>
+<TR><TD ALIGN="CENTER">25</TD>
+<TD ALIGN="CENTER">fem.</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="RIGHT">800</TD>
+<TD ALIGN="CENTER">sim</TD>
+</TR>
+<TR><TD ALIGN="CENTER">40</TD>
+<TD ALIGN="CENTER">mas.</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="RIGHT">800</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+</TR>
+<TR><TD ALIGN="CENTER">21</TD>
+<TD ALIGN="CENTER">mas.</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">n&#227;o</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="RIGHT">1100</TD>
+<TD ALIGN="CENTER">sim</TD>
+</TR>
+<TR><TD ALIGN="CENTER">22</TD>
+<TD ALIGN="CENTER">fem.</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">sim</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="RIGHT">500</TD>
+<TD ALIGN="CENTER">indefinido</TD>
+</TR>
+</TABLE>
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">
+3 Compara&#231;&#227;o entre AD e RN</A>
+</H1>
+
+<P>
+Suponha que voc&#234; est&#225; trabalhando para um banco e seu chefe diz que h&#225;
+tr&#234;s tipos de consumidores. Ele tamb&#233;m pensa que &#233; poss&#237;vel prever o
+tipo consumidor com base em duas vari&#225;veis: x1 (o n&#250;mero de copos
+de caf&#233; que ele toma por dia) e  x2 (o n&#250;mero de bilhetes de
+loteria que ele compra por semana). Ele lhe apresentou o gr&#225;fico
+abaixo com alguns exemplos de classifica&#231;&#227;o de consumidores (cada tipo
+&#233; representado por um c&#237;rculo, um quadrado ou um
+losango).<A NAME="tex2html10"
+  HREF="#foot111"><SUP>1</SUP></A>
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="784" HEIGHT="614" ALIGN="BOTTOM" BORDER="0"
+ SRC="./distribuicao.png"
+ ALT="Image distribuicao">
+
+</DIV>
+
+<P>
+Para comprar as t&#233;cnicas no crit&#233;rio de capacidade de generaliza&#231;&#227;o,
+crie uma AD e um RN para classificar os consumidores. Depois, teste
+tanto AD quanto a RN com consumidores que n&#227;o fazem parte do conjunto
+de treinamento (pontos n&#227;o plotados na figura acima). Como sugest&#227;o de
+teste, avalie o percentual de acerto da AD e da RN para cada um dos
+dois grupos de exemplos de teste abaixo:
+
+<UL>
+<LI><B>Grupo teste 1</B>:
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">x1</TD>
+<TD ALIGN="CENTER">x2</TD>
+<TD ALIGN="LEFT">classifica&#231;&#227;o correta</TD>
+<TD ALIGN="LEFT">classifica&#231;&#227;o RN</TD>
+<TD ALIGN="LEFT">classifica&#231;&#227;o AD</TD>
+</TR>
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="LEFT">losango</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="LEFT">losango</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">quadrado</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">10</TD>
+<TD ALIGN="LEFT">quadrado</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+</LI>
+<LI><B>Grupo teste 2</B>:
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">x1</TD>
+<TD ALIGN="CENTER">x2</TD>
+<TD ALIGN="LEFT">classifica&#231;&#227;o correta</TD>
+<TD ALIGN="LEFT">classifica&#231;&#227;o RN</TD>
+<TD ALIGN="LEFT">classifica&#231;&#227;o AD</TD>
+</TR>
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">0</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">quadrado</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="LEFT">losango</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">10</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="LEFT">bola</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">0</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">quadrado</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="LEFT">quadrado</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="LEFT">losango</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="LEFT">losango</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+</LI>
+</UL>
+Qual das duas t&#233;cnicas teve melhor resultado?
+
+<P>
+
+<H2><A NAME="SECTION00050000000000000000">
+Refer&ecirc;ncias Bibliogr&aacute;ficas</A>
+</H2><DL COMPACT><DD><P></P><DT><A NAME="mitchell:97">1</A>
+<DD>
+Tom&nbsp;M. Mitchell.
+<BR><EM>Machine Learning</EM>.
+<BR>McGraw-Hill, 1997.
+
+<P></P><DT><A NAME="russell:03">2</A>
+<DD>
+Stuard&nbsp;J. Russell and Peter Norvig.
+<BR><EM>Artificial Intelligence: A Modern Approach</EM>.
+<BR>Prentice Hall, New Jersey, 2 edition, 2003.
+
+<P></P><DT><A NAME="witten:00">3</A>
+<DD>
+Ian&nbsp;H. Witten and Eibe Frank.
+<BR><EM>Data mining: practical machine learning tools and techniques
+  with Java implementations</EM>.
+<BR>Morgan Kaufmann, San Francisco, 2000.
+</DL>
+
+<P>
+<BR><HR><H4>Footnotes</H4>
+<DL>
+<DT><A NAME="foot111">...
+losango).</A><A
+ HREF="lab-aprendizado.html#tex2html10"><SUP>1</SUP></A></DT>
+<DD>Este trabalho é baseado no enunciado disponível
+em
+<TT><A NAME="tex2html11"
+  HREF="http://ocw.mit.edu/NR/rdonlyres/Electrical-Engineering-and-Computer-Science/6-034Artificial-IntelligenceFall2002/54772057-9D93-4B0A-8470-1F1A651B26E9/0/2001s2.pdf">http://ocw.mit.edu/NR/rdonlyres/Electrical-Engineering-and-Computer-Science/6-034Artificial-IntelligenceFall2002/54772057-9D93-4B0A-8470-1F1A651B26E9/0/2001s2.pdf</A></TT>.
+
+</DD>
+</DL><BR><HR>
+<ADDRESS>
+Jomi Hubner
+2009-10-28
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,351 @@
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>lab-CSP</TITLE>
+<META NAME="description" CONTENT="lab-CSP">
+<META NAME="keywords" CONTENT="lab-CSP">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="http://www.das.ufsc.br/%7Ejomi/ia/ia.css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+
+<P>
+
+<table style="vertical-align; top; width: 100%;" border="0" cellspacing="0" cellpadding="0">
+<td>
+
+<P>
+<A NAME="tex2html1"
+  HREF="http://www.ufsc.br">Universidade Federal de Santa Catarina</A>
+
+<BR> <A NAME="tex2html2"
+  HREF="http://www.das.ufsc.br"><B>Departamento de Automa&#231;&#227;o e Sistemas</B></A>
+<BR> <A NAME="tex2html3"
+  HREF="http://www.pgeas.ufsc.br"><B>Programa de P&#243;s-Gradua&#231;&#227;o em Engenharia de Automa&#231;&#227;o e Sistemas</B></A>
+<BR> <A NAME="tex2html4"
+  HREF="http://www.das.ufsc.br/~jomi/ia"><B>Intelig&#234;ncia Artificial</B></A>
+<BR><A NAME="tex2html5"
+  HREF="http://www.das.ufsc.br/~jomi">Professor: Jomi F. H&#252;bner</A>
+<BR>
+<P>
+
+</td>
+<td style="text-align: right;">
+<a href="http://www.furb.br">
+<img
+style="border: 0px solid ; width: 123px; height: 76px;" alt="logo"
+src="http://www.ufsc.br/paginas/imgs/transparente.gif">
+</a>
+</td>
+</table>
+
+<P>
+
+<P>
+
+<h1 class=title>
+        Exerc&#237;cio em laborat&#243;rio:
+<BR><B>Constraint Satisfaction Problems</B>
+        
+        </h1>
+
+<P>
+
+<P>
+
+<H2><A NAME="SECTION00001000000000000000">
+1 Ambiente de trabalho</A>
+</H2>
+
+<P>
+Para realizar os experimentos com &#233; necess&#225;rio o
+<A NAME="tex2html6"
+  HREF="http://www.gprolog.org">GNU Prolog</A>.
+
+<P>
+
+<H2><A NAME="SECTION00002000000000000000">
+2 Exemplo simples</A>
+</H2>
+
+<P>
+<PRE>
+% Resolução de CSP com GNU Prolog
+%
+% Exemplo básico:
+%   variáveis:
+%        X1, X2, X3
+%   domínios:
+%        X1: {1, 2}
+%        X2: {2}
+%        X3: {1, 2}
+%   restrições (\= significa diferente):
+%        X1 \= X3
+%        X2 \= X3
+%
+% Para executar, digite em uma shell de comandos:
+%   gprolog --query-goal "consult('explo-basico'), resolve, halt"
+
+resolve :-
+  % cria uma lista com todas as variáveis
+  Todas = [X1, X2, X3],
+
+  % cria as variáveis e os domínios
+  fd_domain(X1, [1,2]),
+  fd_domain(X2, [2]),
+  fd_domain(X3, [1,2]),
+
+  % restrições
+  X1 #\= X3,
+  X2 #\= X3,
+
+  % resolve o CSP
+  fd_labeling( Todas ),
+
+  % imprime resultado
+  write('X1 = '), write(X1), nl,
+  write('X2 = '), write(X2), nl,
+  write('X3 = '), write(X3), nl.
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00003000000000000000">
+3 Exemplo das 4-rainhas</A>
+</H2>
+
+<P>
+<PRE>
+%   variáveis: supondo uma rainha por linha,
+%   as variáveis representam as colunas das
+%   rainhas:  R1, R2, R3, R4
+%   domínios:
+%        Ri: {1..4}
+%   restrições (|....| significa módulo):
+%        Ri \= Rj
+%        | i-j | \= |Ri - Rj|
+%
+% Para executar, digite em uma shell de comandos:
+%   gprolog --query-goal "consult('4-rainhas'), resolve, halt"
+
+resolve :-
+  % cria uma lista com todas as variáveis
+  Todas = [R1, R2, R3, R4],
+
+  % cria as variáveis e os domínios (valores de 1 a 4)
+  fd_domain(Todas, 1, 4),
+
+  % restrições
+  fd_all_different(Todas), % todas devem ter valores diferentes
+
+  % diagonais (dist retorna a diferença entre as variáveis)
+  1 #\= dist(R1, R2),
+  2 #\= dist(R1, R3),
+  3 #\= dist(R1, R4),
+  1 #\= dist(R2, R3),
+  2 #\= dist(R2, R4),
+  1 #\= dist(R3, R4),
+
+  % resolve o CSP
+  fd_labeling( Todas ),
+
+  % imprime resultado
+  write('R1 = '), write(R1), nl,
+  write('R2 = '), write(R2), nl,
+  write('R3 = '), write(R3), nl,
+  write('R4 = '), write(R4), nl.
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00004000000000000000">
+Tr&#234;s macacos</A>
+</H2>
+
+<P>
+Tr&#234;s macacos s&#225;bios t&#234;m os seguintes nomes: Z&#233;, Chico e Tonho.  Seu
+sobrenomes s&#227;o Galho, Banana e Pulo, n&#227;o necessariamente nesse
+ordem. Um deles n&#227;o v&#234;, outro n&#227;o fala e outro n&#227;o ouve, tamb&#233;m n&#227;o
+necessariamente nesse ordem. Z&#233; lamenta que seu amigo Galho n&#227;o possa
+ouvir. Chico e Pulo adoram ver as macaquices m&#250;tuas. Aquele que n&#227;o
+ouve vive assistindo &#224;s provoca&#231;&#245;es entre Tonho e Banana.  Qual o nome
+completo e a caracter&#237;stica de cada um?
+
+<P>
+<PRE>  
+% run with
+%    gprolog --query-goal "consult(macacos), resolve, halt"
+
+resolve :-
+  Todas = [Ze, Ch, Tn, Ga, Bn, Pl, Cg, Md, Sr],
+  fd_domain(Todas,1,3),
+
+  fd_all_different([Ze, Ch, Tn]),
+  fd_all_different([Ga, Bn, Pl]),
+  fd_all_different([Cg, Md, Sr]),
+
+  Ze #\= Ga,
+  Ga #= Sr,
+  Ze #\= Sr,
+
+  Tn #\= Bn,
+  Sr #\= Tn,
+  Sr #\= Bn,
+
+  Ch #\= Pl,
+  Ch #\= Cg,
+  Pl #\= Cg,
+  
+  fd_labeling(Todas),
+  
+  write('nomes        [Ze, Ch, Tn] = '), write([Ze, Ch, Tn]), nl,
+  write('sobre nomes  [Ga, Bn, Pl] = '), write([Ga, Bn, Pl]), nl,
+  write('deficiencias [Cg, Md, Sr] = '), write([Cg, Md, Sr]), nl,
+  nl.
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00005000000000000000">
+Exemplo de Otimiza&#231;&#227;o</A>
+</H2>
+
+<P>
+Suponha que voc&#234; precisa comprar adubo para melhorar a qualidade do
+solo de uma determinada propriedade. S&#227;o necess&#225;rios 500 Kg de adubo
+com a seguinte composi&#231;&#227;o m&#237;nima:
+
+<UL>
+<LI>4% de nitrato,
+</LI>
+<LI>14% de f&#243;sforo, e
+</LI>
+<LI>8% de pot&#225;ssio.
+</LI>
+</UL>
+
+<P>
+Existem 3 tipos de adubos para comprar, cada um com uma determinada
+composi&#231;&#227;o e pre&#231;o, conforme a tabela abaixo:
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"></TD>
+<TD ALIGN="RIGHT">Adubo 1</TD>
+<TD ALIGN="RIGHT">Adubo 2</TD>
+<TD ALIGN="RIGHT">Adubo 3</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Nitrato</TD>
+<TD ALIGN="RIGHT">8%</TD>
+<TD ALIGN="RIGHT">4%</TD>
+<TD ALIGN="RIGHT">3%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">F&#243;sforo</TD>
+<TD ALIGN="RIGHT">15%</TD>
+<TD ALIGN="RIGHT">17%</TD>
+<TD ALIGN="RIGHT">14%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Pot&#225;ssio</TD>
+<TD ALIGN="RIGHT">10%</TD>
+<TD ALIGN="RIGHT">10%</TD>
+<TD ALIGN="RIGHT">7%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Custo Kg</TD>
+<TD ALIGN="RIGHT">$ 1,50</TD>
+<TD ALIGN="RIGHT">$ 1,00</TD>
+<TD ALIGN="RIGHT">$ 0,70</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+Pergunta-se: quantos Kg devem ser comprados de cada tipo de adubo para
+atender os requisitos e ter o menor valor final a pagar?
+
+<P>
+<PRE>
+% Resolucao de CSP com GNU Prolog
+%
+% Exemplo Orimizacao na Compra de Adubo
+%
+% Para executar, digite em uma shell de comandos:
+%   gprolog --query-goal "consult('adubo.pl'), resolve, halt"
+%
+% by Jomi
+
+resolve :-
+  % cria uma lista com todas as variaveis
+  Todas = [A1, A2, A3],
+
+  Qtd = 500, % Qtd de adubo a ser comprada
+
+  % cria as variaveis e os dominios (valores de 1 a Qtd)
+  fd_domain(Todas, 0, Qtd),
+
+  % restricoes
+
+  % qtd de nitrato
+  ((A1*8)  + (A2*4)  + (A3*3))  #&gt;= (4*Qtd),
+
+  % qtd de fosforo
+  ((A1*15) + (A2*17) + (A3*14)) #&gt;= (14*Qtd),
+
+  % qtd de potassio
+  ((A1*10) + (A2*10) + (A3*7))  #&gt;= (8*Qtd),
+
+  A1 + A2 + A3 #= Qtd,
+
+  % custo
+  C #= A1 * 15 + A2 * 10 + A3 * 7, 
+
+  % otimiza o CSP
+  fd_minimize(fd_labeling(Todas), C),
+
+  % imprime resultado
+  write('A1 = '), write(A1), nl,
+  write('A2 = '), write(A2), nl,
+  write('A3 = '), write(A3), nl,
+  write('Custo='), write(C), nl.
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00006000000000000000">
+Exerc&#237;cio</A>
+</H2>
+
+<P>
+Fazer os exemplos de colora&#231;&#227;o de mapas, quadrado m&#225;gico e do
+escalonamento de tarefas (enunciados vistos em sala).
+
+<P>
+Avalie o desempenho de diferentes heur&#237;sticas. Veja na se&#231;&#227;o 8.9 do
+manual do GProlog (``Labeling constraints'') como determinar as
+heur&#237;sticas utilizadas.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Jomi Hubner
+2014-06-24
+</ADDRESS>
+</BODY>
+</HTML>

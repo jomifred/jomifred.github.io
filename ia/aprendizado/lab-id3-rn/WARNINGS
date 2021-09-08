@@ -1,0 +1,12 @@
+No implementation found for style `hyperref'
+No implementation found for style `fitch'
+No implementation found for style `booktabs'
+No implementation found for style `graphicx'
+No implementation found for style `geometry'
+
+lab-aprendizado.tex is newer than lab-aprendizado.aux: Please rerun latex.
+
+Substitution of arg to newlabelxx delayed.
+couldn't convert character inodot into available encodings
+
+lab-aprendizado.tex is newer than lab-aprendizado.bbl: Please rerun latex and bibtex.

@@ -1,0 +1,81 @@
+#+TITLE:    Inteligência Artificial
+#+AUTHOR:   Jomi F. Hübner
+#+EMAIL:    jomi.hubner@ufsc.br
+#+DATE:     2017
+
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
+#+OPTIONS: toc:nil
+#+REVEAL_THEME: moon
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://jomi.das.ufsc.br/ia/ia.css" />
+* Geral
+  - Uma visão otimista da IA: [[./geral/seminco.pdf][slides]]
+* Busca
+  - [[./busca/busca.pdf][slides]]
+  - [[./busca/buscaJava/index.html][implementação]] ([[https://github.com/jomifred/AI/tree/master/search][GitHub]])
+  - [[./busca/exercicios-busca.pdf][exercícios]]
+
+* Constraint Satisfaction Problems
+  - [[./csp/exercicioCSP.pdf][exercícios]]
+  - [[./csp/lab-CSP.html][prática em laboratório]]
+  - [[https://github.com/jomifred/AI/tree/master/csp/prolog][exemplos de programas]]
+  - [[./csp/newchap05.pdf][capítulo 5 do livro do R&N]]
+* Aprendizado
+  - [[./aprendizado/ch2.pdf][aprendizado de conceitos (slides Tom
+    Mitchel)]]
+  - [[./aprendizado/id3.pdf][slides ID3]]
+  - [[./aprendizado/exercicios-id3.pdf][exercícios ID3]]
+  - [[./aprendizado/apriori.pdf][slides APRIORI]]
+  - [[./aprendizado/ar.pdf][slides aprendizado por reforço]]
+  - [[./aprendizado/exercicios-ar.pdf][exercícios aprendizado por reforço]]
+  - [[./aprendizado/ar-implementacao.zip][implementação de aprendizado por reforço]]
+* Planejamento automático
+  - [[./planejamento/slides-planejamento.pdf][slides (draft)]] 
+  - [[./planejamento/lab-planning.pdf][prática em laboratório]] 
+
+* Representação de Conhecimento
+  - [[./conhecimento/representacao-conhecimento.pdf][slides]]
+  - [[./conhecimento/sistemas-especialistas.pdf][sistemas especialistas]]
+  - [[./conhecimento/prolog.pdf][prolog]]
+  - Exercícios: [[./conhecimento/exercicios/bichos.pdf][bichos]],
+    [[./conhecimento/exercicios/familia.pdf][familia]],
+    [[./conhecimento/exercicios/prolog-video-locadora.pdf][video locadora]],   [[./conhecimento/exercicios/listas.pdf][listas]]
+
+* Bibliografia Básica
+   - Russel & Norvig. [[http://aima.cs.berkeley.edu/][Artificial Intelligence: A Modern Approach]]
+   - Poole & Mackworth. [[http://artint.info][Artificial Intelligence: Foundations of Computational Agents]]
+   - Tom Mitchell. [[http://www.cs.cmu.edu/~tom/mlbook.html][Machine Learning]] 
+
+---------
+* COMMENT Apresentação (PPGEAS/UFSC 2017-2)
+  - [[./2017/syllabus-ml.pdf][plano de ensino]]  
+  - [[./2017/seminario-am.pdf][enunciado do seminário]]
+  - [[./2017/tp-dm.pdf][trabalho prático com data mining]]
+* COMMENT Apresentação (PPGEAS/UFSC 2017-1)
+  - [[./2017/syllabus.pdf][plano de ensino]]
+  - [[./leituras/1-whatisAI.pdf][leitura 1: what is AI?]]
+  - [[./leituras/2-knowledge-level.pdf][leitura 2: the knowledge level]] 
+  - [[./2017/tp-busca-ratos.pdf][trabalho prático: problema dos "Ratos"]]
+
+* COMMENT Apresentação (PPGEAS/UFSC 2016-2)
+  - [[./2016/syllabus-ml.pdf][plano de ensino]]
+  - [[./2016/seminario-am.pdf][enunciado do seminário]]
+  - [[./2016/tp-ar-pong.pdf][trabalho prático: jogo "Pong"]]
+* COMMENT Apresentação (PPGEAS/UFSC 2015-1)
+  - [[./2015/syllabus.pdf][plano de ensino]]
+  - [[./leituras/1-whatisAI.pdf][leitura 1: what is AI?]]
+  - [[./leituras/2-knowledge-level.pdf][leitura 2: the knowledge level]] 
+  - [[./trabalhos/tp-busca-elevador.pdf][trabalho prático 1: elevador]]
+
+* COMMENT Apresentação (PPGEAS/UFSC 2014-2)
+  - [[./2014/syllabus-ml.pdf][plano de ensino]]
+  - [[./trabalhos/tp-ar-2048.pdf][trabalho prático: jogo 2048]]
+  - [[./2014/seminario-am.pdf][enunciado do seminário]]
+
+* COMMENT Apresentação (PPGEAS/UFSC 2014-1)
+  - [[./2014/syllabus.pdf][plano de ensino]]
+  - [[./trabalhos/tp-busca-bw.pdf][trabalho prático 1: mundo dos blocos]]
+  - [[./trabalhos/tp-kr-alpine-club.pdf][trabalho prático 2: clube alpino]]
+  - [[./leituras/1-whatisAI.pdf][leitura 1: what is AI?]]
+  - [[./leituras/2-knowledge-level.pdf][leitura 2: the knowledge level]]
+
+---------
