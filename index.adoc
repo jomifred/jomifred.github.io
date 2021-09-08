@@ -42,7 +42,7 @@ Developed in a collaboration of ENS Mines of Saint Etienne (France), University 
 
 == Publications
 
-* http://jomi.das.ufsc.br/publicationsWebPage[List of all
+* link:./publications[List of all
 publications]
 * Publications at
 http://www.informatik.uni-trier.de/~ley/db/indices/a-tree/h/H=uuml=bner:Jomi_Fred.html[DBLP]
