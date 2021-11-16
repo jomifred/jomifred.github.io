@@ -30,8 +30,8 @@
 |            |              | Reading: [[https://doi.org/10.3390/computers10020016][Review AOP (Cardoso et al)]]                                     |   |
 |            |              | [[./slides/slides-aop.pdf][Slides]] /  [[http://jason.sf.net][Jason]]                                                         |   |
 | 23/11      | Interaction  | Reading: [[./leituras/SpeechActs-Searle.pdf][Speech Acts (Searle)]]                                           |   |
-|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Sections 7.1 and 7.2]] of MAOP book                              |   |
 |            |              | Reading: [[./leituras/SpeechActs-AOP.pdf][Speech Acts in AOP (Renata Vieira et al)]]                       |   |
+|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Sections 7.1 and 7.2]] of MAOP book                              |   |
 |            |              | Reading: [[./leituras/FIPA-JADE.pdf][Developing MAS FIPA-compliant (Bellifemine et al)]]              |   |
 |            |              | Reading: [[./leituras/WhitePaperJADEEXP.pdf][JADE white paper (Bellifemine et al)]]                           |   |
 |            |              | [[./slides/slides-interaction.pdf][Slides]] / [[./interaction/exemplo-jade-maicon.zip][Example of programs]] (Maicon)                                   |   |
@@ -41,10 +41,10 @@
 |            |              | Reading: [[./leituras/Bratman-PlansPracticalResoning.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
 |            |              | Reading: [[./leituras/mascardi05languages.pdf][Languages for BDI (Mascardi et al)]]                             |   |
 |            |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/hello-bdi/][Jason Hello BDI]]                                               |   |
-|            |              | Deadline for [[./tp/tp-cnp.pdf][*Practical Exercise 1*]]                                     |   |
 | 7/12       | Environment  | [[./slides/slides-eop.pdf][Slides]] / [[http://cartago.sourceforge.net/][CArtAgO]]                                                        |   |
 |            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                 |   |
 |            |              | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                          |   |
+|            |              | Deadline for [[./tp/tp-cnp.pdf][*Practical Exercise 1*]]                                     |   |
 | 14/12, 1/2 | JaCaMo       | Reading: [[http://dx.doi.org/10.1016/j.scico.2011.10.004][Multi-agent oriented programming (Boissier et al)]]              |   |
 |            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/hello-world/][JaCaMo Hello World]]                                            |   |
 |            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/gold-miners][Gold Miners]]                                                   |   |
