@@ -36,6 +36,7 @@
 |            |              | Reading: [[./leituras/WhitePaperJADEEXP.pdf][JADE white paper (Bellifemine et al)]]                           |   |
 |            |              | [[./slides/slides-interaction.pdf][Slides]] / [[./interaction/exemplo-jade-maicon.zip][Example of programs]] (Maicon)                                   |   |
 |            |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/jason-jade/][Jason + Jade]]                                                  |   |
+|            |              | Download: [[./code/jade-many-ags.zip][program that starts several Jade agents]] |   |
 | 30/11      | BDI          | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]              |   |
 |            |              | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                               |   |
 |            |              | Reading: [[./leituras/Bratman-PlansPracticalResoning.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
@@ -44,10 +45,10 @@
 | 7/12       | Environment  | [[./slides/slides-eop.pdf][Slides]] / [[http://cartago.sourceforge.net/][CArtAgO]]                                                        |   |
 |            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                 |   |
 |            |              | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                          |   |
-|            |              | Deadline for [[./tp/tp-cnp.pdf][*Practical Exercise 1*]]                                     |   |
 | 14/12, 1/2 | JaCaMo       | Reading: [[http://dx.doi.org/10.1016/j.scico.2011.10.004][Multi-agent oriented programming (Boissier et al)]]              |   |
 |            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/hello-world/][JaCaMo Hello World]]                                            |   |
 |            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/gold-miners][Gold Miners]]                                                   |   |
+|            |              | Deadline for [[./tp/tp-cnp.pdf][*Practical Exercise 1*]]                                     |   |
 | 8/2        | Organisation | [[./slides/slides-oop.pdf][Slides]] / [[http://moise.sf.net][Moise]]                                                          |   |
 |            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 8 and 9]] of MAOP book                                  |   |
 |            |              | Reading: [[http://moise.sourceforge.net/doc/publications/Hubner-sbia2002.pdf][Moise Model (Hubner et al)]]                                     |   |
