@@ -39,7 +39,7 @@
 |            |              | Download: [[./code/jade-many-ags.zip][program that starts several Jade agents]] |   |
 | 30/11      | BDI          | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]              |   |
 |            |              | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                               |   |
-|            |              | Reading: [[./leituras/Bratman-PlansPracticalResoning.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
+|            |              | Reading: [[https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
 |            |              | Reading: [[./leituras/mascardi05languages.pdf][Languages for BDI (Mascardi et al)]]                             |   |
 |            |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/hello-bdi/][Jason Hello BDI]]                                               |   |
 | 7/12       | Environment  | [[./slides/slides-eop.pdf][Slides]] / [[http://cartago.sourceforge.net/][CArtAgO]]                                                        |   |
