@@ -42,6 +42,7 @@
 |            |              | Reading: [[https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
 |            |              | Reading: [[./leituras/mascardi05languages.pdf][Languages for BDI (Mascardi et al)]]                             |   |
 |            |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/hello-bdi/][Jason Hello BDI]]                                               |   |
+|            |              | Documentation: [[http://jason.sourceforge.net/doc/tech/patterns.html][Jason Programming Patterns]]                                                                                             |   |
 | 7/12       | Environment  | [[./slides/slides-eop.pdf][Slides]] / [[http://cartago.sourceforge.net/][CArtAgO]]                                                        |   |
 |            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                 |   |
 |            |              | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                          |   |
@@ -53,12 +54,12 @@
 |            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 8 and 9]] of MAOP book                                  |   |
 |            |              | Reading: [[http://moise.sourceforge.net/doc/publications/Hubner-sbia2002.pdf][Moise Model (Hubner et al)]]                                     |   |
 |            |              | Reading: [[http://dx.doi.org/10.1007/s10458-009-9084-y][ORA4MAS]]                                                        |   |
-|            |              | Deadline for [[./tp/tp-auction.pdf][*Practical Exercise 2*]]                                     |   |
 | 15/2       | Norms        | [[./slides/slides-norms.pdf][Slides]] / [[https://github.com/moise-lang/npl][NPL]]                                                            |   |
 |            |              | Reading: [[./leituras/Boella-Introdo-NormMas.pdf][Introduction to NorMAS (Boella et al)]]                          |   |
 |            |              | Reading: [[http://drops.dagstuhl.de/opus/volltexte/2013/3998/][Norms in MAS (Balke et al)]]                                     |   |
 |            |              | Reading: [[http://dx.doi.org/10.1155/2014/684587][Survey (Mahmoud et al)]]                                         |   |
 |            |              | Reading: [[http://dx.doi.org/10.1007/s10472-011-9251-0][Normative Programming Language used in JaCaMo]]                  |   |
+|            |              | Deadline for [[./tp/tp-auction.pdf][*Practical Exercise 2*]]                                     |   |
 |            |              | Deadline for *seminar topics*                                           |   |
 | 22/2       | Coordination | Reading: [[https://doi.org/10.1007/1-4020-8058-1_17][Coordination Infrastructures (Omicini et al)]]                   |   |
 |            |              | Reading: [[http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf][Teamwork (Choen et Levesque)]]                                   |   |
