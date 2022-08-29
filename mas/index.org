@@ -9,7 +9,7 @@
 #+OPTIONS: TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://jomifred.github.io/ia/ia.css" />
 
-* Course Organisation (PPGEAS/UFSC 2021-2)
+* Course Organisation (PósAutomação/UFSC 2022-2)
 
   - [[./syllabus.pdf][Syllabus]]
   - [[./tp/tp-cnp.pdf][Practical Exercise 1]] 
@@ -18,59 +18,59 @@
   - [[./seminario-sma.pdf][Seminars]]
   
 
-| Date       | Topic        |                                                                         |   |
-|------------+--------------+-------------------------------------------------------------------------+---|
-| 9/11       | Introduction | [[./slides/intro.pdf][Slides]]                                                                  |   |
-|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 2]] of MAOP book                                         |   |
-|            |              | Reading: [[./leituras/agentlink-roadmap.pdf][AgentLink Roadmap]]                                              |   |
-|            | Agents       | Reading: [[./leituras/IntellAgents.Wool.pdf][Intelligent Agents (Wooldridge)]]                                |   |
-|            |              | Reading: [[https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/aow-1-5-97.pdf][Agent definition vs test (Huhns & Singh)]] (2 pages)             |   |
-| 16/11      | AOP          | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/getting-started/][Jason Getting Started]]                                         |   |
-|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 4]] of MAOP book                                         |   |
-|            |              | Reading: [[https://doi.org/10.3390/computers10020016][Review AOP (Cardoso et al)]]                                     |   |
-|            |              | [[./slides/slides-aop.pdf][Slides]] /  [[http://jason.sf.net][Jason]]                                                         |   |
-| 23/11      | Interaction  | Reading: [[./leituras/SpeechActs-Searle.pdf][Speech Acts (Searle)]]                                           |   |
-|            |              | Reading: [[./leituras/SpeechActs-AOP.pdf][Speech Acts in AOP (Renata Vieira et al)]]                       |   |
-|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Sections 7.1 and 7.2]] of MAOP book                              |   |
-|            |              | Reading: [[./leituras/FIPA-JADE.pdf][Developing MAS FIPA-compliant (Bellifemine et al)]]              |   |
-|            |              | Reading: [[./leituras/WhitePaperJADEEXP.pdf][JADE white paper (Bellifemine et al)]]                           |   |
-|            |              | [[./slides/slides-interaction.pdf][Slides]] / [[./interaction/exemplo-jade-maicon.zip][Example of programs]] (Maicon)                                   |   |
-|            |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/jason-jade/][Jason + Jade]]                                                  |   |
-|            |              | Download: [[./code/jade-many-ags.zip][program that starts several Jade agents]] |   |
-| 30/11      | BDI          | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]              |   |
-|            |              | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                               |   |
-|            |              | Reading: [[https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
-|            |              | Reading: [[./leituras/mascardi05languages.pdf][Languages for BDI (Mascardi et al)]]                             |   |
-|            |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/hello-bdi/][Jason Hello BDI]]                                               |   |
-|            |              | Documentation: [[http://jason.sourceforge.net/doc/tech/patterns.html][Jason Programming Patterns]]                                                                                             |   |
-| 7/12       | Environment  | [[./slides/slides-eop.pdf][Slides]] / [[http://cartago.sourceforge.net/][CArtAgO]]                                                        |   |
-|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                 |   |
-|            |              | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                          |   |
-| 14/12, 1/2 | JaCaMo       | Reading: [[http://dx.doi.org/10.1016/j.scico.2011.10.004][Multi-agent oriented programming (Boissier et al)]]              |   |
-|            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/hello-world/][JaCaMo Hello World]]                                            |   |
-|            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/gold-miners][Gold Miners]]                                                   |   |
-|            |              | Deadline for [[./tp/tp-cnp.pdf][*Practical Exercise 1*]]                                     |   |
-| 8/2        | Organisation | [[./slides/slides-oop.pdf][Slides]] / [[http://moise.sf.net][Moise]]                                                          |   |
-|            |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 8 and 9]] of MAOP book                                  |   |
-|            |              | Reading: [[http://moise.sourceforge.net/doc/publications/Hubner-sbia2002.pdf][Moise Model (Hubner et al)]]                                     |   |
-|            |              | Reading: [[http://dx.doi.org/10.1007/s10458-009-9084-y][ORA4MAS]]                                                        |   |
-| 15/2       | Norms        | [[./slides/slides-norms.pdf][Slides]] / [[https://github.com/moise-lang/npl][NPL]]                                                            |   |
-|            |              | Reading: [[./leituras/Boella-Introdo-NormMas.pdf][Introduction to NorMAS (Boella et al)]]                          |   |
-|            |              | Reading: [[http://drops.dagstuhl.de/opus/volltexte/2013/3998/][Norms in MAS (Balke et al)]]                                     |   |
-|            |              | Reading: [[http://dx.doi.org/10.1155/2014/684587][Survey (Mahmoud et al)]]                                         |   |
-|            |              | Reading: [[http://dx.doi.org/10.1007/s10472-011-9251-0][Normative Programming Language used in JaCaMo]]                  |   |
-|            |              | Deadline for [[./tp/tp-auction.pdf][*Practical Exercise 2*]]                                     |   |
-|            |              | Deadline for *seminar topics*                                           |   |
-| 22/2       | Coordination | Reading: [[https://doi.org/10.1007/1-4020-8058-1_17][Coordination Infrastructures (Omicini et al)]]                   |   |
-|            |              | Reading: [[http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf][Teamwork (Choen et Levesque)]]                                   |   |
-|            |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/coordination/][Coordination with JaCaMo]]                                      |   |
-| 8/3        | MAOP         | [[./slides/slides-maop.pdf][Slides]] / [[http://jacamo.sf.net][JaCaMo]]                                                         |   |
-|            |              | Tutorial: building a house (in JaCaMo distribution file)                |   |
-|            |              | Reading: [[./leituras/Jennings-AG-SE.pdf][On agent-based software engineering (Jennings)]]                 |   |
-| 15/3       |              | [[./2017/seminario-sma.pdf][*Seminars*]]                                                              |   |
-| 22/3       |              | (Seminars -- cont.)                                                     |   |
-|            |              | Deadline for  [[./tp/tp-gold-miners.pdf][*Practical Exercise 3*]]                                    |   |
-|            |              |                                                                         |   |
+| Date     | Topic        |                                                                         |   |
+|----------+--------------+-------------------------------------------------------------------------+---|
+| 6/9      | Introduction | [[./slides/intro.pdf][Slides]]                                                                  |   |
+|          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 2]] of MAOP book                                         |   |
+|          |              | Reading: [[./leituras/agentlink-roadmap.pdf][AgentLink Roadmap]]                                              |   |
+|          | Agents       | Reading: [[./leituras/IntellAgents.Wool.pdf][Intelligent Agents (Wooldridge)]]                                |   |
+|          |              | Reading: [[https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/aow-1-5-97.pdf][Agent definition vs test (Huhns & Singh)]] (2 pages)             |   |
+| 13/9     | AOP          | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/getting-started/][Jason Getting Started]]                                         |   |
+|          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 4]] of MAOP book                                         |   |
+|          |              | Reading: [[https://doi.org/10.3390/computers10020016][Review AOP (Cardoso et al)]]                                     |   |
+|          |              | [[./slides/slides-aop.pdf][Slides]] /  [[http://jason.sf.net][Jason]]                                                         |   |
+| 20/9     | Interaction  | Reading: [[./leituras/SpeechActs-Searle.pdf][Speech Acts (Searle)]]                                           |   |
+|          |              | Reading: [[./leituras/SpeechActs-AOP.pdf][Speech Acts in AOP (Renata Vieira et al)]]                       |   |
+|          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Sections 7.1 and 7.2]] of MAOP book                              |   |
+|          |              | Reading: [[./leituras/FIPA-JADE.pdf][Developing MAS FIPA-compliant (Bellifemine et al)]]              |   |
+|          |              | Reading: [[./leituras/WhitePaperJADEEXP.pdf][JADE white paper (Bellifemine et al)]]                           |   |
+|          |              | [[./slides/slides-interaction.pdf][Slides]] / [[./interaction/exemplo-jade-maicon.zip][Example of programs]] (Maicon)                                   |   |
+|          |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/jason-jade/][Jason + Jade]]                                                  |   |
+|          |              | Download: [[./code/jade-many-ags.zip][program that starts several Jade agents]]                       |   |
+| 27/9     | BDI          | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]              |   |
+|          |              | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                               |   |
+|          |              | Reading: [[https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |   |
+|          |              | Reading: [[./leituras/mascardi05languages.pdf][Languages for BDI (Mascardi et al)]]                             |   |
+|          |              | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/hello-bdi/][Jason Hello BDI]]                                               |   |
+|          |              | Documentation: [[http://jason.sourceforge.net/doc/tech/patterns.html][Jason Programming Patterns]]                               |   |
+| 4/10     | Environment  | [[./slides/slides-eop.pdf][Slides]] / [[http://cartago.sourceforge.net/][CArtAgO]]                                                        |   |
+|          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                 |   |
+|          |              | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                          |   |
+| 11,18/10 | JaCaMo       | Reading: [[http://dx.doi.org/10.1016/j.scico.2011.10.004][Multi-agent oriented programming (Boissier et al)]]              |   |
+|          |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/hello-world/][JaCaMo Hello World]]                                            |   |
+|          |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/gold-miners][Gold Miners]]                                                   |   |
+|          |              | Deadline for [[./tp/tp-cnp.pdf][*Practical Exercise 1*]]                                     |   |
+| 25/10    | Organisation | [[./slides/slides-oop.pdf][Slides]] / [[http://moise.sf.net][Moise]]                                                          |   |
+|          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 8 and 9]] of MAOP book                                  |   |
+|          |              | Reading: [[http://moise.sourceforge.net/doc/publications/Hubner-sbia2002.pdf][Moise Model (Hubner et al)]]                                     |   |
+|          |              | Reading: [[http://dx.doi.org/10.1007/s10458-009-9084-y][ORA4MAS]]                                                        |   |
+| 1/11     | Norms        | [[./slides/slides-norms.pdf][Slides]] / [[https://github.com/moise-lang/npl][NPL]]                                                            |   |
+|          |              | Reading: [[./leituras/Boella-Introdo-NormMas.pdf][Introduction to NorMAS (Boella et al)]]                          |   |
+|          |              | Reading: [[http://drops.dagstuhl.de/opus/volltexte/2013/3998/][Norms in MAS (Balke et al)]]                                     |   |
+|          |              | Reading: [[http://dx.doi.org/10.1155/2014/684587][Survey (Mahmoud et al)]]                                         |   |
+|          |              | Reading: [[http://dx.doi.org/10.1007/s10472-011-9251-0][Normative Programming Language used in JaCaMo]]                  |   |
+|          |              | Deadline for [[./tp/tp-auction.pdf][*Practical Exercise 2*]]                                     |   |
+|          |              | Deadline for *seminar topics*                                           |   |
+| 8/11     | Coordination | Reading: [[https://doi.org/10.1007/1-4020-8058-1_17][Coordination Infrastructures (Omicini et al)]]                   |   |
+|          |              | Reading: [[http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf][Teamwork (Choen et Levesque)]]                                   |   |
+|          |              | Tutorial: [[http://jacamo.sourceforge.net/tutorial/coordination/][Coordination with JaCaMo]]                                      |   |
+| 22/11    | MAOP         | [[./slides/slides-maop.pdf][Slides]] / [[http://jacamo.sf.net][JaCaMo]]                                                         |   |
+|          |              | Tutorial: building a house (in JaCaMo distribution file)                |   |
+|          |              | Reading: [[./leituras/Jennings-AG-SE.pdf][On agent-based software engineering (Jennings)]]                 |   |
+| 29/11    |              | [[./2017/seminario-sma.pdf][*Seminars*]]                                                              |   |
+| 6/12     |              | (Seminars -- cont.)                                                     |   |
+| 13/12    |              | Deadline for  [[./tp/tp-gold-miners.pdf][*Practical Exercise 3*]]                                    |   |
+
 
 * COMMENT old
 | 12/11 | Methods      | [[./slides/slides-openaeolus.pdf][Slides]] / [[http://www.uez.com.br/aeolus][Open AEOlus]]                                                  |   |
