@@ -25,10 +25,11 @@
 |          |              | Reading: [[./leituras/agentlink-roadmap.pdf][AgentLink Roadmap]]                                              |   |
 |          | Agents       | Reading: [[./leituras/IntellAgents.Wool.pdf][Intelligent Agents (Wooldridge)]]                                |   |
 |          |              | Reading: [[https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/aow-1-5-97.pdf][Agent definition vs test (Huhns & Singh)]] (2 pages)             |   |
-| 13/9     | AOP          | Tutorial: [[http://jason.sourceforge.net/mini-tutorial/getting-started/][Jason Getting Started]]                                         |   |
+| 13/9     | AOP          | Tutorial: [[http://jacamo.sourceforge.net/tutorial/hello-world/][JaCaMo getting started]]: Chapter 3 of MAOP Book)         |   |
+|          |              | (optional: [[http://jason.sourceforge.net/mini-tutorial/getting-started/][Jason Getting Started]])                                       |   |
 |          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 4]] of MAOP book                                         |   |
 |          |              | Reading: [[https://doi.org/10.3390/computers10020016][Review AOP (Cardoso et al)]]                                     |   |
-|          |              | [[./slides/slides-aop.pdf][Slides]] /  [[http://jason.sf.net][Jason]]                                                         |   |
+|          |              | [[./slides/slides-aop.pdf][Slides]] / [[http://jason.sf.net][Jason]]                                                          |   |
 | 20/9     | Interaction  | Reading: [[./leituras/SpeechActs-Searle.pdf][Speech Acts (Searle)]]                                           |   |
 |          |              | Reading: [[./leituras/SpeechActs-AOP.pdf][Speech Acts in AOP (Renata Vieira et al)]]                       |   |
 |          |              | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Sections 7.1 and 7.2]] of MAOP book                              |   |
