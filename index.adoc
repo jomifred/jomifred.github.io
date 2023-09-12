@@ -45,9 +45,8 @@ Developed in a collaboration of ENS Mines of Saint Etienne (France), University 
 * link:./publications[List of all
 publications]
 * Publications at
-http://www.informatik.uni-trier.de/~ley/db/indices/a-tree/h/H=uuml=bner:Jomi_Fred.html[DBLP]
-and http://scholar.google.com/citations?user=4KPuGDYAAAAJ[Google
-Scholar]
+http://www.informatik.uni-trier.de/~ley/db/indices/a-tree/h/H=uuml=bner:Jomi_Fred.html[DBLP], http://scholar.google.com/citations?user=4KPuGDYAAAAJ[Google
+Scholar], and https://www.researchgate.net/profile/Jomi-Huebner[Research Gate]
 * http://lattes.cnpq.br/0526242321357828[CV Lattes]
 
 === Books
