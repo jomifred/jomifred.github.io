@@ -8,6 +8,8 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://jomifred.github.io/ia/ia.css" />
 * Geral
   - Uma visão otimista da IA: [[./geral/seminco.pdf][slides]]
+  - [[https://drive.google.com/drive/folders/1WaAm91n5FRPzsuUE3Ql0PIwD9fLGg1_V?usp=sharing][Aulas gravadas]]
+
 * Busca
   - [[./busca/busca.pdf][slides]]
   - [[./busca/buscaJava/index.html][implementação]] ([[https://github.com/jomifred/AI/tree/master/search][GitHub]])
