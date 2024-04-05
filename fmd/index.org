@@ -13,6 +13,7 @@
   - [[./logica.pdf][Slides Lógica]]
   - [[./guiaRef.pdf][Guia de referência]]
   - [[./prolog/slides-prolog.pdf][Slides Prolog]]
+  - [[https://drive.google.com/drive/folders/1R7W0kySw0JDMD0BX_7y7oKSjc_Kp3COR?usp=sharing][Aulas gravadas (Drive)]], [[https://www.youtube.com/watch?v=4KDwmKhjsss&list=PLGERZvGHxdb_DZFWlqamX3TrFyEyofLun][(youtube)]] 
 
 * Exercícios
   - [[./exercicio-Argumentos.pdf][Análise de argumentos]]
@@ -21,6 +22,7 @@
   - [[./prolog/bichos.pdf][Prolog: bichos]]
   - [[./prolog/familia.pdf][Prolog: genealogia]]
   - [[./prolog/prolog-video-locadora.pdf][Prolog: vídeo locadora]]
+
 
 
 ----

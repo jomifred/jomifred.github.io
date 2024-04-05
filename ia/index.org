@@ -8,19 +8,36 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://jomifred.github.io/ia/ia.css" />
 * Geral
   - Uma visão otimista da IA: [[./geral/seminco.pdf][slides]]
+* COMMENT  [[https://drive.google.com/drive/folders/1WaAm91n5FRPzsuUE3Ql0PIwD9fLGg1_V?usp=sharing][Aulas gravadas]]
+
 * Busca
   - [[./busca/busca.pdf][slides]]
   - [[./busca/buscaJava/index.html][implementação]] ([[https://github.com/jomifred/AI/tree/master/search][GitHub]])
   - [[./busca/exercicios-busca.pdf][exercícios]]
+
+  - [[https://youtu.be/DrSI5vakBKM][vídeo: introdução aos conceitos]]
+  - [[https://youtu.be/wg1lIyZ3IKc][vídeo: exemplo dos jarros]]
+  - [[https://youtu.be/QTG3rZL6bmU][vídeo: algoritmos básicos de busca]]
+  - [[https://youtu.be/zU4uuQaI6FQ][vídeo: A*]]
+  - [[https://youtu.be/VdtsUJEZ5K8][vídeo: subida da montanha]]
+
 
 * Constraint Satisfaction Problems
   - [[./csp/exercicioCSP.pdf][exercícios]]
   - [[./csp/lab-CSP.html][prática em laboratório]]
   - [[https://github.com/jomifred/AI/tree/master/csp/prolog][exemplos de programas]]
   - [[./csp/newchap05.pdf][capítulo 5 do livro do R&N]]
+
+  - [[https://youtu.be/3cVjgpD9ulM][vídeo: introdução a CSP]]
+  - [[https://youtu.be/VzU2ZMnnXT4][vídeo: problema rainhas]]
+
 * Planejamento automático
   - [[./planejamento/slides-planejamento.pdf][slides (draft)]] 
   - [[https://github.com/jomifred/AI/tree/master/pddl][exemplos de PDDL]] 
+
+  - [[https://youtu.be/48ZW9Ed54qs][vídeo: planejamento]]
+  - [[https://drive.google.com/file/d/1tkE0uGMUIPCsZeqrU1H2JJL37xDUAaQ0/view?usp=sharing][vídeo: aula prática com PDDL]]
+
 
 * Representação de Conhecimento
   - [[./conhecimento/representacao-conhecimento.pdf][slides]]
@@ -29,6 +46,10 @@
   - Exercícios: [[./conhecimento/exercicios/bichos.pdf][bichos]],
     [[./conhecimento/exercicios/familia.pdf][familia]],
     [[./conhecimento/exercicios/prolog-video-locadora.pdf][video locadora]],   [[./conhecimento/exercicios/listas.pdf][listas]]
+
+  - [[https://youtu.be/8tJCnIyKUa0][vídeo aula]]
+  - [[https://youtu.be/xT8NhOUQ2rc][vídeo solução exercício bichos]]
+
 * Aprendizado
   - [[./aprendizado/ch2.pdf][aprendizado de conceitos (slides Tom
     Mitchel)]]
