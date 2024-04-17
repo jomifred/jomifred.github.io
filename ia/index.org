@@ -12,7 +12,7 @@
 
 * Busca
   - [[./busca/busca.pdf][slides]]
-  - [[./busca/buscaJava/index.html][implementação]] ([[https://github.com/jomifred/AI/tree/master/search][GitHub]])
+  - [[https://github.com/jomifred/AI/tree/master/search][implementação]]
   - [[./busca/exercicios-busca.pdf][exercícios]]
 
   - [[https://youtu.be/DrSI5vakBKM][vídeo: introdução aos conceitos]]
