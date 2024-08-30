@@ -12,8 +12,11 @@
 
 * Busca
   - [[./busca/busca.pdf][slides]]
-  - [[https://github.com/jomifred/AI/tree/master/search][implementação]]
   - [[./busca/exercicios-busca.pdf][exercícios]]
+  - 
+     [[https://github.com/jomifred/AI/tree/master/search][implementação]] /
+    [[https://colab.research.google.com/drive/1tylaeC-A29rvoCU1O7S5E5EAwCT-Zt9N?usp=sharing][notebook
+    based on R&N]]
 
   - [[https://youtu.be/DrSI5vakBKM][vídeo: introdução aos conceitos]]
   - [[https://youtu.be/wg1lIyZ3IKc][vídeo: exemplo dos jarros]]
