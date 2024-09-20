@@ -41,7 +41,9 @@
 |         |               | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                                                          |
 |         |               | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                                                                                                    |
 |         |               | Exercise: [[https://github.com/JaCaMo-EASSS23/code?tab=readme-ov-file#environment-dimension-lab-3][EASSS Lab 3]]                                                                      |
-| 19,26/9 | [[https://docs.google.com/document/d/1W6TgXikrYhW47doUN8UX8MfEgXsF8KFMu-lcJAeMM9Q/edit?usp=sharing][Project]] | Web Of Things                                                                                                                                                                         |
+| 19,26/9 | Project       | [[https://docs.google.com/document/d/1W6TgXikrYhW47doUN8UX8MfEgXsF8KFMu-lcJAeMM9Q/edit?usp=sharing][Project Description]]                                                             |
+|         |               | Reading: [[https://www.w3.org/TR/wot-architecture/][Web Of Things]]                                                                               |
+|         |               | Reading: [[https://www.w3.org/TR/wot-thing-description11/][Thing Description]]                                                                           |
 | 3,10/10 | Project       | Knowledge Graphs                                                                                                                                                                      |
 | 17/10   | BDI           | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]                                                                                               |
 |         |               | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                                                                                             |
@@ -56,7 +58,7 @@
 |         |               | Reading: [[./leituras/WhitePaperJADEEXP.pdf][JADE white paper (Bellifemine et al)]]                                                                                                   |
 |         |               | Tutorial: [[https://jason-lang.github.io/doc/tutorials/jason-jade/readme.html][Jason + Jade]]                                                                                         |
 |         |               | Download: [[./code/jade-many-ags.zip][program that starts several Jade agents]]                                                                                                       |
-| 31/10   | Environment   | Advanced part ([[./slides/slides-eop.pdf][Slides]])                                                          |
+| 31/10   | Environment   | Advanced part ([[./slides/slides-eop.pdf][Slides]])                                                                                                                                   |
 | 7/11    | Organisation  | [[./slides/slides-oop.pdf][Slides]] / [[https://moise-lang.github.io][Moise]]                                                                                                         |
 |         |               | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 8 and 9]] of MAOP book                                                                           |
 |         |               | Reading: [[http://moise.sourceforge.net/doc/publications/Hubner-sbia2002.pdf][Moise Model (Hubner et al)]]                                                                            |
