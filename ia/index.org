@@ -13,8 +13,7 @@
 * Busca
   - [[./busca/busca.pdf][slides]]
   - [[./busca/exercicios-busca.pdf][exercícios]]
-  - 
-     [[https://github.com/jomifred/AI/tree/master/search][implementação]] /
+  - [[https://github.com/jomifred/AI/tree/master/search][implementação]] /
     [[https://colab.research.google.com/drive/1tylaeC-A29rvoCU1O7S5E5EAwCT-Zt9N?usp=sharing][notebook
     based on R&N]]
 
@@ -33,6 +32,9 @@
 
   - [[https://youtu.be/3cVjgpD9ulM][vídeo: introdução a CSP]]
   - [[https://youtu.be/VzU2ZMnnXT4][vídeo: problema rainhas]]
+
+* Monte Carlo Tree Search
+  - [[./mcts/mcts-slides.pdf][slides]]
 
 * Planejamento automático
   - [[./planejamento/slides-planejamento.pdf][slides (draft)]] 
