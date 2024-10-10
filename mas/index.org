@@ -42,9 +42,10 @@
 |         |               | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                                                                                                    |
 |         |               | Exercise: [[https://github.com/JaCaMo-EASSS23/code?tab=readme-ov-file#environment-dimension-lab-3][EASSS Lab 3]]                                                                      |
 | 19,26/9 | Project       | [[https://docs.google.com/document/d/1W6TgXikrYhW47doUN8UX8MfEgXsF8KFMu-lcJAeMM9Q/edit?usp=sharing][Project Description]]                                                             |
-|         |               | Reading: [[https://www.w3.org/TR/wot-architecture/][Web Of Things]], focus on [[https://www.w3.org/TR/wot-architecture/#sec-architecture-overview][Sect. 6]]                                                       |
-|         |               | Reading: [[https://www.w3.org/TR/wot-thing-description11/][Thing Description]]                                                                           |
+|         |               | Reading: [[https://www.w3.org/TR/wot-architecture/][Web Of Things]], focus on [[https://www.w3.org/TR/wot-architecture/#sec-architecture-overview][Sect. 6]]                          |
+|         |               | Reading: [[https://www.w3.org/TR/wot-thing-description11/][Thing Description]]                                                                                                        |
 | 3,10/10 | Project       | Knowledge Graphs                                                                                                                                                                      |
+|         |               | Reading: [[https://www.w3.org/TR/rdf11-primer/][Resource Description Framework (RDF)]]                                                                                                |
 | 17/10   | BDI           | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]                                                                                               |
 |         |               | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                                                                                             |
 |         |               | Reading: [[https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |
