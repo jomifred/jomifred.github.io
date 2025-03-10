@@ -9,8 +9,7 @@ Tel.: +55 48 3721 7665
 
 == Research Interests
 
-* Organisation, Institution, and Norm based programming for Multi-Agent
-Systems
+* Organisation, Institution, and Norm based programming for Multi-Agent Systems
 * Programming languages for autonomous agents
 
 == Projects
@@ -61,16 +60,12 @@ Scholar], and https://www.researchgate.net/profile/Jomi-Huebner[Research Gate]
 
 == Teaching
 
-=== Graduação (ECA)
-
-* link:./ia[Inteligência Artificial Aplicada a Automação e Controle]
+* link:./mas[MultiAgent Systems]
+* link:./ia[Inteligência Artificial]
 * https://moodle.ufsc.br/[Introdução à Informática para Automação]
 
-=== Pós-graduação (PPGEAS)
-
 * link:./fmd[Fundamentos de Matemática Discreta para Controle e Automação]
-* link:./ia[Inteligência Artificial & Aprendizado de Máquina]
-* link:./mas[Sistemas Multiagentes]
+
 
 == Conferences
 
