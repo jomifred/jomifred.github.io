@@ -74,12 +74,12 @@
 | 21/11   | Coordination  | Reading: [[https://doi.org/10.1007/1-4020-8058-1_17][Coordination Infrastructures (Omicini et al)]]                                                                                   |
 |         |               | Reading: [[http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf][Teamwork (Choen et Levesque)]]                                                                             |
 |         |               | Tutorial: [[http://jacamo-lang.github.io/jacamo/tutorials/coordination/readme.html][Coordination with JaCaMo]]                                                                        |
-| 28/11   | MAOP          | [[./slides/slides-maop.pdf][Slides]] / [[https://jacamo-lang.github.io][JaCaMo]]                                                                                                      |
+| extra   | MAOP          | [[./slides/slides-maop.pdf][Slides]] / [[https://jacamo-lang.github.io][JaCaMo]]                                                                                                      |
 |         |               | Reading: [[./leituras/Jennings-AG-SE.pdf][On agent-based software engineering (Jennings)]]                                                                                            |
 |         |               | Reading: [[http://dx.doi.org/10.1016/j.scico.2011.10.004][Multi-agent oriented programming (Boissier et al)]]                                                                         |
+| 28/11   |               | Seminars                                                                                                                                                                              |
 | 5/12    |               | Seminars                                                                                                                                                                              |
-| 12/12   |               | Seminars                                                                                                                                                                              |
-| 19/12   |               | Project Presentation                                                                                                                                                                  |
+| 12/12   |               | Project Presentation                                                                                                                                                                  |
 
 * COMMENT Course Organisation (PósAutomação/UFSC 2022-2)
 
