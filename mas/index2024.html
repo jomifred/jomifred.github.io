@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
+<head>
+<title>Multi-Agent Systems Course</title>
+<!-- 2024-10-24 Thu 08:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Jomi F. Hübner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://jomifred.github.io/ia/ia.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Multi-Agent Systems Course</h1>
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Course Schedule (PósAutomação/UFSC 2024-2)</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="./syllabus.pdf">Syllabus</a>
+</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Date</th>
+<th scope="col" class="left">Topic</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">22/8</td>
+<td class="left">Introduction</td>
+<td class="left"><a href="./slides/intro.pdf">Slides</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://mitpress.mit.edu/books/multi-agent-oriented-programming">Chapter 2</a> of MAOP book</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/agentlink-roadmap.pdf">AgentLink Roadmap</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Agents</td>
+<td class="left">Reading: <a href="./leituras/IntellAgents.Wool.pdf">Intelligent Agents (Wooldridge)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/aow-1-5-97.pdf">Agent definition vs test (Huhns &amp; Singh)</a> (2 pages)</td>
+</tr>
+
+<tr>
+<td class="left">29/8</td>
+<td class="left">AOP</td>
+<td class="left">Tutorial: <a href="https://jacamo-lang.github.io/getting-started">JaCaMo getting started</a>: Chapter 3 of MAOP Book</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">(optional: <a href="https://jason-lang.github.io/doc/tutorials/getting-started/readme.html">Jason Getting Started</a>)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://mitpress.mit.edu/books/multi-agent-oriented-programming">Chapter 4</a> of MAOP book</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://doi.org/10.3390/computers10020016">Review AOP (Cardoso et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Exercise: <a href="https://github.com/JaCaMo-EASSS23/code">EASSS Lab 1</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left"><a href="./slides/slides-aop.pdf">Slides</a> / <a href="https://jason-lang.github.io/">Jason</a></td>
+</tr>
+
+<tr>
+<td class="left">5/9</td>
+<td class="left">Communication</td>
+<td class="left">Reading: <a href="./leituras/SpeechActs-Searle.pdf">Speech Acts (Searle)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/SpeechActs-AOP.pdf">Speech Acts in AOP (Renata Vieira et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://mitpress.mit.edu/books/multi-agent-oriented-programming">Sections 7.1 and 7.2</a> of MAOP book</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Exercise: <a href="https://github.com/JaCaMo-EASSS23/code">EASSS Lab 2</a></td>
+</tr>
+
+<tr>
+<td class="left">12/9</td>
+<td class="left">Environment</td>
+<td class="left"><a href="./slides/slides-eop-selection.pdf">Slides</a> / <a href="https://github.com/CArtAgO-lang/cartago">CArtAgO</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://mitpress.mit.edu/books/multi-agent-oriented-programming">Chapters 3, 5, 6, and Section 7.3</a> of MAOP book</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/Ricci-Artefacts.pdf">Environment programming (Ricci et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Exercise: <a href="https://github.com/JaCaMo-EASSS23/code?tab=readme-ov-file#environment-dimension-lab-3">EASSS Lab 3</a></td>
+</tr>
+
+<tr>
+<td class="left">19,26/9</td>
+<td class="left">Project</td>
+<td class="left"><a href="https://docs.google.com/document/d/1W6TgXikrYhW47doUN8UX8MfEgXsF8KFMu-lcJAeMM9Q/edit?usp=sharing">Project Description</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://www.w3.org/TR/wot-architecture/">Web Of Things</a>, focus on <a href="https://www.w3.org/TR/wot-architecture/#sec-architecture-overview">Sect. 6</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://www.w3.org/TR/wot-thing-description11/">Thing Description</a></td>
+</tr>
+
+<tr>
+<td class="left">3,10/10</td>
+<td class="left">Project</td>
+<td class="left">Knowledge Graphs</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://www.w3.org/TR/rdf11-primer/">Resource Description Framework (RDF)</a></td>
+</tr>
+
+<tr>
+<td class="left">17/10</td>
+<td class="left">BDI</td>
+<td class="left">Reading: <a href="./leituras/cohe90_1.pdf">Intention is Choice with Commitment (Cohen et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/Bratman-TwoFacesOfIntention.pdf">Two Faces of Intention (Bratman)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf">Plans and Resource-Bounded Practical Reasoning (Bratman et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/AAAI87-121.pdf">Reactive Reasoning and Planning (Georgeff)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/mascardi05languages.pdf">Languages for BDI (Mascardi et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Tutorial: <a href="https://jason-lang.github.io/doc/tutorials/hello-bdi/readme.html">Jason Hello BDI</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Tutorial: <a href="https://jacamo-lang.github.io/jacamo/tutorials/gold-miners/readme.html">Gold Miners</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Documentation: <a href="https://jason-lang.github.io/doc/tech/patterns.html">Jason Programming Patterns</a></td>
+</tr>
+
+<tr>
+<td class="left">24/10</td>
+<td class="left">Communication</td>
+<td class="left"><a href="./slides/slides-interaction.pdf">JADE Slides</a> and <a href="./interaction/exemplo-jade-maicon.zip">Example of programs</a> (Maicon)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/FIPA-JADE.pdf">Developing MAS FIPA-compliant (Bellifemine et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/WhitePaperJADEEXP.pdf">JADE white paper (Bellifemine et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Tutorial: <a href="https://jason-lang.github.io/doc/tutorials/jason-jade/readme.html">Jason + Jade</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Download: <a href="./code/jade-many-ags.zip">program that starts several Jade agents</a></td>
+</tr>
+
+<tr>
+<td class="left">31/10</td>
+<td class="left">Environment</td>
+<td class="left">Advanced part (<a href="./slides/slides-eop.pdf">Slides</a>)</td>
+</tr>
+
+<tr>
+<td class="left">7/11</td>
+<td class="left">Organisation</td>
+<td class="left"><a href="./slides/slides-oop.pdf">Slides</a> / <a href="https://moise-lang.github.io">Moise</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="https://mitpress.mit.edu/books/multi-agent-oriented-programming">Chapters 8 and 9</a> of MAOP book</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://moise.sourceforge.net/doc/publications/Hubner-sbia2002.pdf">Moise Model (Hubner et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://dx.doi.org/10.1007/s10458-009-9084-y">ORA4MAS</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Tutorial: <a href="http://jacamo-lang.github.io/jacamo/tutorials/hello-world/readme.html">JaCaMo Hello World</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Exercise: <a href="https://github.com/JaCaMo-EASSS23/code?tab=readme-ov-file#organisation-dimension-lab-4">EASSS Lab 4</a></td>
+</tr>
+
+<tr>
+<td class="left">14/11</td>
+<td class="left">Norms</td>
+<td class="left"><a href="./slides/slides-norms.pdf">Slides</a> / <a href="https://github.com/moise-lang/npl">NPL</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/Boella-Introdo-NormMas.pdf">Introduction to NorMAS (Boella et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://drops.dagstuhl.de/opus/volltexte/2013/3998/">Norms in MAS (Balke et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://dx.doi.org/10.1155/2014/684587">Survey (Mahmoud et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://dx.doi.org/10.1007/s10472-011-9251-0">Normative Programming Language used in JaCaMo</a></td>
+</tr>
+
+<tr>
+<td class="left">21/11</td>
+<td class="left">Coordination</td>
+<td class="left">Reading: <a href="https://doi.org/10.1007/1-4020-8058-1_17">Coordination Infrastructures (Omicini et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf">Teamwork (Choen et Levesque)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Tutorial: <a href="http://jacamo-lang.github.io/jacamo/tutorials/coordination/readme.html">Coordination with JaCaMo</a></td>
+</tr>
+
+<tr>
+<td class="left">extra</td>
+<td class="left">MAOP</td>
+<td class="left"><a href="./slides/slides-maop.pdf">Slides</a> / <a href="https://jacamo-lang.github.io">JaCaMo</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="./leituras/Jennings-AG-SE.pdf">On agent-based software engineering (Jennings)</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Reading: <a href="http://dx.doi.org/10.1016/j.scico.2011.10.004">Multi-agent oriented programming (Boissier et al)</a></td>
+</tr>
+
+<tr>
+<td class="left">28/11</td>
+<td class="left">&#xa0;</td>
+<td class="left">Seminars</td>
+</tr>
+
+<tr>
+<td class="left">5/12</td>
+<td class="left">&#xa0;</td>
+<td class="left">Seminars</td>
+</tr>
+
+<tr>
+<td class="left">12/12</td>
+<td class="left">&#xa0;</td>
+<td class="left">Project Presentation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jomi F. Hübner</p>
+<p class="email">Email: <a href="mailto:jomi.hubner@ufsc.br">jomi.hubner@ufsc.br</a></p>
+<p class="date">Created: 2024-10-24 Thu 08:58</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
