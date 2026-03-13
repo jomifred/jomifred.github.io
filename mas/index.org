@@ -22,7 +22,7 @@
 |      |               | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 2]] of MAOP book                                                                                  |
 |      |               | Reading: [[./leituras/agentlink-roadmap.pdf][AgentLink Roadmap]]                                                                                                                      |
 |      | Agents        | Reading: [[./leituras/IntellAgents.Wool.pdf][Intelligent Agents (Wooldridge)]]                                                                                                        |
-|      |               | Reading: [[https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/aow-1-5-97.pdf][Agent definition vs test (Huhns & Singh)]] (2 pages)                                              |
+|      |               | Reading: [[https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=1067&context=csce_facpub][Agent definition vs test (Huhns & Singh)]] (2 pages)                                                                                                                     |
 | 20/3 | AOP           | Tutorial: [[https://jacamo-lang.github.io/getting-started][JaCaMo getting started]]: Chapter 3 of MAOP Book                                                                           |
 |      |               | (optional: [[https://jason-lang.github.io/doc/tutorials/getting-started/readme.html][Jason Getting Started]])                                                                         |
 |      |               | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapter 4]] of MAOP book                                                                                  |
