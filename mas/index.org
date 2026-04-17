@@ -37,7 +37,7 @@
 |      |               | Reading: [[https://mitpress.mit.edu/books/multi-agent-oriented-programming][Chapters 3, 5, 6, and Section 7.3]] of MAOP book                                                          |
 |      |               | Reading: [[./leituras/Ricci-Artefacts.pdf][Environment programming (Ricci et al)]]                                                                                                    |
 |      |               | Exercise: [[https://github.com/JaCaMo-EASSS23/code?tab=readme-ov-file#environment-dimension-lab-3][EASSS Lab 3]]                                                                      |
-| 17/4 | Project       | TBD                                                                                                                                                                                   |
+| 17/4 | Project       | [[https://docs.google.com/document/d/1I-9SwOe3qWVYYA3yCkgXnZL4uXEkSJnwxHyUU06ybsc/edit?usp=sharing][Description]]                                                                                                                                                                     |
 | 24/4 | BDI           | Reading: [[./leituras/cohe90_1.pdf][Intention is Choice with Commitment (Cohen et al)]]                                                                                               |
 |      |               | Reading: [[./leituras/Bratman-TwoFacesOfIntention.pdf][Two Faces of Intention (Bratman)]]                                                                                             |
 |      |               | Reading: [[https://www.sci.brooklyn.cuny.edu/~sklar/teaching/f08/mas/papers/bratman-israel-pollack-1988-clearer.pdf][Plans and Resource-Bounded Practical Reasoning (Bratman et al)]] |
