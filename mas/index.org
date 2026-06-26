@@ -65,7 +65,7 @@
 |      |               | Reading: [[http://drops.dagstuhl.de/opus/volltexte/2013/3998/][Norms in MAS (Balke et al)]]                                                                |
 |      |               | Reading: [[http://dx.doi.org/10.1155/2014/684587][Survey (Mahmoud et al)]]                                                                    |
 |      |               | Reading: [[http://dx.doi.org/10.1007/s10472-011-9251-0][Normative Programming Language used in JaCaMo]]                                             |
-| 26/6 | Convidados    | Profs. Alisson Panisson (Argumentação) e Maiquel de Brito ([[./slides/slides-maiquel.pdf][Construção de Instituições Artificiais]]) |
+| 26/6 | Convidados    | Profs. Alisson Panisson ([[./slides/slides-alison.pdf][Argumentação]]) e Maiquel de Brito ([[./slides/slides-maiquel.pdf][Construção de Instituições Artificiais]]) |
 |      | Coordination  | Reading: [[https://doi.org/10.1007/1-4020-8058-1_17][Coordination Infrastructures (Omicini et al)]]                                              |
 |      |               | Reading: [[http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf][Teamwork (Choen et Levesque)]]                                                              |
 |      |               | Tutorial: [[http://jacamo-lang.github.io/jacamo/tutorials/coordination/readme.html][Coordination with JaCaMo]]                                                                 |
