@@ -61,6 +61,7 @@
 |       |               | Reading: [[http://dx.doi.org/10.1155/2014/684587][Survey (Mahmoud et al)]]                                                                                                            |
 |       |               | Reading: [[http://dx.doi.org/10.1007/s10472-011-9251-0][Normative Programming Language used in JaCaMo]]                                                                               |
 | 13/11 | Coordination  | Reading: [[https://doi.org/10.1007/1-4020-8058-1_17][Coordination Infrastructures (Omicini et al)]]                                                                                   |
+|       |               | Reading: [[https://www.jair.org/index.php/jair/article/view/10193/24210][Towards Flexible Teamwork (Tambe)]]                                                                          |
 |       |               | Reading: [[http://web.media.mit.edu/~cynthiab/Readings/cohen-teamwork.pdf][Teamwork (Choen et Levesque)]]                                                                             |
 |       |               | Tutorial: [[http://jacamo-lang.github.io/jacamo/tutorials/coordination/readme.html][Coordination with JaCaMo]]                                                                        |
 |       | MAOP          | [[./slides/slides-maop.pdf][Slides]] / [[https://jacamo-lang.github.io][JaCaMo]]                                                                                                      |
