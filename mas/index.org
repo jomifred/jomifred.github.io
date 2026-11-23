@@ -56,7 +56,7 @@
 | 23/10 |                  | no class                                                                |
 | 6/11  |                  | Seminars                                                                |
 | 13/11 |                  | Seminars                                                                |
-| 20/11 | Norms            | [[./slides/slides-norms.pdf][Slides]] / [[https://github.com/moise-lang/npl][NPL]]                                                            |
+| 6/11  | Norms            | [[./slides/slides-norms.pdf][Slides]] / [[https://github.com/moise-lang/npl][NPL]]                                                            |
 |       |                  | Reading: [[./leituras/Boella-Introdo-NormMas.pdf][Introduction to NorMAS (Boella et al)]]                          |
 |       |                  | Reading: [[http://drops.dagstuhl.de/opus/volltexte/2013/3998/][Norms in MAS (Balke et al)]]                                     |
 |       |                  | Reading: [[http://dx.doi.org/10.1155/2014/684587][Survey (Mahmoud et al)]]                                         |
